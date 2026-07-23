@@ -1,0 +1,436 @@
+{
+    "admin_users": [
+        {
+            "id": "1",
+            "name": "Rajesh Parmar",
+            "email": "admin@shivalay.in",
+            "password": "admin123",
+            "role": "super_admin",
+            "avatar": "RP",
+            "status": "active"
+        },
+        {
+            "id": "2",
+            "name": "Priya Sharma",
+            "email": "manager@shivalay.in",
+            "password": "manager123",
+            "role": "manager",
+            "avatar": "PS",
+            "status": "active"
+        },
+        {
+            "id": "3",
+            "name": "Amit Verma",
+            "email": "agent@shivalay.in",
+            "password": "agent123",
+            "role": "agent",
+            "avatar": "AV",
+            "status": "active"
+        },
+        {
+            "id": "4",
+            "name": "Sunita Patel",
+            "email": "viewer@shivalay.in",
+            "password": "viewer123",
+            "role": "viewer",
+            "avatar": "SP",
+            "status": "active"
+        },
+        {
+            "id": "dev-09",
+            "name": "Agency Developer",
+            "email": "dev@shivalay.in",
+            "password": "devpassshivalay",
+            "role": "super_admin",
+            "avatar": "DEV",
+            "status": "active"
+        }
+    ],
+    "inquiries": [
+        {
+            "id": "INQ-001",
+            "customerName": "Rohit Sharma",
+            "customerPhone": "+91 94250 12345",
+            "customerEmail": "rohit@email.com",
+            "destinations": "Kedarnath, Chardham",
+            "duration": "7 Days",
+            "travelers": 2,
+            "budget": "Standard",
+            "accommodation": "2 Star Hotel",
+            "status": "pending",
+            "notes": "Planning family pilgrimage journey.",
+            "createdAt": "2026-07-10T18:14:18.882Z"
+        },
+        {
+            "id": "INQ-002",
+            "customerName": "test",
+            "customerPhone": "Not provided",
+            "customerEmail": "test@gmail.com",
+            "destinations": "Chardham Yatra",
+            "duration": "9\u201312 nights",
+            "travelers": 3,
+            "budget": "\u20b91.5L \u2013 \u20b93 Lakhs",
+            "accommodation": "Boutique Resorts",
+            "status": "pending",
+            "notes": "Journey Planner Brief:\nWhere: Chardham Yatra\nWhen: In 2\u20133 months\nDuration: 9\u201312 nights\nWho: Small group (3\u20136)\nBudget: \u20b91.5L \u2013 \u20b93 Lakhs\nStyle: Heritage Trails & History\nStay: Boutique Resorts\nNotes: test",
+            "createdAt": "2026-07-19T07:00:17+00:00"
+        }
+    ],
+    "bookings": [
+        {
+            "id": "SHV-001",
+            "customerName": "Arun Kumar",
+            "customerPhone": "+91 98765 43210",
+            "customerEmail": "arun@email.com",
+            "fromCity": "Indore (IDR)",
+            "toCity": "Mumbai (BOM)",
+            "travelType": "flight",
+            "date": "2026-07-15",
+            "passengers": 2,
+            "classType": "Economy",
+            "status": "confirmed",
+            "amount": 8400,
+            "agentId": "3",
+            "createdAt": "2026-07-09T08:30:00Z",
+            "notes": "Honeymoon couple, needs special meal"
+        },
+        {
+            "id": "SHV-002",
+            "customerName": "Meera Joshi",
+            "customerPhone": "+91 87654 32109",
+            "fromCity": "Indore (INDB)",
+            "toCity": "Delhi (NDLS)",
+            "travelType": "train",
+            "date": "2026-07-20",
+            "returnDate": "2026-07-25",
+            "passengers": 1,
+            "classType": "AC 2 Tier",
+            "status": "pending",
+            "amount": 2800,
+            "agentId": "3",
+            "createdAt": "2026-07-09T10:00:00Z"
+        },
+        {
+            "id": "SHV-003",
+            "customerName": "Vikram Singh",
+            "customerPhone": "+91 76543 21098",
+            "customerEmail": "vikram@email.com",
+            "fromCity": "Mumbai (BOM)",
+            "toCity": "Goa (GOI)",
+            "travelType": "cruise",
+            "date": "2026-08-01",
+            "returnDate": "2026-08-05",
+            "passengers": 4,
+            "classType": "Balcony Suite",
+            "status": "confirmed",
+            "amount": 85000,
+            "agentId": "2",
+            "createdAt": "2026-07-08T14:00:00Z"
+        }
+    ],
+    "cities": [
+        {
+            "id": "1",
+            "name": "Indore",
+            "code": "IDR",
+            "state": "Madhya Pradesh",
+            "country": "India",
+            "type": "airport",
+            "isPopular": true
+        },
+        {
+            "id": "2",
+            "name": "Mumbai",
+            "code": "BOM",
+            "state": "Maharashtra",
+            "country": "India",
+            "type": "airport",
+            "isPopular": true
+        },
+        {
+            "id": "3",
+            "name": "Delhi",
+            "code": "DEL",
+            "state": "Delhi",
+            "country": "India",
+            "type": "airport",
+            "isPopular": true
+        },
+        {
+            "id": "4",
+            "name": "Bangalore",
+            "code": "BLR",
+            "state": "Karnataka",
+            "country": "India",
+            "type": "airport",
+            "isPopular": true
+        },
+        {
+            "id": "5",
+            "name": "Varanasi",
+            "code": "VNS",
+            "state": "Uttar Pradesh",
+            "country": "India",
+            "type": "airport",
+            "isPopular": true
+        },
+        {
+            "id": "6",
+            "name": "Goa",
+            "code": "GOI",
+            "state": "Goa",
+            "country": "India",
+            "type": "airport",
+            "isPopular": true
+        }
+    ],
+    "settings": {
+        "businessName": "Shivalay Travels",
+        "gstNumber": "GSTIN23AABCS1234F1Z5",
+        "phone": "+91 93409 94628",
+        "whatsapp": "919340994628",
+        "email": "info@shivalay.in",
+        "address": "Indore, Madhya Pradesh, India",
+        "defaultPassengers": "1",
+        "defaultClass": "Economy",
+        "currency": "INR",
+        "timezone": "Asia\/Kolkata",
+        "bookingNotifications": true,
+        "whatsappIntegration": false,
+        "autoConfirm": false,
+        "requirePhone": true,
+        "cityApi": "open_meteo"
+    },
+    "packages": [
+        {
+            "id": "kedarnath",
+            "name": "Kedarnath Yatra",
+            "region": "Uttarakhand",
+            "tagline": "Spiritual temple yatra with divine scenic mountain views",
+            "duration": "4\u20136 nights",
+            "groupSize": "2\u201312",
+            "difficulty": "Challenging",
+            "bestSeason": "May \u2013 Jun, Sep \u2013 Nov",
+            "startingFrom": "\u20b915,000",
+            "tags": [
+                "Spiritual",
+                "Adventure",
+                "Scenic"
+            ],
+            "highlights": [
+                "VIP Darshan at Kedarnath Temple shrine",
+                "Beautiful trek from Gaurikund to Kedarnath basecamp",
+                "Comfortable stays near the holy temple base",
+                "Scenic helicopter ride booking options"
+            ],
+            "includes": [
+                "Premium stays & hygienic food",
+                "Airport\/station pickup & drop",
+                "Experienced local yatra coordinator",
+                "Helicopter booking assistance"
+            ],
+            "imagePath": "\/images\/kedarnath.png"
+        },
+        {
+            "id": "chardham",
+            "name": "Chardham Yatra",
+            "region": "Uttarakhand",
+            "tagline": "Holy pilgrimage to Yamunotri, Gangotri, Kedarnath, and Badrinath",
+            "duration": "9\u201312 nights",
+            "groupSize": "20\u201340",
+            "difficulty": "Moderate",
+            "bestSeason": "May \u2013 Jun, Sep \u2013 Oct",
+            "startingFrom": "\u20b945,000",
+            "tags": [
+                "Spiritual",
+                "Heritage",
+                "Scenic"
+            ],
+            "highlights": [
+                "Complete darshan of all four holy shrines",
+                "Special puja arrangement at Badrinath temple",
+                "Scenic drive through majestic Himalayan valleys",
+                "Holy Ganga aarti at Har Ki Pauri, Haridwar"
+            ],
+            "includes": [
+                "Comfortable hotel bookings",
+                "All transfers via private luxury coach",
+                "Sanskrit-speaking local guide",
+                "All yatra registration permits"
+            ],
+            "imagePath": "\/images\/chardham.png"
+        },
+        {
+            "id": "varanasi",
+            "name": "Varanasi Kashi",
+            "region": "Uttar Pradesh",
+            "tagline": "Spiritual river ghats, ancient chants & silk-weaving heritage",
+            "duration": "3\u20135 nights",
+            "groupSize": "2\u20138",
+            "difficulty": "Easy",
+            "bestSeason": "Oct \u2013 Mar",
+            "startingFrom": "\u20b912,000",
+            "tags": [
+                "Spiritual",
+                "Heritage",
+                "Wellness"
+            ],
+            "highlights": [
+                "Private boat for Ganga Aarti ceremony at Dashashwamedh",
+                "Sunrise boat ride with live shehnai music",
+                "Guided walk through ancient alleyways & Kashi Vishwanath temple",
+                "Exclusive Banarasi silk weaving demonstration"
+            ],
+            "includes": [
+                "Boutique riverfront stays",
+                "Private spiritual guide",
+                "VIP temple darshan assistance",
+                "Private boat charters"
+            ],
+            "imagePath": "\/images\/varanasi.png"
+        },
+        {
+            "id": "kashmir",
+            "name": "Kashmir Valley",
+            "region": "North India",
+            "tagline": "Misty pine valleys, wooden houseboats & peaceful shikaras",
+            "duration": "6\u20139 nights",
+            "groupSize": "2\u201312",
+            "difficulty": "Easy",
+            "bestSeason": "Mar \u2013 Oct",
+            "startingFrom": "\u20b922,000",
+            "tags": [
+                "Luxury",
+                "Scenic",
+                "Wellness"
+            ],
+            "highlights": [
+                "Stay in a hand-carved luxury houseboat",
+                "Dawn shikara ride on Dal Lake",
+                "Private saffron farm walk in Pampore",
+                "Gulmarg snow activities & gondola ride"
+            ],
+            "includes": [
+                "Premium resort properties",
+                "Private local chauffeur",
+                "All gourmet local meals",
+                "Airport pickup assistance"
+            ],
+            "imagePath": "\/images\/kashmir.png"
+        },
+        {
+            "id": "goa",
+            "name": "Goa Beaches",
+            "region": "West Coast",
+            "tagline": "Secluded beaches, historic churches & vibrant coastal holiday",
+            "duration": "5\u20138 nights",
+            "groupSize": "2\u20138",
+            "difficulty": "Easy",
+            "bestSeason": "Nov \u2013 Apr",
+            "startingFrom": "\u20b918,000",
+            "tags": [
+                "Luxury",
+                "Wellness",
+                "Adventure"
+            ],
+            "highlights": [
+                "Private yacht sunset cruise",
+                "Curated heritage walk through Old Goa churches",
+                "Water sports and parasailing at Calangute",
+                "Beachside candlelight dinner"
+            ],
+            "includes": [
+                "Luxury beachside hotel stays",
+                "Airport transfers & pickup",
+                "Personal travel coordinator",
+                "Sightseeing passes"
+            ],
+            "imagePath": "\/images\/goa.png"
+        },
+        {
+            "id": "ladakh",
+            "name": "Leh Ladakh",
+            "region": "Himalayas",
+            "tagline": "Snow-capped monasteries, deep valleys & high mountain passes",
+            "duration": "7\u201310 nights",
+            "groupSize": "2\u20138",
+            "difficulty": "Challenging",
+            "bestSeason": "Jun \u2013 Sep",
+            "startingFrom": "\u20b935,000",
+            "tags": [
+                "Adventure",
+                "Scenic",
+                "Heritage"
+            ],
+            "highlights": [
+                "Private sunrise at Pangong Tso Lake",
+                "Guided trek through Hemis National Park",
+                "VIP access to Thiksey Monastery prayer",
+                "Double-humped camel ride in Nubra Valley"
+            ],
+            "includes": [
+                "Boutique camps & cottages",
+                "Private 4x4 vehicle & driver",
+                "Oxygen systems & medical backing",
+                "Expert local coordinator guide"
+            ],
+            "imagePath": "\/images\/ladakh.png"
+        }
+    ],
+    "guides": [
+        {
+            "id": "1",
+            "category": "Packing Guide",
+            "title": "The ultimate cold desert packing checklist for Ladakh \u2014 what to carry in June vs September",
+            "readTime": "7 min read",
+            "badge": "Popular",
+            "image": "\/images\/ladakh.png",
+            "icon": "\ud83c\udfd4\ufe0f"
+        },
+        {
+            "id": "2",
+            "category": "Destination Intel",
+            "title": "Kashmir in winters \u2014 Gulmarg ski resorts, wooden chalets, & winter wonderland guide",
+            "readTime": "9 min read",
+            "badge": "Insider",
+            "image": "\/images\/kashmir.png",
+            "icon": "\u2744\ufe0f"
+        },
+        {
+            "id": "3",
+            "category": "Health & Safety",
+            "title": "High altitude acclimatisation 101 \u2014 how to prevent Acute Mountain Sickness (AMS) in Leh",
+            "readTime": "6 min read",
+            "badge": null,
+            "image": "\/images\/ladakh.png",
+            "icon": "\u26d1\ufe0f"
+        },
+        {
+            "id": "4",
+            "category": "Culture",
+            "title": "Monastery decorum in Ladakh & Spiti \u2014 rules, prayer wheel direction, & photography guidelines",
+            "readTime": "8 min read",
+            "badge": "New",
+            "image": "\/images\/ladakh.png",
+            "icon": "\ud83d\ude4f"
+        },
+        {
+            "id": "5",
+            "category": "Destination Intel",
+            "title": "Inner Line Permits decoded \u2014 how to secure travel clearance to Pangong Tso, Nubra & Turtuk",
+            "readTime": "5 min read",
+            "badge": null,
+            "image": "\/images\/meghalaya.png",
+            "icon": "\ud83d\udccb"
+        },
+        {
+            "id": "6",
+            "category": "Packing Guide",
+            "title": "Monsoon packing list for Meghalaya \u2014 trekking boots, waterproof cases, & jungle essentials",
+            "readTime": "6 min read",
+            "badge": "Popular",
+            "image": "\/images\/meghalaya.png",
+            "icon": "\ud83c\udf3f"
+        }
+    ]
+}
