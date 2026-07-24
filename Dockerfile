@@ -1,4 +1,4 @@
-FROM richarvey/nginx-php-fpm:3.1.6-php8.3
+FROM php:8.3-cli
 
 WORKDIR /var/www/html
 
