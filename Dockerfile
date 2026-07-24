@@ -1,6 +1,9 @@
-FROM php:8.3-cli
+FROM richarvey/nginx-php-fpm:3.1.6-php8.3
 
 WORKDIR /var/www/html
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Copy composer files first for better caching
 COPY composer.json composer.lock ./
