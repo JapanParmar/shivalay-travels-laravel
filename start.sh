@@ -2,13 +2,11 @@
 
 echo "🚀 Starting Laravel on Render..."
 
-# Run migrations
+# Run migrations + seeding
 php artisan migrate --force
-
-# Run database seeder (if you have seeders)
 php artisan db:seed --force
 
 echo "✅ Migrations and Seeding completed!"
 
-# Start PHP-FPM and Nginx
-php-fpm && nginx -g 'daemon off;'
+# Start supervisor (recommended for this image)
+exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
