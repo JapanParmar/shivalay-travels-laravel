@@ -1,19 +1,7 @@
-#!/bin/bash
-
-echo "Running migrations..."
-
+composer install --no-dev --optimize-autoloader
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan storage:link
 php artisan migrate --force
-
-echo "Clearing cache..."
-
-php artisan optimize:clear
-
-php artisan optimize
-
-echo "Seeding database..."
-
-php artisan db:seed
-
-echo "Starting Laravel..."
-
-php artisan serve --host=0.0.0.0 --port=$PORT
+php-fpm
