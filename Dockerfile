@@ -1,19 +1,16 @@
 FROM richarvey/nginx-php-fpm:3.1.6
 
-# Set working directory
 WORKDIR /var/www/html
 
-# Copy composer files first for better caching
+# Copy composer files first for better layer caching
 COPY composer.json composer.lock ./
-
-# Install dependencies
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Copy the rest of the application
 COPY . .
 
-# Install Node dependencies and build assets (if using Vite/React/etc.)
-RUN npm ci --only=production && npm run build || echo "No npm build step"
+# Install Node dependencies and build frontend assets
+RUN npm ci --production && npm run build || echo "No frontend build step"
 
 # Laravel optimizations
 RUN php artisan config:cache \
@@ -29,7 +26,6 @@ RUN chown -R www-data:www-data /var/www/html \
 COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-# Expose the port Render will use
 EXPOSE 10000
 
 CMD ["/usr/local/bin/start.sh"]
