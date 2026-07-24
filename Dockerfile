@@ -1,38 +1,35 @@
-FROM php:8.3-cli
+FROM richarvey/nginx-php-fpm:3.1.6
 
+# Set working directory
 WORKDIR /var/www/html
 
-RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    curl \
-    nodejs \
-    npm \
-    libzip-dev \
-    libpq-dev \
-    && docker-php-ext-install zip pdo pdo_mysql pdo_pgsql
+# Copy composer files first for better caching
+COPY composer.json composer.lock ./
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
+# Copy the rest of the application
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+# Install Node dependencies and build assets (if using Vite/React/etc.)
+RUN npm ci --only=production && npm run build || echo "No npm build step"
 
-RUN npm install && npm run build
+# Laravel optimizations
+RUN php artisan config:cache \
+    && php artisan route:cache \
+    && php artisan view:cache \
+    && php artisan storage:link
 
-RUN php artisan config:clear || true
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 storage bootstrap/cache
 
-RUN php artisan route:cache || true
-
-RUN php artisan view:cache || true
-
-RUN chmod -R 775 storage bootstrap/cache
-
-# Add start script
+# Copy start script
 COPY start.sh /usr/local/bin/start.sh
-
 RUN chmod +x /usr/local/bin/start.sh
 
+# Expose the port Render will use
 EXPOSE 10000
 
 CMD ["/usr/local/bin/start.sh"]
