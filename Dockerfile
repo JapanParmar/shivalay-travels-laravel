@@ -1,9 +1,11 @@
-FROM richarvey/nginx-php-fpm:3.1.6
+FROM richarvey/nginx-php-fpm:3.1.6-php8.3
 
 WORKDIR /var/www/html
 
-# Copy composer files first for better layer caching
+# Copy composer files first for better caching
 COPY composer.json composer.lock ./
+
+# Install Composer dependencies
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Copy the rest of the application
