@@ -8,5 +8,5 @@ php artisan db:seed --force
 
 echo "✅ Migrations and Seeding completed!"
 
-# Start supervisor (recommended for this image)
-exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+# Start server
+exec php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
