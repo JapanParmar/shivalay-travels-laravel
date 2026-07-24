@@ -2,33 +2,35 @@ FROM php:8.3-cli
 
 WORKDIR /var/www/html
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    curl \
+    nodejs \
+    npm \
+    libzip-dev \
+    libpq-dev \
+    && docker-php-ext-install zip pdo pdo_mysql pdo_pgsql
 
-# Copy composer files first for better caching
-COPY composer.json composer.lock ./
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Install Composer dependencies
-RUN composer install --no-dev --optimize-autoloader --no-scripts
-
-# Copy the rest of the application
 COPY . .
 
-# Install Node dependencies and build frontend assets
-RUN npm ci --production && npm run build || echo "No frontend build step"
+RUN composer install --no-dev --optimize-autoloader
 
-# Laravel optimizations
-RUN php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache \
-    && php artisan storage:link
+RUN npm install && npm run build
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 storage bootstrap/cache
+RUN php artisan config:clear || true
 
-# Copy start script
+RUN php artisan route:cache || true
+
+RUN php artisan view:cache || true
+
+RUN chmod -R 775 storage bootstrap/cache
+
+# Add start script
 COPY start.sh /usr/local/bin/start.sh
+
 RUN chmod +x /usr/local/bin/start.sh
 
 EXPOSE 10000
