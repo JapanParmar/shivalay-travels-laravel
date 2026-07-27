@@ -92,8 +92,8 @@
         </div>
         
         <div style="display: flex; flex-direction: column; gap: 16px;">
-          <div class="img-zoom-wrap" style="height: 200px; border-radius: var(--radius-xl);">
-            <img id="dest-detail-img" src="" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+          <div id="dest-detail-img-wrap" class="img-zoom-wrap skeleton-loading" style="height: 200px; border-radius: var(--radius-xl); overflow: hidden; position: relative;">
+            <img id="dest-detail-img" src="" alt="" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s ease; opacity: 0;" onload="this.style.opacity=1; this.parentElement.classList.remove('skeleton-loading');">
           </div>
           <p class="font-primary text-xs fw-medium uppercase ls-05 text-muted">Included in every journey</p>
           <div style="display: flex; flex-direction: column; gap: 6px;" id="dest-detail-includes"></div>

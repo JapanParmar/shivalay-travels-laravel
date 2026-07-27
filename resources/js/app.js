@@ -5,40 +5,13 @@
 // 1. GLOBAL STATE & STATICS
 // ────────────────────────────────────────────────────────────────
 
-const DESTINATIONS = (window.DB_PACKAGES && window.DB_PACKAGES.length > 0) ? window.DB_PACKAGES : [
-  { id: 'kedarnath', name: 'Kedarnath Yatra', region: 'Uttarakhand', tagline: 'Spiritual temple yatra with divine scenic mountain views', duration: '4–6 nights', groupSize: '2–12', difficulty: 'Challenging', bestSeason: 'May – Jun, Sep – Nov', startingFrom: '₹15,000', tags: ['Spiritual', 'Adventure', 'Scenic'], highlights: ['VIP Darshan at Kedarnath Temple shrine', 'Beautiful trek from Gaurikund to Kedarnath basecamp', 'Comfortable stays near the holy temple base', 'Scenic helicopter ride booking options'], includes: ['Premium stays & hygienic food', 'Airport/station pickup & drop', 'Experienced local yatra coordinator', 'Helicopter booking assistance'], imagePath: '/images/kedarnath.png' },
-  { id: 'chardham', name: 'Chardham Yatra', region: 'Uttarakhand', tagline: 'Holy pilgrimage to Yamunotri, Gangotri, Kedarnath, and Badrinath', duration: '9–12 nights', groupSize: '2–20', difficulty: 'Challenging', bestSeason: 'May – Jun, Sep – Oct', startingFrom: '₹45,000', tags: ['Spiritual', 'Heritage', 'Scenic'], highlights: ['Complete darshan of all four holy shrines', 'Special puja arrangement at Badrinath temple', 'Scenic drive through majestic Himalayan valleys', 'Holy Ganga aarti at Har Ki Pauri, Haridwar'], includes: ['Comfortable hotel bookings', 'All transfers via private luxury coach', 'Sanskrit-speaking local guide', 'All yatra registration permits'], imagePath: '/images/chardham.png' },
-  { id: 'varanasi', name: 'Varanasi Kashi', region: 'Uttar Pradesh', tagline: 'Spiritual river ghats, ancient chants & silk-weaving heritage', duration: '3–5 nights', groupSize: '2–8', difficulty: 'Easy', bestSeason: 'Oct – Mar', startingFrom: '₹12,000', tags: ['Spiritual', 'Heritage', 'Wellness'], highlights: ['Private boat for Ganga Aarti ceremony at Dashashwamedh', 'Sunrise boat ride with live shehnai music', 'Guided walk through ancient alleyways & Kashi Vishwanath temple', 'Exclusive Banarasi silk weaving demonstration'], includes: ['Boutique riverfront stays', 'Private spiritual guide', 'VIP temple darshan assistance', 'Private boat charters'], imagePath: '/images/varanasi.png' },
-  { id: 'kashmir', name: 'Kashmir Valley', region: 'North India', tagline: 'Misty pine valleys, wooden houseboats & peaceful shikaras', duration: '6–9 nights', groupSize: '2–12', difficulty: 'Easy', bestSeason: 'Mar – Oct', startingFrom: '₹22,000', tags: ['Luxury', 'Scenic', 'Wellness'], highlights: ['Stay in a hand-carved luxury houseboat', 'Dawn shikara ride on Dal Lake', 'Private saffron farm walk in Pampore', 'Gulmarg snow activities & gondola ride'], includes: ['Premium resort properties', 'Private local chauffeur', 'All gourmet local meals', 'Airport pickup assistance'], imagePath: '/images/kashmir.png' },
-  { id: 'goa', name: 'Goa Beaches', region: 'West Coast', tagline: 'Secluded beaches, historic churches & vibrant coastal holiday', duration: '5–8 nights', groupSize: '2–8', difficulty: 'Easy', bestSeason: 'Nov – Apr', startingFrom: '₹18,000', tags: ['Luxury', 'Wellness', 'Adventure'], highlights: ['Private yacht sunset cruise', 'Curated heritage walk through Old Goa churches', 'Water sports and parasailing at Calangute', 'Beachside candlelight dinner'], includes: ['Luxury beachside hotel stays', 'Airport transfers & pickup', 'Personal travel coordinator', 'Sightseeing passes'], imagePath: '/images/goa.png' },
-  { id: 'ladakh', name: 'Leh Ladakh', region: 'Himalayas', tagline: 'Snow-capped monasteries, deep valleys & high mountain passes', duration: '7–10 nights', groupSize: '2–8', difficulty: 'Challenging', bestSeason: 'Jun – Sep', startingFrom: '₹35,000', tags: ['Adventure', 'Scenic', 'Heritage'], highlights: ['Private sunrise at Pangong Tso Lake', 'Guided trek through Hemis National Park', 'VIP access to Thiksey Monastery prayer', 'Double-humped camel ride in Nubra Valley'], includes: ['Boutique camps & cottages', 'Private 4x4 vehicle & driver', 'Oxygen systems & medical backing', 'Expert local coordinator guide'], imagePath: '/images/ladakh.png' },
-  { id: 'kerala', name: 'Kerala Backwaters', region: 'South India', tagline: 'Palm-fringed lagoons, spice hills & classical ayurveda', duration: '7–12 nights', groupSize: '2–6', difficulty: 'Easy', bestSeason: 'Sep – Mar', startingFrom: '₹24,000', tags: ['Wellness', 'Scenic', 'Luxury'], highlights: ['Private houseboat cruise through backwaters', 'Spice plantation trail in Munnar', 'Scenic Kathakali performance tour', 'Sunset view at Kovalam Beach'], includes: ['Boutique wellness resorts', 'All transfers via private sedan', 'Houseboat crew & meals', 'Sightseeing permits'], imagePath: '/images/kerala.png' },
-  { id: 'rajasthan', name: 'Rajasthan Heritage', region: 'West India', tagline: 'Golden sandstone forts, royal palaces & desert heritage', duration: '8–12 nights', groupSize: '2–10', difficulty: 'Easy', bestSeason: 'Oct – Mar', startingFrom: '₹28,000', tags: ['Heritage', 'History', 'Luxury'], highlights: ['Private dinner at Jaisalmer desert camp', 'Exclusive tour of Mehrangarh Fort', 'Stay in Palace hotels of Udaipur', 'Sunrise hot air balloon ride over Jaipur'], includes: ['Heritage hotel properties', 'Vintage car tour', 'Folk dance performances', 'Private local guides'], imagePath: '/images/rajasthan.png' },
-];
-
-const GUIDES = (window.DB_GUIDES && window.DB_GUIDES.length > 0) ? window.DB_GUIDES : [
-  { category: 'Packing Guide', title: 'The ultimate cold desert packing checklist for Ladakh — what to carry in June vs September', readTime: '7 min read', badge: 'Popular', image: '/images/ladakh.png', icon: '🏔️' },
-  { category: 'Destination Intel', title: 'Kashmir in winters — Gulmarg ski resorts, wooden chalets, & winter wonderland guide', readTime: '9 min read', badge: 'Insider', image: '/images/kashmir.png', icon: '❄️' },
-  { category: 'Health & Safety', title: 'High altitude acclimatisation 101 — how to prevent Acute Mountain Sickness (AMS) in Leh', readTime: '6 min read', badge: null, image: '/images/ladakh.png', icon: '⛑️' },
-  { category: 'Culture', title: 'Monastery decorum in Ladakh & Spiti — rules, prayer wheel direction, & photography guidelines', readTime: '8 min read', badge: 'New', image: '/images/ladakh.png', icon: '🙏' },
-  { category: 'Destination Intel', title: 'Inner Line Permits decoded — how to secure travel clearance to Pangong Tso, Nubra & Turtuk', readTime: '5 min read', badge: null, image: '/images/meghalaya.png', icon: '📋' },
-  { category: 'Packing Guide', title: 'Monsoon packing list for Meghalaya — trekking boots, waterproof cases, & jungle essentials', readTime: '6 min read', badge: 'Popular', image: '/images/meghalaya.png', icon: '🌿' },
-];
-
-const TESTIMONIALS = [
-  { quote: 'Our Kashmir honeymoon was beyond imagination. Every detail — the scenic houseboat, the private saffron farm walk — felt tailored to our exact pace.', name: 'Priya & Arjun Mehta', location: 'Mumbai', destination: 'Kashmir', trip: 'Honeymoon · 8 nights', rating: 5, avatar: 'PA', image: '/images/kashmir.png', clientImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80' },
-  { quote: 'The Kedarnath yatra was incredibly smooth. They managed all registrations and helicopter tickets without any hassle. A truly divine experience.', name: 'Ramesh & Savita Joshi', location: 'Indore', destination: 'Kedarnath', trip: 'Pilgrim · 5 nights', rating: 5, avatar: 'RS', image: '/images/kedarnath.png', clientImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80' },
-  { quote: 'Taking our elderly parents to Chardham was a big concern, but Shivalay Travels made it absolutely stress-free. The premium Tempo Traveller was very comfortable.', name: 'The Verma Family', location: 'Bhopal', destination: 'Chardham Yatra', trip: 'Family Yatra · 11 nights', rating: 5, avatar: 'VF', image: '/images/chardham.png', clientImage: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=100&h=100&q=80' },
-  { quote: 'From our first call to our private houseboat cruise in Alleppey, we felt like honored guests. Already booking Jaisalmer for winter.', name: 'Dr. Ananya Nair', location: 'Kochi', destination: 'Kerala', trip: 'Solo · 9 nights', rating: 5, avatar: 'AN', image: '/images/kerala.png', clientImage: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&h=100&q=80' },
-  { quote: 'Shivalay Travels designed our corporate leadership retreat in a private Goa beach resort. The yacht sunset cruise and dinners were spectacular.', name: 'Rahul Sharma', location: 'Bangalore', destination: 'Goa', trip: 'Corporate · 5 nights', rating: 5, avatar: 'RS', image: '/images/goa.png', clientImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80' },
-  { quote: 'Shivalay Travels showed me what Leh Ladakh actually feels like when seasoned road specialists design it. The logistics and permits were top notch.', name: 'Vikram Sethi', location: 'New Delhi', destination: 'Ladakh', trip: 'Adventure · 9 nights', rating: 5, avatar: 'VS', image: '/images/ladakh.png', clientImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80' },
-];
+const DESTINATIONS = window.DB_PACKAGES || [];
+const GUIDES = window.DB_GUIDES || [];
+const TESTIMONIALS = window.DB_TESTIMONIALS || [];
 
 const TICKETS_CLASS_OPTIONS = {
-  flight: ['Economy', 'Premium', 'Business', 'First Class'],
   bus: ['AC Sleeper', 'Non-AC Sleeper', 'AC Seater', 'Luxury Volvo'],
-  train: ['AC 1st Class', 'AC 2 Tier', 'AC 3 Tier', 'Sleeper Class', 'Vande Bharat CC'],
-  cruise: ['Standard Cabin', 'Ocean View', 'Balcony Suite', 'Luxury Penthouse'],
+  taxi: ['Sedan (Dzire/Etios)', 'SUV (Ertiga/Tavera)', 'Premium SUV (Innova Crysta)', 'Tempo Traveller'],
 };
 
 const PLANNER_STEPS = [
@@ -329,25 +302,72 @@ function renderDestinations() {
   const cardsHtml = filtered.map(d => {
     const diffDots = DIFFICULTY_LABEL[d.difficulty] || '●';
     const firstSeason = d.bestSeason.split(',')[0];
+    
+    // Build gallery array in JS
+    const gallery = [d.imagePath].concat(d.gallery || []).filter(Boolean);
+    const hasGallery = gallery.length > 1;
+
+    const galleryImgsHtml = gallery.map((img, idx) => {
+      if (idx === 0) {
+        return `<img src="${img}" class="prop-gallery-img prop-img-${idx}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease; opacity: 0;" onload="this.style.opacity=1; this.closest('.property-card-gallery-wrapper').classList.remove('skeleton-loading');" />`;
+      } else {
+        return `<img data-src="${img}" class="prop-gallery-img prop-img-${idx}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease; opacity: 0; pointer-events: none;" />`;
+      }
+    }).join('');
+
+    const dotsHtml = hasGallery ? `
+      <div class="prop-gallery-dots" style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; z-index: 10;">
+        ${gallery.map((_, idx) => `
+          <span class="prop-gallery-dot" style="width: 6px; height: 6px; border-radius: 50%; background: ${idx === 0 ? 'var(--color-highlighter-lime)' : 'rgba(255,255,255,0.4)'}; transition: all 0.2s;"></span>
+        `).join('')}
+      </div>
+    ` : '';
+
+    const navBtnsHtml = hasGallery ? `
+      <button type="button" class="prop-gallery-nav-btn prev" onclick="event.stopPropagation(); window.changeCardImage(this, -1)" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: none; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; opacity: 0; transition: opacity 0.25s, background 0.2s, transform 0.2s;">
+        ‹
+      </button>
+      <button type="button" class="prop-gallery-nav-btn next" onclick="event.stopPropagation(); window.changeCardImage(this, 1)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: none; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; opacity: 0; transition: opacity 0.25s, background 0.2s, transform 0.2s;">
+        ›
+      </button>
+    ` : '';
+
+    const safeGalleryJson = JSON.stringify(gallery).replace(/'/g, "\\'");
+
     return `
       <div
         class="portfolio-tile"
-        style="width: 300px; height: 380px; cursor: pointer; flex-shrink:0"
+        style="width: 300px; height: 380px; flex-shrink: 0; position: relative; overflow: hidden; background: var(--color-carbon);"
         data-id="${d.id}"
       >
-        <img class="tile-img" src="${d.imagePath}" alt="${d.name}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
-        <div style="position: absolute; inset: 0; background: var(--gradient-visual-overlay);"></div>
+        <!-- The top image gallery portion (clickable to zoom/lightbox) -->
+        <div class="property-card-gallery-wrapper skeleton-loading" style="position: absolute; inset: 0 0 120px 0; overflow: hidden; cursor: zoom-in;" onmouseenter="window.lazyLoadCardImages(this)" onclick="window.openLightbox(${safeGalleryJson}, window.getCardActiveIdx(this), event)">
+          <div class="property-card-gallery" style="position: relative; width: 100%; height: 100%;">
+            ${galleryImgsHtml}
+          </div>
+          
+          <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.1) 80%, transparent 100%); pointer-events: none;"></div>
+          
+          ${navBtnsHtml}
+          ${dotsHtml}
 
-        <div style="position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; align-items: center;">
-          <span class="font-primary fs-9" style="color: var(--color-white-80); padding: 3px 7px; border: 1px solid var(--color-white-20); border-radius: var(--radius-full); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);">
-            ${firstSeason}
-          </span>
-          <span class="font-primary fs-9 fw-medium" style="color: var(--color-onyx-black); background: var(--color-highlighter-lime); padding: 3px 7px; border-radius: var(--radius-full);">
-            ${diffDots}
-          </span>
+          <!-- Magnifier icon on top-left of image area -->
+          <div class="gallery-zoom-icon" style="position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; color: #fff; z-index: 10; transition: transform 0.2s, background 0.2s, color 0.2s;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+
+          <div style="position: absolute; top: 12px; right: 12px; display: flex; justify-content: flex-end; align-items: center; z-index: 10; pointer-events: none;">
+            <span class="font-primary fs-9" style="color: var(--color-white-80); padding: 3px 7px; border: 1px solid var(--color-white-20); border-radius: var(--radius-full); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);">
+              ${firstSeason}
+            </span>
+          </div>
         </div>
 
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 16px;">
+        <!-- The bottom text portion (clickable to toggle details below) -->
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 120px; padding: 16px; z-index: 10; display: flex; flex-direction: column; justify-content: flex-end; pointer-events: none;">
           <p class="font-primary fs-9 fw-medium uppercase ls-1 text-muted" style="margin-bottom: 4px;">${d.region}</p>
           <h3 class="font-secondary fw-regular fs-18 lh-12" style="color: var(--color-pure-white); margin-bottom: 4px;">${d.name}</h3>
           <p class="font-primary fs-11 lh-14" style="color: var(--color-white-60); margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${d.tagline}</p>
@@ -364,7 +384,11 @@ function renderDestinations() {
 
   // Add click handlers
   destScrollRow.querySelectorAll('.portfolio-tile').forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
+      // If click was inside the gallery wrapper (prev/next buttons, zoom, etc.)
+      if (e.target.closest('.prop-gallery-nav-btn') || e.target.closest('.gallery-zoom-icon') || e.target.closest('.property-card-gallery-wrapper')) {
+        return;
+      }
       const id = card.getAttribute('data-id');
       toggleDestDetail(id);
     });
@@ -423,8 +447,15 @@ window.toggleDestDetail = function (id) {
   document.getElementById('dest-detail-groupsize').textContent = d.groupSize;
   document.getElementById('dest-detail-bestseason').textContent = d.bestSeason;
   document.getElementById('dest-detail-startingfrom').textContent = d.startingFrom;
-  document.getElementById('dest-detail-img').src = d.imagePath;
-  document.getElementById('dest-detail-img').alt = d.name;
+
+  const imgWrap = document.getElementById('dest-detail-img-wrap');
+  if (imgWrap) imgWrap.classList.add('skeleton-loading');
+  const imgEl = document.getElementById('dest-detail-img');
+  if (imgEl) {
+    imgEl.style.opacity = '0';
+    imgEl.src = d.imagePath;
+    imgEl.alt = d.name;
+  }
 
   // Populate highlights
   document.getElementById('dest-detail-highlights').innerHTML = d.highlights.map(h => `
@@ -519,7 +550,7 @@ renderDestinations();
 // ────────────────────────────────────────────────────────────────
 
 const ticketRoot = document.getElementById('ticket-booking-container');
-window.ticketActiveTab = 'flight';
+window.ticketActiveTab = 'bus';
 window.ticketIsRoundTrip = true;
 window.ticketCaptchaSvg = '';
 window.ticketCaptchaToken = '';
@@ -623,11 +654,9 @@ window.renderTicketBooking = function () {
       <!-- Card Header -->
       <div class="travelgo-card-header">
         <h3 class="travelgo-card-title">Book Transit</h3>
-        <div class="travelgo-tabs-grid">
-          <button type="button" class="travelgo-tab-btn ${window.ticketActiveTab === 'flight' ? 'active' : ''}" onclick="window.setTicketTab('flight')">✈️ Flights</button>
-          <button type="button" class="travelgo-tab-btn ${window.ticketActiveTab === 'train' ? 'active' : ''}" onclick="window.setTicketTab('train')">🚆 Trains</button>
+        <div class="travelgo-tabs-grid" style="grid-template-columns: repeat(2, 1fr);">
           <button type="button" class="travelgo-tab-btn ${window.ticketActiveTab === 'bus' ? 'active' : ''}" onclick="window.setTicketTab('bus')">🚌 Buses</button>
-          <button type="button" class="travelgo-tab-btn ${window.ticketActiveTab === 'cruise' ? 'active' : ''}" onclick="window.setTicketTab('cruise')">🚢 Cruises</button>
+          <button type="button" class="travelgo-tab-btn ${window.ticketActiveTab === 'taxi' ? 'active' : ''}" onclick="window.setTicketTab('taxi')">🚕 Taxis</button>
         </div>
       </div>
 
@@ -1020,15 +1049,14 @@ window.fetchGeocoding = function(val, which) {
         if (window.activeDropdown !== which) return;
         var results = [];
         if (data && data.results && data.results.length > 0) {
-          // Filter India first, then others
+          // Filter India cities only
           var india = data.results.filter(function(r) { return r.country_code === 'IN'; });
-          var others = data.results.filter(function(r) { return r.country_code !== 'IN'; });
-          results = india.concat(others).slice(0, 8).map(function(r) {
+          results = india.slice(0, 8).map(function(r) {
             return {
               name: r.name,
               code: r.name.slice(0, 3).toUpperCase(),
               state: r.admin1 || '',
-              country: r.country || ''
+              country: r.country || 'India'
             };
           });
         }
@@ -1199,7 +1227,7 @@ window.handleTicketSubmit = async function (e) {
 };
 
 window.openTicketWhatsApp = function () {
-  const emojiMap = { flight: '✈️ Flight', bus: '🚌 Bus', train: '🚆 Train', cruise: '🚢 Cruise' };
+  const emojiMap = { bus: '🚌 Bus', taxi: '🚕 Taxi' };
   const text = `Hello Shivalay Travels! I would like to book a *${emojiMap[window.ticketActiveTab]} Ticket*:\n\n` +
     `📍 *From:* ${window.fromQuery || 'Not specified'}\n` +
     `📍 *To:* ${window.toQuery || 'Not specified'}\n` +
@@ -1930,3 +1958,336 @@ window.openPlannerWhatsApp = function (name, email, phone, summaryLines) {
 };
 
 window.renderPlanner();
+
+// ────────────────────────────────────────────────────────────────
+// 12. INTERACTIVE PROPERTY MODAL (HOTELS / VILLAS)
+// ────────────────────────────────────────────────────────────────
+
+window.openPropertyModal = function(item, type) {
+  const modal = document.getElementById('property-modal');
+  if (!modal) return;
+
+  // Set hidden inputs
+  document.getElementById('modal-property-id').value = item.id;
+  document.getElementById('modal-property-type').value = type;
+  document.getElementById('modal-property-name').value = item.name;
+  document.getElementById('modal-property-location').value = item.location;
+  document.getElementById('modal-property-price').value = item.price;
+
+  // Render left info panel with gallery
+  const infoPanel = document.getElementById('property-modal-info');
+  if (infoPanel) {
+    const gallery = [item.imagePath].concat(item.gallery || []).filter(Boolean);
+    window.currentModalGallery = gallery;
+    infoPanel.innerHTML = `
+      <!-- Main Image Container -->
+      <div style="position:relative; height:240px; overflow:hidden; cursor:zoom-in;" onclick="window.openLightbox(window.currentModalGallery, window.currentModalGallery.findIndex(url => document.getElementById('modal-main-img').src.endsWith(url)), event)">
+        <img id="modal-main-img" src="${gallery[0]}" alt="${item.name}" style="width:100%; height:100%; object-fit:cover; transition: opacity 0.3s ease;" />
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(12,12,12,0.9), transparent);"></div>
+        <div style="position:absolute; bottom:16px; left:20px; right:20px;">
+          <span style="font-size:10px; font-weight:600; color:var(--color-onyx-black); background:var(--color-highlighter-lime); padding:3px 8px; border-radius:12px; margin-bottom:8px; display:inline-block;">
+            ★ ${item.rating}
+          </span>
+          <h2 class="font-secondary fs-24" style="color:#fff; line-height:1.2; margin:0;">${item.name}</h2>
+        </div>
+      </div>
+      
+      <!-- Gallery Thumbnails (only if multiple images exist) -->
+      ${gallery.length > 1 ? `
+      <div style="display:flex; gap:8px; padding:12px 24px; background:rgba(0,0,0,0.25); overflow-x:auto; border-bottom:1px solid var(--color-zinc-hairline);">
+        ${gallery.map((img, idx) => `
+          <img 
+            src="${img}" 
+            alt="Gallery ${idx + 1}" 
+            onclick="document.getElementById('modal-main-img').src='${img}'; document.querySelectorAll('.gallery-thumb').forEach(t => t.style.borderColor='transparent'); this.style.borderColor='var(--color-highlighter-lime)';"
+            class="gallery-thumb"
+            style="width:50px; height:50px; object-fit:cover; border-radius:6px; cursor:pointer; border:2px solid ${idx === 0 ? 'var(--color-highlighter-lime)' : 'transparent'}; transition:all 0.2s;"
+          />
+        `).join('')}
+      </div>
+      ` : ''}
+      
+      <div style="padding:24px; display:flex; flex-direction:column; gap:16px;">
+        <div>
+          <span style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; display:block;">Location</span>
+          <p class="font-primary text-sm" style="color:#eee; margin:2px 0 0 0;">📍 ${item.location}</p>
+        </div>
+        <div>
+          <span style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; display:block;">Price Range</span>
+          <p class="font-primary fs-18 fw-medium" style="color:var(--color-highlighter-lime); margin:2px 0 0 0;">${item.price}</p>
+        </div>
+        <div>
+          <span style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; display:block;">Basic Information</span>
+          <p class="font-primary text-sm text-muted lh-15" style="margin:2px 0 0 0;">${item.description}</p>
+        </div>
+        <div>
+          <span style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:6px;">Amenities Included</span>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            ${(item.amenities || []).map(am => `
+              <span class="font-primary" style="font-size:10px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); color:#aaa; padding:3px 8px; border-radius:6px;">
+                ${am}
+              </span>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Clear previous values
+  document.getElementById('prop-captcha-input').value = '';
+  const errorEl = document.getElementById('prop-captcha-error');
+  if (errorEl) errorEl.style.display = 'none';
+
+  // Open modal
+  modal.style.display = 'flex';
+  window.fetchPropCaptcha();
+};
+
+window.closePropertyModal = function() {
+  const modal = document.getElementById('property-modal');
+  if (modal) modal.style.display = 'none';
+};
+
+window.fetchPropCaptcha = function() {
+  fetch('/api/captcha')
+    .then(r => r.json())
+    .then(data => {
+      const container = document.getElementById('prop-captcha-svg-container');
+      if (container) container.innerHTML = data.svg;
+    })
+    .catch(err => console.error('Prop captcha load failed', err));
+};
+
+window.handlePropertyInquirySubmit = async function(e) {
+  e.preventDefault();
+  const errorEl = document.getElementById('prop-captcha-error');
+  if (errorEl) errorEl.style.display = 'none';
+
+  const submitBtn = document.getElementById('prop-submit-btn');
+  if (submitBtn) submitBtn.disabled = true;
+
+  const propId = document.getElementById('modal-property-id').value;
+  const propType = document.getElementById('modal-property-type').value;
+  const propName = document.getElementById('modal-property-name').value;
+  const propLoc = document.getElementById('modal-property-location').value;
+  const propPrice = document.getElementById('modal-property-price').value;
+
+  const guestName = document.getElementById('prop-guest-name').value;
+  const guestPhone = document.getElementById('prop-guest-phone').value;
+  const checkin = document.getElementById('prop-checkin').value;
+  const checkout = document.getElementById('prop-checkout').value;
+  const males = parseInt(document.getElementById('prop-males').value || '0', 10);
+  const females = parseInt(document.getElementById('prop-females').value || '0', 10);
+  const kids = parseInt(document.getElementById('prop-kids').value || '0', 10);
+  const notes = document.getElementById('prop-notes').value;
+  const captchaVal = document.getElementById('prop-captcha-input').value;
+
+  const totalGuests = males + females + kids;
+  const durationStr = `${checkin} to ${checkout}`;
+  const notesStr = `Males: ${males}, Females: ${females}, Children: ${kids}. Guest Notes: ${notes}`;
+
+  try {
+    const res = await fetch('/api/admin/inquiries', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        customerName: guestName,
+        customerPhone: guestPhone,
+        customerEmail: 'inquiry@shivalay.in',
+        destinations: `${propType.toUpperCase()} - ${propName}`,
+        duration: durationStr,
+        travelers: totalGuests,
+        budget: propPrice,
+        accommodation: propType === 'hotel' ? 'Hotel Stay' : 'Villa Stay',
+        notes: notesStr,
+        captchaInput: captchaVal
+      })
+    });
+
+    if (!res.ok) {
+      const errData = await res.json();
+      if (errorEl) {
+        errorEl.textContent = errData.error || 'CAPTCHA verification failed.';
+        errorEl.style.display = 'block';
+      }
+      window.fetchPropCaptcha();
+      if (submitBtn) submitBtn.disabled = false;
+      return;
+    }
+
+    // Success: close modal, open WhatsApp
+    window.closePropertyModal();
+    if (submitBtn) submitBtn.disabled = false;
+
+    const whatsappText = `Hello Shivalay Travels! I would like to book a stay at the ${propType}: *${propName}*:\n\n` +
+      `📍 *Location:* ${propLoc}\n` +
+      `📅 *Check-in:* ${checkin}\n` +
+      `📅 *Check-out:* ${checkout}\n` +
+      `👥 *Guests:* ${males} Male(s), ${females} Female(s), ${kids} Child(ren) (Total: ${totalGuests})\n` +
+      `📲 *Contact Phone:* ${guestPhone}\n` +
+      `📝 *Special Requests:* ${notes || 'None'}\n\n` +
+      `Please confirm availability. Thanks!`;
+
+    window.open(`https://wa.me/919340994628?text=${encodeURIComponent(whatsappText)}`, '_blank');
+
+  } catch (err) {
+    console.error('Property inquiry submission error', err);
+    if (submitBtn) submitBtn.disabled = false;
+    
+    // Direct WhatsApp fallback if API fails
+    window.closePropertyModal();
+    const whatsappText = `Hello Shivalay Travels! I would like to book a stay at the ${propType}: *${propName}*:\n\n` +
+      `📍 *Location:* ${propLoc}\n` +
+      `📅 *Check-in:* ${checkin}\n` +
+      `📅 *Check-out:* ${checkout}\n` +
+      `👥 *Guests:* ${males} Male(s), ${females} Female(s), ${kids} Child(ren)\n` +
+      `📲 *Contact Phone:* ${guestPhone}\n` +
+      `📝 *Special Requests:* ${notes || 'None'}\n\n` +
+      `Please confirm availability. Thanks!`;
+    window.open(`https://wa.me/919340994628?text=${encodeURIComponent(whatsappText)}`, '_blank');
+  }
+};
+
+// ────────────────────────────────────────────────────────────────
+// 13. DYNAMIC CARD IMAGE GALLERY & FULLSCREEN LIGHTBOX
+// ────────────────────────────────────────────────────────────────
+
+window.lazyLoadCardImages = function(wrapper) {
+  if (!wrapper) return;
+  const lazyImages = wrapper.querySelectorAll('img[data-src]');
+  lazyImages.forEach(img => {
+    img.src = img.getAttribute('data-src');
+    img.removeAttribute('data-src');
+  });
+};
+
+window.changeCardImage = function(btn, dir) {
+  const wrapper = btn.closest('.property-card-gallery-wrapper');
+  if (!wrapper) return;
+  
+  // Preload/lazy-load all remaining images in this wrapper before switching
+  window.lazyLoadCardImages(wrapper);
+
+  const images = wrapper.querySelectorAll('.prop-gallery-img');
+  if (images.length <= 1) return;
+
+  let activeIdx = 0;
+  images.forEach((img, idx) => {
+    if (img.style.opacity === "1") {
+      activeIdx = idx;
+    }
+  });
+
+  // Hide current
+  images[activeIdx].style.opacity = "0";
+
+  // Calculate new index
+  let newIdx = activeIdx + dir;
+  if (newIdx >= images.length) newIdx = 0;
+  if (newIdx < 0) newIdx = images.length - 1;
+
+  // Show new
+  images[newIdx].style.opacity = "1";
+
+  // Update dots
+  const dots = wrapper.querySelectorAll('.prop-gallery-dot');
+  dots.forEach((dot, idx) => {
+    if (idx === newIdx) {
+      dot.style.background = 'var(--color-highlighter-lime)';
+    } else {
+      dot.style.background = 'rgba(255,255,255,0.4)';
+    }
+  });
+};
+
+window.getCardActiveIdx = function(wrapper) {
+  if (!wrapper) return 0;
+  const images = wrapper.querySelectorAll('.prop-gallery-img');
+  for (let i = 0; i < images.length; i++) {
+    if (images[i].style.opacity === "1") {
+      return i;
+    }
+  }
+  return 0;
+};
+
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+window.openLightbox = function(images, index, event) {
+  if (event) event.stopPropagation();
+  lightboxImages = (images || []).filter(Boolean);
+  lightboxIndex = index || 0;
+  if (lightboxImages.length === 0) return;
+
+  const lightbox = document.getElementById('image-lightbox');
+  const img = document.getElementById('lightbox-img');
+  const caption = document.getElementById('lightbox-caption');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+
+  if (!lightbox || !img) return;
+
+  img.src = lightboxImages[lightboxIndex];
+  if (caption) {
+    caption.textContent = `Image ${lightboxIndex + 1} of ${lightboxImages.length}`;
+  }
+
+  if (lightboxImages.length <= 1) {
+    if (prevBtn) prevBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
+  } else {
+    if (prevBtn) prevBtn.style.display = 'flex';
+    if (nextBtn) nextBtn.style.display = 'flex';
+  }
+
+  lightbox.style.display = 'flex';
+  setTimeout(() => {
+    lightbox.style.opacity = '1';
+  }, 10);
+};
+
+window.closeLightbox = function() {
+  const lightbox = document.getElementById('image-lightbox');
+  if (lightbox) {
+    lightbox.style.opacity = '0';
+    setTimeout(() => {
+      lightbox.style.display = 'none';
+    }, 250);
+  }
+};
+
+window.navigateLightbox = function(dir) {
+  if (lightboxImages.length <= 1) return;
+  lightboxIndex += dir;
+  if (lightboxIndex >= lightboxImages.length) lightboxIndex = 0;
+  if (lightboxIndex < 0) lightboxIndex = lightboxImages.length - 1;
+
+  const img = document.getElementById('lightbox-img');
+  const caption = document.getElementById('lightbox-caption');
+  if (img) {
+    img.style.opacity = '0.7';
+    setTimeout(() => {
+      img.src = lightboxImages[lightboxIndex];
+      img.style.opacity = '1';
+    }, 100);
+  }
+  if (caption) {
+    caption.textContent = `Image ${lightboxIndex + 1} of ${lightboxImages.length}`;
+  }
+};
+
+// Keyboard listener for lightbox
+document.addEventListener('keydown', function(e) {
+  const lightbox = document.getElementById('image-lightbox');
+  if (!lightbox || lightbox.style.display === 'none') return;
+
+  if (e.key === 'Escape') {
+    window.closeLightbox();
+  } else if (e.key === 'ArrowLeft' || e.key === 'Left') {
+    window.navigateLightbox(-1);
+  } else if (e.key === 'ArrowRight' || e.key === 'Right') {
+    window.navigateLightbox(1);
+  }
+});

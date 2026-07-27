@@ -10,6 +10,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Tomorrow:wght@400;500&display=swap'); */
 
 
+
 /* ─── DESIGN TOKENS ──────────────────────────────────────────── */
 :root {
   /* Colors */
@@ -797,7 +798,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /* ─── GRADIENT TEXT (lime accent) ────────────────────────────── */
 .lime-text { color: var(--color-highlighter-lime); }
 
-
 /* ──────────────────────────────────────────────────────────────── */
 /*  RESPONSIVE SYSTEM                                               */
 /* ──────────────────────────────────────────────────────────────── */
@@ -1087,6 +1087,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   appearance: none;
   -webkit-appearance: none;
   height: 100%;
+  padding: 0 8px 0 0;
 }
 .booking-select-arrow {
   position: absolute;
@@ -1342,42 +1343,57 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .autocomplete-dropdown {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 6px);
   left: 0;
   right: 0;
-  background: rgba(20, 20, 20, 0.96);
-  backdrop-filter: blur(12px);
+  background: rgba(14, 14, 14, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  z-index: 200;
-  max-height: 240px;
+  border-radius: 10px;
+  z-index: 500;
+  max-height: 280px;
   overflow-y: auto;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+.autocomplete-dropdown::before {
+  content: '🔍 CITY SEARCH';
+  display: block;
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.2);
+  padding: 8px 16px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 .autocomplete-item {
-  padding: 12px 16px;
+  padding: 10px 14px;
   cursor: pointer;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  transition: all 0.2s ease;
+  transition: background 0.15s ease, padding-left 0.15s ease;
 }
 .autocomplete-item:last-child {
   border-bottom: none;
 }
 .autocomplete-item:hover {
-  background: rgba(255, 0, 0, 0.08);
-  padding-left: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 18px;
 }
 .autocomplete-item-name {
   font-family: var(--font-primary);
   font-size: 13px;
   font-weight: 600;
   color: #fff;
+  line-height: 1.3;
 }
 .autocomplete-item-sub {
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-geist-mono, monospace);
   font-size: 10px;
-  color: #666;
-  margin-top: 3px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 2px;
+  letter-spacing: 0.3px;
 }
 
 @media (max-width: 1024px) {
@@ -1474,8 +1490,46 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
 }
 
-select, select *, option {
+select {
   background-color: #121212 !important;
   color: #ffffff !important;
   color-scheme: dark !important;
+}
+select option {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  padding: 10px 14px !important;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+select option:hover,
+select option:focus,
+select option:checked {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+/* Admin & form selects — uniform padding */
+.bk-select,
+.bk-page-select,
+.datatable-selector,
+.input-box-select {
+  padding: 8px 12px !important;
+}
+
+@keyframes adminSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  animation: adminSpin 0.8s linear infinite;
+  vertical-align: middle;
 }
