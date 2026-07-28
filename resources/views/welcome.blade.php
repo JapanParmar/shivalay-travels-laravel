@@ -514,5 +514,198 @@
   }
 </style>
 
+<!-- ═══ PROPERTY DETAIL DRAWER ═══ -->
+<div id="prop-drawer-backdrop" onclick="window.closePropDrawer()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:2000;backdrop-filter:blur(4px);opacity:0;transition:opacity 0.3s;"></div>
+<div id="prop-drawer" style="display:none;position:fixed;top:0;right:0;bottom:0;width:min(680px,100vw);background:#09090b;z-index:2001;overflow-y:auto;transform:translateX(100%);transition:transform 0.38s cubic-bezier(0.4,0,0.2,1);border-left:1px solid rgba(255,255,255,0.07);">
+
+  <!-- Close btn -->
+  <button onclick="window.closePropDrawer()" style="position:sticky;top:0;left:0;right:0;z-index:10;width:100%;display:flex;align-items:center;gap:10px;padding:14px 20px;background:rgba(9,9,11,0.96);border:none;border-bottom:1px solid rgba(255,255,255,0.06);cursor:pointer;color:#666;font-family:'DM Sans',sans-serif;font-size:13px;backdrop-filter:blur(8px);">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span>Back to listings</span>
+    <span id="prop-drawer-type-badge" style="margin-left:auto;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:4px;background:rgba(255,255,255,0.06);color:#888;"></span>
+  </button>
+
+  <!-- Gallery -->
+  <div style="position:relative;">
+    <!-- Main image -->
+    <div id="pdg-main" style="position:relative;background:#111;overflow:hidden;height:340px;">
+      <img id="pdg-img" src="" alt="" style="width:100%;height:100%;object-fit:cover;transition:opacity 0.3s;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 50%);pointer-events:none;"></div>
+      <!-- Nav -->
+      <button id="pdg-prev" onclick="window.pdgNav(-1)" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.12);color:#fff;width:40px;height:40px;border-radius:50%;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;transition:all 0.2s;">‹</button>
+      <button id="pdg-next" onclick="window.pdgNav(1)" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.12);color:#fff;width:40px;height:40px;border-radius:50%;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;transition:all 0.2s;">›</button>
+      <!-- Counter -->
+      <div id="pdg-counter" style="position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:4px 12px;font-family:'DM Sans',sans-serif;font-size:12px;color:#ccc;backdrop-filter:blur(6px);"></div>
+      <!-- Fullscreen -->
+      <button onclick="window.pdgOpenFull()" style="position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.1);color:#ccc;width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;" title="Full screen">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+    <!-- Thumbnail strip -->
+    <div id="pdg-thumbs" style="display:flex;gap:6px;padding:10px 14px;overflow-x:auto;background:#0c0c0e;border-bottom:1px solid rgba(255,255,255,0.06);scrollbar-width:none;"></div>
+  </div>
+
+  <!-- Content -->
+  <div style="padding:24px 24px 40px;">
+    <!-- Name + Rating -->
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px;">
+      <h2 id="pd-name" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;font-weight:400;color:#fff;line-height:1.2;margin:0;flex:1;"></h2>
+      <div style="display:flex;align-items:center;gap:5px;background:rgba(250,204,21,0.08);border:1px solid rgba(250,204,21,0.2);padding:6px 12px;border-radius:20px;flex-shrink:0;">
+        <span style="color:#facc15;font-size:13px;">★</span>
+        <span id="pd-rating" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:#fff;"></span>
+      </div>
+    </div>
+    <!-- Location -->
+    <div style="display:flex;align-items:center;gap:5px;margin-bottom:20px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span id="pd-location" style="font-family:'DM Sans',sans-serif;font-size:13px;color:#666;"></span>
+    </div>
+
+    <!-- Price + CTA bar (sticky bottom feel but in flow) -->
+    <div id="pd-cta-bar" style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;margin-bottom:24px;">
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Starting from</div>
+        <div id="pd-price" style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:700;"></div>
+      </div>
+      <button id="pd-book-btn" style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;padding:12px 26px;border-radius:10px;border:none;cursor:pointer;transition:all 0.2s;letter-spacing:0.5px;">Book Now →</button>
+    </div>
+
+    <!-- Description -->
+    <div style="margin-bottom:24px;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#444;margin-bottom:10px;">About this property</div>
+      <p id="pd-description" style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.5);line-height:1.75;margin:0;"></p>
+    </div>
+
+    <!-- Amenities -->
+    <div id="pd-amenities-wrap" style="margin-bottom:8px;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#444;margin-bottom:12px;">Amenities &amp; Features</div>
+      <div id="pd-amenities" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Property Drawer System ──
+let _pdgImages = [], _pdgIdx = 0, _pdgProp = null, _pdgType = '';
+
+window.openPropertyModal = function(prop, type) {
+  _pdgProp = prop;
+  _pdgType = type || 'hotel';
+  _pdgImages = [prop.imagePath, ...(prop.gallery || [])].filter(Boolean);
+  _pdgIdx = 0;
+
+  const isVilla = _pdgType === 'villa';
+  const accent  = isVilla ? '#b8882a' : '#a3e635';
+  const accentBg = isVilla ? 'rgba(184,136,42,0.12)' : 'rgba(163,230,53,0.12)';
+
+  // Populate fields
+  document.getElementById('pd-name').textContent = prop.name || '';
+  document.getElementById('pd-rating').textContent = prop.rating || '5.0';
+  document.getElementById('pd-location').textContent = prop.location || '';
+  document.getElementById('pd-description').textContent = prop.description || '';
+  document.getElementById('pd-price').textContent = prop.price || '';
+  document.getElementById('pd-price').style.color = accent;
+
+  const badge = document.getElementById('prop-drawer-type-badge');
+  badge.textContent = isVilla ? 'Villa' : 'Hotel';
+  badge.style.color = accent;
+  badge.style.background = accentBg;
+
+  const btn = document.getElementById('pd-book-btn');
+  btn.style.background = accent;
+  btn.style.color = isVilla ? '#000' : '#000';
+  btn.onclick = () => window.closePropDrawer();
+
+  // Amenities
+  const amEl = document.getElementById('pd-amenities');
+  amEl.innerHTML = '';
+  (prop.amenities || []).forEach(a => {
+    const s = document.createElement('span');
+    s.style.cssText = `font-family:'DM Sans',sans-serif;font-size:12px;color:${accent};background:${accentBg};border:1px solid ${accent}33;padding:5px 12px;border-radius:20px;`;
+    s.textContent = a;
+    amEl.appendChild(s);
+  });
+  document.getElementById('pd-amenities-wrap').style.display = _pdgImages.length ? 'block' : 'none';
+
+  // Gallery
+  _pdgRender();
+
+  // Thumbnails
+  const thumbs = document.getElementById('pdg-thumbs');
+  thumbs.innerHTML = '';
+  _pdgImages.forEach((src, i) => {
+    const t = document.createElement('img');
+    t.src = src;
+    t.style.cssText = `width:70px;height:52px;object-fit:cover;border-radius:6px;cursor:pointer;flex-shrink:0;border:2px solid ${i===0?accent:'transparent'};opacity:${i===0?1:0.55};transition:all 0.2s;`;
+    t.onclick = () => { _pdgIdx = i; _pdgRender(); _pdgUpdateThumbs(); };
+    t.dataset.idx = i;
+    thumbs.appendChild(t);
+  });
+  document.getElementById('pdg-prev').style.display = _pdgImages.length > 1 ? 'flex' : 'none';
+  document.getElementById('pdg-next').style.display = _pdgImages.length > 1 ? 'flex' : 'none';
+  document.getElementById('pdg-counter').style.display = _pdgImages.length > 1 ? 'block' : 'none';
+
+  // Show
+  const backdrop = document.getElementById('prop-drawer-backdrop');
+  const drawer   = document.getElementById('prop-drawer');
+  backdrop.style.display = 'block';
+  drawer.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => {
+    backdrop.style.opacity = '1';
+    drawer.style.transform = 'translateX(0)';
+  });
+};
+
+function _pdgRender() {
+  const img = document.getElementById('pdg-img');
+  img.style.opacity = '0';
+  setTimeout(() => { img.src = _pdgImages[_pdgIdx] || ''; img.style.opacity = '1'; }, 80);
+  document.getElementById('pdg-counter').textContent = `${_pdgIdx + 1} / ${_pdgImages.length}`;
+  _pdgUpdateThumbs();
+}
+
+function _pdgUpdateThumbs() {
+  const isVilla = _pdgType === 'villa';
+  const accent  = isVilla ? '#b8882a' : '#a3e635';
+  document.querySelectorAll('#pdg-thumbs img').forEach((t, i) => {
+    t.style.borderColor = i === _pdgIdx ? accent : 'transparent';
+    t.style.opacity = i === _pdgIdx ? '1' : '0.5';
+  });
+  // Scroll active thumb into view
+  const active = document.querySelector(`#pdg-thumbs img[data-idx="${_pdgIdx}"]`);
+  if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+
+window.pdgNav = function(dir) {
+  _pdgIdx = (_pdgIdx + dir + _pdgImages.length) % _pdgImages.length;
+  _pdgRender();
+};
+
+window.pdgOpenFull = function() {
+  window.openLightbox(_pdgImages, _pdgIdx, null);
+};
+
+window.closePropDrawer = function() {
+  const backdrop = document.getElementById('prop-drawer-backdrop');
+  const drawer   = document.getElementById('prop-drawer');
+  backdrop.style.opacity = '0';
+  drawer.style.transform = 'translateX(100%)';
+  setTimeout(() => {
+    backdrop.style.display = 'none';
+    drawer.style.display = 'none';
+    document.body.style.overflow = '';
+  }, 380);
+};
+
+document.addEventListener('keydown', e => {
+  const drawer = document.getElementById('prop-drawer');
+  if (!drawer || drawer.style.display === 'none') return;
+  if (e.key === 'Escape') window.closePropDrawer();
+  if (e.key === 'ArrowLeft') window.pdgNav(-1);
+  if (e.key === 'ArrowRight') window.pdgNav(1);
+});
+</script>
+
 </body>
 </html>
