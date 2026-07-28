@@ -15,15 +15,15 @@ const TICKETS_CLASS_OPTIONS = {
 };
 
 const PLANNER_STEPS = [
-  { id: 'destination', label: '01 — Where', question: 'Where in India does your soul want to go?', subtext: 'Choose from our curated regions or describe your dream destination.', options: ['Kedarnath', 'Chardham Yatra', 'Varanasi', 'Kashmir', 'Goa', 'Kerala', 'Rajasthan', 'Leh Ladakh', 'Surprise me'], inputType: 'text', inputPlaceholder: 'e.g. Kedarnath, Spiti Valley, Coorg, or a multi-city circuit…', icon: '🗺️' },
-  { id: 'dates', label: '02 — When', question: 'When are you planning to travel?', subtext: 'Select a timeframe or enter specific dates.', options: ['Next month', 'In 2–3 months', 'In 6 months', 'Next year', 'Flexible / Open'], inputType: 'text', inputPlaceholder: 'e.g. Dec 20 – Jan 5, or around Diwali 2026…', icon: '📅' },
-  { id: 'duration', label: '03 — Duration', question: 'How many nights are you envisioning?', subtext: 'We can design anything from a 3-night escape to a 21-night odyssey.', options: ['3–5 nights', '6–8 nights', '9–12 nights', '13–18 nights', '3+ weeks'], inputType: 'text', inputPlaceholder: 'e.g. 10 nights, or flexible based on budget…', icon: '🌙' },
-  { id: 'travelers', label: '04 — Who', question: "Who's joining you on this journey?", subtext: 'Tell us about your group composition — we tailor every detail.', options: ['Solo traveller', 'Couple / Honeymoon', 'Small group (3–6)', 'Family with children', 'Family with seniors', 'Corporate team'], inputType: 'text', inputPlaceholder: 'e.g. 2 adults + 1 child (8 yrs), or 4 couples…', icon: '👥' },
-  { id: 'budget', label: '05 — Budget', question: "What's your investment range per traveller?", subtext: 'All prices are per person. This helps us recommend the right properties.', options: ['Under ₹50,000', '₹50k – ₹1.5 Lakhs', '₹1.5L – ₹3 Lakhs', '₹3L – ₹5 Lakhs', '₹5 Lakhs+', 'Flexible'], inputType: 'text', inputPlaceholder: 'e.g. ₹8 Lakhs total for 2 people, or best value…', icon: '💰' },
-  { id: 'style', label: '06 — Style', question: 'What kind of experience do you seek?', subtext: 'Mix and match — your journey can blend multiple styles.', options: ['Luxury Stays & Wellness', 'Himalayan Trek & Adventure', 'Heritage Trails & History', 'Wildlife & Nature', 'Honeymoon Retreat', 'Spiritual & Wellness', 'Family Magic', 'Culinary Journey'], inputType: 'text', inputPlaceholder: 'e.g. Active days, luxury nights, with some local food exploration…', icon: '✨' },
-  { id: 'accommodation', label: '07 — Stay', question: 'Any accommodation preferences?', subtext: 'We partner with premium hotels, guest houses, camps, and heritage resorts.', options: ['Premium 3/4 Star Hotels', 'Comfortable Guest Houses', 'Boutique Resorts', 'Luxury Tented Camps', 'Houseboats', 'Mix of Stays'], inputType: 'text', inputPlaceholder: 'e.g. Near the temple shrine, pool required, family suite…', icon: '🏡' },
-  { id: 'notes', label: '08 — Notes', question: 'Anything else we should know?', subtext: 'Dietary needs, medical considerations, must-do experiences, or special occasions.', options: [], inputType: 'textarea', inputPlaceholder: 'e.g. Celebrating our anniversary, vegetarian only, one guest uses a wheelchair, must see a sunrise…', icon: '📝' },
-  { id: 'contact', label: '09 — Contact', question: 'Last step — how do we reach you?', subtext: 'We respond within 2 hours with a personalised itinerary draft.', options: [], icon: '📞' },
+  { id: 'destination', label: '01 — Where', question: 'Where in India does your soul want to go?', subtext: 'Choose from our curated regions or describe your dream destination.', options: ['Kedarnath', 'Chardham Yatra', 'Varanasi', 'Kashmir', 'Goa', 'Kerala', 'Rajasthan', 'Leh Ladakh', 'Surprise me'], inputType: 'text', inputPlaceholder: 'e.g. Kedarnath, Spiti Valley, Coorg, or a multi-city circuit…', icon: 'map' },
+  { id: 'dates', label: '02 — When', question: 'When are you planning to travel?', subtext: 'Select a timeframe or enter specific dates.', options: ['Next month', 'In 2–3 months', 'In 6 months', 'Next year', 'Flexible / Open'], inputType: 'text', inputPlaceholder: 'e.g. Dec 20 – Jan 5, or around Diwali 2026…', icon: 'calendar' },
+  { id: 'duration', label: '03 — Duration', question: 'How many nights are you envisioning?', subtext: 'We can design anything from a 3-night escape to a 21-night odyssey.', options: ['3–5 nights', '6–8 nights', '9–12 nights', '13–18 nights', '3+ weeks'], inputType: 'text', inputPlaceholder: 'e.g. 10 nights, or flexible based on budget…', icon: 'moon' },
+  { id: 'travelers', label: '04 — Who', question: "Who's joining you on this journey?", subtext: 'Tell us about your group composition — we tailor every detail.', options: ['Solo traveller', 'Couple / Honeymoon', 'Small group (3–6)', 'Family with children', 'Family with seniors', 'Corporate team'], inputType: 'text', inputPlaceholder: 'e.g. 2 adults + 1 child (8 yrs), or 4 couples…', icon: 'users' },
+  { id: 'budget', label: '05 — Budget', question: "What's your investment range per traveller?", subtext: 'All prices are per person. This helps us recommend the right properties.', options: ['Under ₹50,000', '₹50k – ₹1.5 Lakhs', '₹1.5L – ₹3 Lakhs', '₹3L – ₹5 Lakhs', '₹5 Lakhs+', 'Flexible'], inputType: 'text', inputPlaceholder: 'e.g. ₹8 Lakhs total for 2 people, or best value…', icon: 'indian-rupee' },
+  { id: 'style', label: '06 — Style', question: 'What kind of experience do you seek?', subtext: 'Mix and match — your journey can blend multiple styles.', options: ['Luxury Stays & Wellness', 'Himalayan Trek & Adventure', 'Heritage Trails & History', 'Wildlife & Nature', 'Honeymoon Retreat', 'Spiritual & Wellness', 'Family Magic', 'Culinary Journey'], inputType: 'text', inputPlaceholder: 'e.g. Active days, luxury nights, with some local food exploration…', icon: 'sparkles' },
+  { id: 'accommodation', label: '07 — Stay', question: 'Any accommodation preferences?', subtext: 'We partner with premium hotels, guest houses, camps, and heritage resorts.', options: ['Premium 3/4 Star Hotels', 'Comfortable Guest Houses', 'Boutique Resorts', 'Luxury Tented Camps', 'Houseboats', 'Mix of Stays'], inputType: 'text', inputPlaceholder: 'e.g. Near the temple shrine, pool required, family suite…', icon: 'home' },
+  { id: 'notes', label: '08 — Notes', question: 'Anything else we should know?', subtext: 'Dietary needs, medical considerations, must-do experiences, or special occasions.', options: [], inputType: 'textarea', inputPlaceholder: 'e.g. Celebrating our anniversary, vegetarian only, one guest uses a wheelchair, must see a sunrise…', icon: 'file-text' },
+  { id: 'contact', label: '09 — Contact', question: 'Last step — how do we reach you?', subtext: 'We respond within 2 hours with a personalised itinerary draft.', options: [], icon: 'phone' },
 ];
 
 // Comprehensive Indian cities database for ticket autocomplete
@@ -1372,8 +1372,11 @@ function renderTestimonial() {
       const ratingContainer = document.getElementById('testimonial-rating');
       if (ratingContainer) {
         ratingContainer.innerHTML = Array.from({ length: t.rating }).map(() => `
-          <span style="color:var(--color-highlighter-lime); font-size:12px">★</span>
+          <i data-lucide="star" style="width:12px; height:12px; fill:currentColor"></i>
         `).join('');
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
       }
 
       testCard.style.opacity = 1;
@@ -1509,6 +1512,23 @@ const guidesCategories = document.getElementById('guides-categories');
 const guidesList = document.getElementById('guides-list');
 let currentGuideCategory = 'All';
 
+function getGuideIconSvg(icon, category) {
+  icon = (icon || '').trim();
+  if (icon.includes('🏔') || category === 'Packing Guide') {
+    return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-highlighter-lime); vertical-align: middle;"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>`;
+  }
+  if (icon.includes('❄') || category === 'Destination Intel') {
+    return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-highlighter-lime); vertical-align: middle;"><path d="M12 2v20M17 5 7 19M19 17 5 7M22 12H2M16 2l-4 4-4-4M8 22l4-4 4 4"/></svg>`;
+  }
+  if (icon.includes('⚕') || icon.includes('🚨') || category === 'Health & Safety') {
+    return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-highlighter-lime); vertical-align: middle;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
+  }
+  if (icon.includes('🙏') || category === 'Culture') {
+    return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-highlighter-lime); vertical-align: middle;"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>`;
+  }
+  return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-highlighter-lime); vertical-align: middle;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`;
+}
+
 function renderGuides() {
   if (!guidesList) return;
 
@@ -1522,7 +1542,7 @@ function renderGuides() {
         <img src="${g.image}" alt="${g.category}" style="width:100%; height:100%; object-fit:cover">
         <div style="position:absolute; inset:0; background:var(--gradient-visual-overlay)"></div>
         <div style="position:absolute; bottom:8px; left:12px; display:flex; gap:6px; align-items:center">
-          <span style="font-size:13px">${g.icon}</span>
+          <span style="font-size:13px; display:inline-flex; align-items:center;">${getGuideIconSvg(g.icon, g.category)}</span>
           <span class="font-primary fs-9 fw-medium uppercase ls-1" style="color:var(--color-white-80)">${g.category}</span>
         </div>
         ${g.badge ? `<span class="font-primary fs-9 fw-medium" style="position:absolute; top:8px; right:10px; color:var(--color-onyx-black); background:var(--color-highlighter-lime); padding:2px 6px; border-radius:var(--radius-full)">${g.badge}</span>` : ''}
@@ -1539,6 +1559,9 @@ function renderGuides() {
       </div>
     </div>
   `).join('');
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 }
 
 const CATEGORIES = ['All', 'Packing Guide', 'Destination Intel', 'Health & Safety', 'Culture'];
@@ -1670,7 +1693,7 @@ window.renderPlanner = function () {
         <!-- Step content -->
         <div style="flex:1; display:flex; flex-direction:column">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px">
-            <span style="font-size:20px">${current.icon}</span>
+            <span style="display:inline-flex; align-items:center; justify-content:center; color:var(--color-highlighter-lime); width:24px; height:24px; flex-shrink:0"><i data-lucide="${current.icon}" style="width:20px; height:20px"></i></span>
             <h3 class="fs-planner-q" style="color:var(--color-pure-white); font-size:18px">${current.question}</h3>
           </div>
           ${current.subtext ? `<p class="font-primary text-sm lh-15 text-muted" style="margin-bottom:20px; margin-left:30px">${current.subtext}</p>` : ''}
@@ -1814,6 +1837,9 @@ window.renderPlanner = function () {
       `}
     </div>
   `;
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 }
 
 window.setPlannerStep = function (stepIdx) {
@@ -2289,5 +2315,11 @@ document.addEventListener('keydown', function(e) {
     window.navigateLightbox(-1);
   } else if (e.key === 'ArrowRight' || e.key === 'Right') {
     window.navigateLightbox(1);
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.lucide) {
+    window.lucide.createIcons();
   }
 });

@@ -122,7 +122,7 @@
                         </td>
                         <td style="text-align: right;">
                             <div class="action-buttons">
-                                <button class="edit-btn" onclick='editHotel({!! json_encode($h) !!})'>Edit</button>
+                                <button class="edit-btn" data-hotel="{{ json_encode($h) }}" onclick="editHotel(JSON.parse(this.getAttribute('data-hotel')))">Edit</button>
                                 <a href="/admin/hotels/delete/{{ $h['id'] }}" class="delete-btn" onclick="return confirm('Delete this hotel?');" style="text-decoration: none;">Delete</a>
                             </div>
                         </td>

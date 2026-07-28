@@ -8,12 +8,12 @@
         <h2 class="heading-lg">What Our Guests Say.<br>Honest Experiences.</h2>
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
-        <div style="display:flex;gap:2px">
-          <span style="color:var(--color-highlighter-lime);fontSize:14px">★</span>
-          <span style="color:var(--color-highlighter-lime);fontSize:14px">★</span>
-          <span style="color:var(--color-highlighter-lime);fontSize:14px">★</span>
-          <span style="color:var(--color-highlighter-lime);fontSize:14px">★</span>
-          <span style="color:var(--color-highlighter-lime);fontSize:14px">★</span>
+        <div style="display:flex;gap:2px;color:var(--color-highlighter-lime)">
+          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor"></i>
         </div>
         <p class="font-primary text-sm text-muted">4.97 / 5 from 860+ families</p>
       </div>
@@ -26,12 +26,12 @@
         <!-- Text content column -->
         <div style="flex:1; display:flex; flex-direction:column; min-width:0">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-            <div style="display:flex;gap:2px" id="testimonial-rating">
-              <span style="color:var(--color-highlighter-lime);fontSize:12px">★</span>
-              <span style="color:var(--color-highlighter-lime);fontSize:12px">★</span>
-              <span style="color:var(--color-highlighter-lime);fontSize:12px">★</span>
-              <span style="color:var(--color-highlighter-lime);fontSize:12px">★</span>
-              <span style="color:var(--color-highlighter-lime);fontSize:12px">★</span>
+            <div style="display:flex;gap:2px;color:var(--color-highlighter-lime)" id="testimonial-rating">
+              <i data-lucide="star" style="width:12px;height:12px;fill:currentColor"></i>
+              <i data-lucide="star" style="width:12px;height:12px;fill:currentColor"></i>
+              <i data-lucide="star" style="width:12px;height:12px;fill:currentColor"></i>
+              <i data-lucide="star" style="width:12px;height:12px;fill:currentColor"></i>
+              <i data-lucide="star" style="width:12px;height:12px;fill:currentColor"></i>
             </div>
             <span class="font-primary text-xs" style="color:var(--color-steel-gray);padding:3px 8px;border:1px solid var(--color-zinc-hairline);border-radius:var(--radius-full)" id="testimonial-dest">Kashmir</span>
           </div>
@@ -63,7 +63,7 @@
         </div>
         <!-- Image column -->
         <div id="testimonial-image-wrapper" style="width:240px; flex-shrink:0; position:relative; border-radius:var(--radius-lg); overflow:hidden; border:1px solid rgba(255,255,255,0.06); display:flex">
-          <img id="testimonial-img" src="/images/kashmir.png" alt="Guest Memory" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.85); transition:all 0.3s ease" />
+          <img id="testimonial-img" src="/images/kashmir.webp" alt="Guest Memory" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.85); transition:all 0.3s ease" />
         </div>
       </div>
 

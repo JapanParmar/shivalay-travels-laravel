@@ -137,10 +137,10 @@ $canDelete = in_array($role, ['super_admin', 'manager']);
             />
             <select id="typeFilter" class="bk-select" onchange="handleTypeFilter(this.value)">
                 <option value="all">All Types</option>
-                <option value="flight">✈️ Flight</option>
-                <option value="train">🚆 Train</option>
-                <option value="bus">🚌 Bus</option>
-                <option value="cruise">🚢 Cruise</option>
+                <option value="flight">Flight</option>
+                <option value="train">Train</option>
+                <option value="bus">Bus</option>
+                <option value="cruise">Cruise</option>
             </select>
         </div>
     </div>
@@ -467,7 +467,7 @@ $canDelete = in_array($role, ['super_admin', 'manager']);
         columns.forEach(col => {
             const iconEl = document.getElementById(`sort-icon-${col}`);
             if (state.sorting.key === col) {
-                iconEl.innerText = state.sorting.desc ? ' ⬇️' : ' ⬆️';
+                iconEl.innerText = state.sorting.desc ? ' ↓' : ' ↑';
             } else {
                 iconEl.innerText = '';
             }
@@ -540,11 +540,17 @@ $canDelete = in_array($role, ['super_admin', 'manager']);
 
             // Type
             const tdType = document.createElement('td');
-            const emoji = b.travelType === 'flight' ? '✈️' : b.travelType === 'train' ? '🚆' : b.travelType === 'bus' ? '🚌' : '🚢';
+            const typeIcon = b.travelType === 'flight' 
+                ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align: middle; margin-right: 4px; color: #3b82f6;"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4Z"/></svg>`
+                : b.travelType === 'train' 
+                    ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align: middle; margin-right: 4px; color: #a855f7;"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16M12 3v8M8 19l-2 3M16 19l2 3"/></svg>`
+                    : b.travelType === 'bus' 
+                        ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align: middle; margin-right: 4px; color: #f59e0b;"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M4 10h16M8 16h8M6 20h2M16 20h2"/></svg>`
+                        : `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align: middle; margin-right: 4px; color: #06b6d4;"><path d="M2 21h20M19.3 14.8C21.1 13.5 22 12.1 22 10.8c0-2-2.5-3.3-6.5-3.3-3 0-5.5.8-8 1.8L3 6v9.8c0 1 1 1.7 2.2 1.7L12 17.5l7.3-2.7z"/></svg>`;
             tdType.innerHTML = `
                 <span class="bk-type">
-                    ${emoji}
-                    <span style="margin-left: 6px; text-transform: capitalize;">${b.travelType}</span>
+                    ${typeIcon}
+                    <span style="margin-left: 2px; text-transform: capitalize;">${b.travelType}</span>
                 </span>
             `;
             tr.appendChild(tdType);

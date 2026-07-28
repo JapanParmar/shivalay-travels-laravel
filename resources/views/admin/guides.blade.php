@@ -1,5 +1,24 @@
 @extends('layouts.admin')
 
+@php
+function getGuideIconSvg($icon, $category) {
+    $icon = trim($icon);
+    if (strpos($icon, '🏔') !== false || $category === 'Packing Guide') {
+        return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #ff0000; vertical-align: middle;"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>';
+    }
+    if (strpos($icon, '❄') !== false || $category === 'Destination Intel') {
+        return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #3b82f6; vertical-align: middle;"><path d="M12 2v20M17 5 7 19M19 17 5 7M22 12H2M16 2l-4 4-4-4M8 22l4-4 4 4"/></svg>';
+    }
+    if (strpos($icon, '⚕') !== false || strpos($icon, '🚨') !== false || $category === 'Health & Safety') {
+        return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #ef4444; vertical-align: middle;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>';
+    }
+    if (strpos($icon, '🙏') !== false || $category === 'Culture') {
+        return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #eab308; vertical-align: middle;"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>';
+    }
+    return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #a855f7; vertical-align: middle;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>';
+}
+@endphp
+
 @section('title', 'Travel Guides & Intel')
 
 @section('page_title', 'Travel Guides & Intel')
@@ -44,7 +63,7 @@
                 </div>
                 <div class="form-group full-width">
                     <label class="form-lbl">Image Path *</label>
-                    <input type="text" name="image" id="inImage" class="form-input" placeholder="/images/ladakh.png" required />
+                    <input type="text" name="image" id="inImage" class="form-input" placeholder="/images/ladakh.webp" required />
                 </div>
                 <div class="form-group full-width">
                     <label class="form-lbl">Article Title *</label>
@@ -75,7 +94,7 @@
             <tbody id="guidesTableBody">
                 @foreach($guides as $g)
                     <tr class="guide-row" data-title="{{ strtolower($g['title']) }}" data-category="{{ strtolower($g['category']) }}">
-                        <td style="font-size: 20px; text-align: center;">{{ $g['icon'] }}</td>
+                        <td style="text-align: center; vertical-align: middle;">{!! getGuideIconSvg($g['icon'], $g['category']) !!}</td>
                         <td>
                             <div class="guide-title-cell">
                                 <span class="guide-title-text">{{ $g['title'] }}</span>
@@ -93,7 +112,7 @@
                         </td>
                         <td style="text-align: right;">
                             <div class="action-buttons">
-                                <button class="edit-btn" onclick='editGuide({!! json_encode($g) !!})'>Edit</button>
+                                <button class="edit-btn" data-guide="{{ json_encode($g) }}" onclick="editGuide(JSON.parse(this.getAttribute('data-guide')))">Edit</button>
                                 <a href="/admin/guides/delete/{{ $g['id'] }}" class="delete-btn" onclick="return confirm('Delete this travel guide?');" style="text-decoration: none;">Delete</a>
                             </div>
                         </td>
@@ -179,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('inCategory').value = 'Destination Intel';
         document.getElementById('inReadTime').value = '6 min read';
         document.getElementById('inBadge').value = '';
-        document.getElementById('inImage').value = '/images/ladakh.png';
+        document.getElementById('inImage').value = '/images/ladakh.webp';
         document.getElementById('inIcon').value = '🏔️';
         document.getElementById('inTitle').value = '';
     }

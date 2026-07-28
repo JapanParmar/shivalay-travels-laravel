@@ -229,10 +229,10 @@
                 "Experienced local yatra coordinator",
                 "Helicopter booking assistance"
             ],
-            "imagePath": "/images/kedarnath.png",
+            "imagePath": "/images/kedarnath.webp",
             "gallery": [
-                "/images/varanasi.png",
-                "/images/chardham.png"
+                "/images/varanasi.webp",
+                "/images/chardham.webp"
             ]
         },
         {
@@ -262,10 +262,10 @@
                 "Sanskrit-speaking local guide",
                 "All yatra registration permits"
             ],
-            "imagePath": "/images/chardham.png",
+            "imagePath": "/images/chardham.webp",
             "gallery": [
-                "/images/kedarnath.png",
-                "/images/varanasi.png"
+                "/images/kedarnath.webp",
+                "/images/varanasi.webp"
             ]
         },
         {
@@ -295,10 +295,10 @@
                 "VIP temple darshan assistance",
                 "Private boat charters"
             ],
-            "imagePath": "/images/varanasi.png",
+            "imagePath": "/images/varanasi.webp",
             "gallery": [
-                "/images/hampi.png",
-                "/images/rajasthan.png"
+                "/images/hampi.webp",
+                "/images/rajasthan.webp"
             ]
         },
         {
@@ -328,10 +328,10 @@
                 "All gourmet local meals",
                 "Airport pickup assistance"
             ],
-            "imagePath": "/images/kashmir.png",
+            "imagePath": "/images/kashmir.webp",
             "gallery": [
-                "/images/ladakh.png",
-                "/images/meghalaya.png"
+                "/images/ladakh.webp",
+                "/images/meghalaya.webp"
             ]
         },
         {
@@ -361,10 +361,10 @@
                 "Personal travel coordinator",
                 "Sightseeing passes"
             ],
-            "imagePath": "/images/goa.png",
+            "imagePath": "/images/goa.webp",
             "gallery": [
-                "/images/kerala.png",
-                "/images/hampi.png"
+                "/images/kerala.webp",
+                "/images/hampi.webp"
             ]
         },
         {
@@ -394,10 +394,10 @@
                 "Oxygen systems & medical backing",
                 "Expert local coordinator guide"
             ],
-            "imagePath": "/images/ladakh.png",
+            "imagePath": "/images/ladakh.webp",
             "gallery": [
-                "/images/kashmir.png",
-                "/images/meghalaya.png"
+                "/images/kashmir.webp",
+                "/images/meghalaya.webp"
             ]
         },
         {
@@ -427,10 +427,10 @@
                 "Houseboat crew & meals",
                 "Sightseeing permits"
             ],
-            "imagePath": "/images/kerala.png",
+            "imagePath": "/images/kerala.webp",
             "gallery": [
-                "/images/goa.png",
-                "/images/hampi.png"
+                "/images/goa.webp",
+                "/images/hampi.webp"
             ]
         },
         {
@@ -460,10 +460,10 @@
                 "Folk dance performances",
                 "Private local guides"
             ],
-            "imagePath": "/images/rajasthan.png",
+            "imagePath": "/images/rajasthan.webp",
             "gallery": [
-                "/images/varanasi.png",
-                "/images/hampi.png"
+                "/images/varanasi.webp",
+                "/images/hampi.webp"
             ]
         }
     ],
@@ -474,7 +474,7 @@
             "title": "The ultimate cold desert packing checklist for Ladakh \u2014 what to carry in June vs September",
             "readTime": "7 min read",
             "badge": "Popular",
-            "image": "/images/ladakh.png",
+            "image": "/images/ladakh.webp",
             "icon": "\ud83c\udfd4\ufe0f"
         },
         {
@@ -483,7 +483,7 @@
             "title": "Kashmir in winters \u2014 Gulmarg ski resorts, wooden chalets, & winter wonderland guide",
             "readTime": "9 min read",
             "badge": "Insider",
-            "image": "/images/kashmir.png",
+            "image": "/images/kashmir.webp",
             "icon": "\u2744\ufe0f"
         },
         {
@@ -492,7 +492,7 @@
             "title": "High altitude acclimatisation 101 \u2014 how to prevent Acute Mountain Sickness (AMS) in Leh",
             "readTime": "6 min read",
             "badge": null,
-            "image": "/images/ladakh.png",
+            "image": "/images/ladakh.webp",
             "icon": "\u26d1\ufe0f"
         },
         {
@@ -501,7 +501,7 @@
             "title": "Monastery decorum in Ladakh & Spiti \u2014 rules, prayer wheel direction, & photography guidelines",
             "readTime": "8 min read",
             "badge": "New",
-            "image": "/images/ladakh.png",
+            "image": "/images/ladakh.webp",
             "icon": "\ud83d\ude4f"
         },
         {
@@ -510,7 +510,7 @@
             "title": "Inner Line Permits decoded \u2014 how to secure travel clearance to Pangong Tso, Nubra & Turtuk",
             "readTime": "5 min read",
             "badge": null,
-            "image": "/images/meghalaya.png",
+            "image": "/images/meghalaya.webp",
             "icon": "\ud83d\udccb"
         },
         {
@@ -519,7 +519,7 @@
             "title": "Monsoon packing list for Meghalaya \u2014 trekking boots, waterproof cases, & jungle essentials",
             "readTime": "6 min read",
             "badge": "Popular",
-            "image": "/images/meghalaya.png",
+            "image": "/images/meghalaya.webp",
             "icon": "\ud83c\udf3f"
         }
     ],
@@ -551,7 +551,7 @@
             "location": "Udaipur, Rajasthan",
             "description": "Experience royal hospitality with scenic lake-view suites and curated local heritage tours.",
             "price": "\u20b96,800 / night",
-            "imagePath": "/images/rajasthan.png",
+            "imagePath": "/images/rajasthan.webp",
             "rating": "4.8",
             "amenities": [
                 "Lake View Suites",
@@ -560,8 +560,8 @@
                 "Multi-cuisine Dining"
             ],
             "gallery": [
-                "/images/varanasi.png",
-                "/images/hampi.png"
+                "/images/varanasi.webp",
+                "/images/hampi.webp"
             ]
         },
         {
@@ -570,7 +570,7 @@
             "location": "Munnar, Kerala",
             "description": "A tranquil boutique wellness hotel nestled inside a lush organic spice plantation, featuring traditional Ayurvedic therapies.",
             "price": "\u20b95,200 / night",
-            "imagePath": "/images/kerala.png",
+            "imagePath": "/images/kerala.webp",
             "rating": "4.9",
             "amenities": [
                 "Ayurvedic Spa",
@@ -579,8 +579,8 @@
                 "Organic Dining"
             ],
             "gallery": [
-                "/images/goa.png",
-                "/images/hampi.png"
+                "/images/goa.webp",
+                "/images/hampi.webp"
             ]
         },
         {
@@ -589,7 +589,7 @@
             "location": "Hampi, Karnataka",
             "description": "A heritage retreat built into the unique boulder landscape of Hampi, offering guided tours of the ancient ruins.",
             "price": "\u20b94,900 / night",
-            "imagePath": "/images/hampi.png",
+            "imagePath": "/images/hampi.webp",
             "rating": "4.7",
             "amenities": [
                 "Ruins Guided Tours",
@@ -598,8 +598,8 @@
                 "Rock Climbing"
             ],
             "gallery": [
-                "/images/varanasi.png",
-                "/images/rajasthan.png"
+                "/images/varanasi.webp",
+                "/images/rajasthan.webp"
             ]
         },
         {
@@ -608,7 +608,7 @@
             "location": "Manali, Himachal Pradesh",
             "description": "A charming luxury sanctuary surrounded by apple orchards, offering panoramic views of the Solang Valley.",
             "price": "\u20b95,800 / night",
-            "imagePath": "/images/kashmir.png",
+            "imagePath": "/images/kashmir.webp",
             "rating": "4.9",
             "amenities": [
                 "Heated Pool",
@@ -617,8 +617,8 @@
                 "Skiing Assist"
             ],
             "gallery": [
-                "/images/ladakh.png",
-                "/images/meghalaya.png"
+                "/images/ladakh.webp",
+                "/images/meghalaya.webp"
             ]
         }
     ],
@@ -629,7 +629,7 @@
             "location": "Gulmarg, Kashmir",
             "description": "A hand-carved wooden chalet villa overlooking snow-covered pine forests, perfect for family getaways.",
             "price": "\u20b912,500 / night",
-            "imagePath": "/images/kashmir.png",
+            "imagePath": "/images/kashmir.webp",
             "rating": "4.9",
             "amenities": [
                 "Heated Bedrooms",
@@ -638,8 +638,8 @@
                 "Skiing Equipment Assist"
             ],
             "gallery": [
-                "/images/ladakh.png",
-                "/images/meghalaya.png"
+                "/images/ladakh.webp",
+                "/images/meghalaya.webp"
             ]
         },
         {
@@ -648,7 +648,7 @@
             "location": "Candolim, Goa",
             "description": "A gorgeous Mediterranean-style beachfront villa with private beach access and a personal infinity pool.",
             "price": "\u20b918,500 / night",
-            "imagePath": "/images/goa.png",
+            "imagePath": "/images/goa.webp",
             "rating": "5.0",
             "amenities": [
                 "Private Beach Access",
@@ -657,8 +657,8 @@
                 "Personal Butler"
             ],
             "gallery": [
-                "/images/kerala.png",
-                "/images/hampi.png"
+                "/images/kerala.webp",
+                "/images/hampi.webp"
             ]
         },
         {
@@ -667,7 +667,7 @@
             "location": "Wayanad, Kerala",
             "description": "An ultra-luxury elevated treehouse villa offering premium modern comforts amidst the rain forest canopy.",
             "price": "\u20b914,000 / night",
-            "imagePath": "/images/kerala.png",
+            "imagePath": "/images/kerala.webp",
             "rating": "4.8",
             "amenities": [
                 "Elevated Jacuzzi",
@@ -676,8 +676,8 @@
                 "Tree Canopy Balcony"
             ],
             "gallery": [
-                "/images/goa.png",
-                "/images/hampi.png"
+                "/images/goa.webp",
+                "/images/hampi.webp"
             ]
         },
         {
@@ -686,7 +686,7 @@
             "location": "Jaisalmer, Rajasthan",
             "description": "A gorgeous luxury sandstone villa in the Thar desert with a private plunge pool, private dunes access, and camel safaris.",
             "price": "\u20b916,500 / night",
-            "imagePath": "/images/rajasthan.png",
+            "imagePath": "/images/rajasthan.webp",
             "rating": "5.0",
             "amenities": [
                 "Private Plunge Pool",
@@ -695,8 +695,8 @@
                 "Traditional Musicians"
             ],
             "gallery": [
-                "/images/varanasi.png",
-                "/images/hampi.png"
+                "/images/varanasi.webp",
+                "/images/hampi.webp"
             ]
         },
         {
@@ -705,7 +705,7 @@
             "location": "Shimla, Himachal Pradesh",
             "description": "A grand British-era colonial villa restored to ultra-modern luxury standards, with gorgeous panoramic mountain views.",
             "price": "\u20b922,000 / night",
-            "imagePath": "/images/kashmir.png",
+            "imagePath": "/images/kashmir.webp",
             "rating": "4.9",
             "amenities": [
                 "Colonial Fireplace",
@@ -714,8 +714,8 @@
                 "Panoramic Sun Deck"
             ],
             "gallery": [
-                "/images/ladakh.png",
-                "/images/meghalaya.png"
+                "/images/ladakh.webp",
+                "/images/meghalaya.webp"
             ]
         }
     ],
@@ -728,7 +728,7 @@
             "trip": "Honeymoon \u00b7 8 nights",
             "rating": 5,
             "avatar": "PA",
-            "image": "/images/kashmir.png",
+            "image": "/images/kashmir.webp",
             "clientImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80"
         },
         {
@@ -739,7 +739,7 @@
             "trip": "Pilgrim \u00b7 5 nights",
             "rating": 5,
             "avatar": "RS",
-            "image": "/images/kedarnath.png",
+            "image": "/images/kedarnath.webp",
             "clientImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80"
         },
         {
@@ -750,7 +750,7 @@
             "trip": "Family Yatra \u00b7 11 nights",
             "rating": 5,
             "avatar": "VF",
-            "image": "/images/chardham.png",
+            "image": "/images/chardham.webp",
             "clientImage": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=100&h=100&q=80"
         },
         {
@@ -761,7 +761,7 @@
             "trip": "Solo \u00b7 9 nights",
             "rating": 5,
             "avatar": "AN",
-            "image": "/images/kerala.png",
+            "image": "/images/kerala.webp",
             "clientImage": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&h=100&q=80"
         },
         {
@@ -772,7 +772,7 @@
             "trip": "Adventure \u00b7 9 nights",
             "rating": 5,
             "avatar": "VS",
-            "image": "/images/ladakh.png",
+            "image": "/images/ladakh.webp",
             "clientImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80"
         }
     ]

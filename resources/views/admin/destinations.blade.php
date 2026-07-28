@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-lbl">Image Path</label>
-                    <input type="text" name="imagePath" id="inImagePath" class="form-input" placeholder="/images/kedarnath.png" />
+                    <input type="text" name="imagePath" id="inImagePath" class="form-input" placeholder="/images/kedarnath.webp" />
                 </div>
             </div>
 
@@ -133,7 +133,7 @@
                         </td>
                         <td style="text-align: right;">
                             <div class="action-buttons">
-                                <button class="edit-btn" onclick='editPackage({!! json_encode($pkg) !!})'>Edit</button>
+                                <button class="edit-btn" data-pkg="{{ json_encode($pkg) }}" onclick="editPackage(JSON.parse(this.getAttribute('data-pkg')))">Edit</button>
                                 <a href="/admin/destinations/delete/{{ $pkg['id'] }}" class="delete-btn" onclick="return confirm('Delete this package?');" style="text-decoration: none;">Delete</a>
                             </div>
                         </td>
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('inDifficulty').value = 'Easy';
         document.getElementById('inBestSeason').value = '';
         document.getElementById('inStartingFrom').value = '₹15,000';
-        document.getElementById('inImagePath').value = '/images/kedarnath.png';
+        document.getElementById('inImagePath').value = '/images/kedarnath.webp';
         document.getElementById('inTags').value = '';
         document.getElementById('inHighlights').value = '';
         document.getElementById('inIncludes').value = '';

@@ -170,7 +170,7 @@
       <div style="position: sticky; top: 72px">
         <div style="background: var(--color-carbon); border: 1px solid var(--color-zinc-hairline); border-radius: var(--radius-xl); overflow: hidden">
           <div style="height: 180px; overflow: hidden; position: relative">
-            <img src="/images/ladakh.png" alt="Ladakh Mountains" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease">
+            <img src="/images/ladakh.webp" alt="Ladakh Mountains" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease">
             <div style="position: absolute; inset: 0; background: var(--gradient-visual-overlay)"></div>
             <span class="font-primary fs-9 fw-medium" style="position: absolute; top: 12px; left: 12px; color: var(--color-onyx-black); background: var(--color-highlighter-lime); padding: 3px 8px; border-radius: var(--radius-full)">Pangong Tso</span>
           </div>

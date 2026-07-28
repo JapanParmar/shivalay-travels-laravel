@@ -131,8 +131,11 @@
 
     {{-- Image count label --}}
     @if($vgc>1)
-      <div style="position:absolute;top:14px;left:14px;z-index:5;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);border:1px solid rgba(184,136,42,0.2);border-radius:20px;padding:4px 11px;display:flex;align-items:center;gap:5px;">
-        <span style="font-family:'DM Sans',sans-serif;font-size:10px;color:#b8882a;">📷 {{ $vgc }} photos</span>
+      <div style="position:absolute;top:14px;left:14px;z-index:5;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);border:1px solid rgba(184,136,42,0.2);border-radius:20px;padding:4px 11px;display:flex;align-items:center;">
+        <span style="font-family:'DM Sans',sans-serif;font-size:10px;color:#b8882a;display:flex;align-items:center;gap:4px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          {{ $vgc }} photos
+        </span>
       </div>
     @endif
   </div>
@@ -209,8 +212,11 @@
                  onclick="event.stopPropagation();vsJump('{{ $spreadId }}',{{ $ti }})" />
           @endforeach
         </div>
-        <div style="position:absolute;top:14px;left:14px;z-index:5;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);border:1px solid rgba(184,136,42,0.2);border-radius:20px;padding:4px 11px;">
-          <span style="font-family:'DM Sans',sans-serif;font-size:10px;color:#b8882a;">📷 {{ $vgc }} photos</span>
+        <div style="position:absolute;top:14px;left:14px;z-index:5;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);border:1px solid rgba(184,136,42,0.2);border-radius:20px;padding:4px 11px;display:flex;align-items:center;">
+          <span style="font-family:'DM Sans',sans-serif;font-size:10px;color:#b8882a;display:flex;align-items:center;gap:4px;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            {{ $vgc }} photos
+          </span>
         </div>
       @endif
     </div>

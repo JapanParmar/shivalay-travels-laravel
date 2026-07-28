@@ -6,32 +6,32 @@
 // ────────────────────────────────────────────────────────────────
 
 const DESTINATIONS = (window.DB_PACKAGES && window.DB_PACKAGES.length > 0) ? window.DB_PACKAGES : [
-  { id: 'kedarnath', name: 'Kedarnath Yatra', region: 'Uttarakhand', tagline: 'Spiritual temple yatra with divine scenic mountain views', duration: '4–6 nights', groupSize: '2–12', difficulty: 'Challenging', bestSeason: 'May – Jun, Sep – Nov', startingFrom: '₹15,000', tags: ['Spiritual', 'Adventure', 'Scenic'], highlights: ['VIP Darshan at Kedarnath Temple shrine', 'Beautiful trek from Gaurikund to Kedarnath basecamp', 'Comfortable stays near the holy temple base', 'Scenic helicopter ride booking options'], includes: ['Premium stays & hygienic food', 'Airport/station pickup & drop', 'Experienced local yatra coordinator', 'Helicopter booking assistance'], imagePath: '/images/kedarnath.png' },
-  { id: 'chardham', name: 'Chardham Yatra', region: 'Uttarakhand', tagline: 'Holy pilgrimage to Yamunotri, Gangotri, Kedarnath, and Badrinath', duration: '9–12 nights', groupSize: '2–20', difficulty: 'Challenging', bestSeason: 'May – Jun, Sep – Oct', startingFrom: '₹45,000', tags: ['Spiritual', 'Heritage', 'Scenic'], highlights: ['Complete darshan of all four holy shrines', 'Special puja arrangement at Badrinath temple', 'Scenic drive through majestic Himalayan valleys', 'Holy Ganga aarti at Har Ki Pauri, Haridwar'], includes: ['Comfortable hotel bookings', 'All transfers via private luxury coach', 'Sanskrit-speaking local guide', 'All yatra registration permits'], imagePath: '/images/chardham.png' },
-  { id: 'varanasi', name: 'Varanasi Kashi', region: 'Uttar Pradesh', tagline: 'Spiritual river ghats, ancient chants & silk-weaving heritage', duration: '3–5 nights', groupSize: '2–8', difficulty: 'Easy', bestSeason: 'Oct – Mar', startingFrom: '₹12,000', tags: ['Spiritual', 'Heritage', 'Wellness'], highlights: ['Private boat for Ganga Aarti ceremony at Dashashwamedh', 'Sunrise boat ride with live shehnai music', 'Guided walk through ancient alleyways & Kashi Vishwanath temple', 'Exclusive Banarasi silk weaving demonstration'], includes: ['Boutique riverfront stays', 'Private spiritual guide', 'VIP temple darshan assistance', 'Private boat charters'], imagePath: '/images/varanasi.png' },
-  { id: 'kashmir', name: 'Kashmir Valley', region: 'North India', tagline: 'Misty pine valleys, wooden houseboats & peaceful shikaras', duration: '6–9 nights', groupSize: '2–12', difficulty: 'Easy', bestSeason: 'Mar – Oct', startingFrom: '₹22,000', tags: ['Luxury', 'Scenic', 'Wellness'], highlights: ['Stay in a hand-carved luxury houseboat', 'Dawn shikara ride on Dal Lake', 'Private saffron farm walk in Pampore', 'Gulmarg snow activities & gondola ride'], includes: ['Premium resort properties', 'Private local chauffeur', 'All gourmet local meals', 'Airport pickup assistance'], imagePath: '/images/kashmir.png' },
-  { id: 'goa', name: 'Goa Beaches', region: 'West Coast', tagline: 'Secluded beaches, historic churches & vibrant coastal holiday', duration: '5–8 nights', groupSize: '2–8', difficulty: 'Easy', bestSeason: 'Nov – Apr', startingFrom: '₹18,000', tags: ['Luxury', 'Wellness', 'Adventure'], highlights: ['Private yacht sunset cruise', 'Curated heritage walk through Old Goa churches', 'Water sports and parasailing at Calangute', 'Beachside candlelight dinner'], includes: ['Luxury beachside hotel stays', 'Airport transfers & pickup', 'Personal travel coordinator', 'Sightseeing passes'], imagePath: '/images/goa.png' },
-  { id: 'ladakh', name: 'Leh Ladakh', region: 'Himalayas', tagline: 'Snow-capped monasteries, deep valleys & high mountain passes', duration: '7–10 nights', groupSize: '2–8', difficulty: 'Challenging', bestSeason: 'Jun – Sep', startingFrom: '₹35,000', tags: ['Adventure', 'Scenic', 'Heritage'], highlights: ['Private sunrise at Pangong Tso Lake', 'Guided trek through Hemis National Park', 'VIP access to Thiksey Monastery prayer', 'Double-humped camel ride in Nubra Valley'], includes: ['Boutique camps & cottages', 'Private 4x4 vehicle & driver', 'Oxygen systems & medical backing', 'Expert local coordinator guide'], imagePath: '/images/ladakh.png' },
-  { id: 'kerala', name: 'Kerala Backwaters', region: 'South India', tagline: 'Palm-fringed lagoons, spice hills & classical ayurveda', duration: '7–12 nights', groupSize: '2–6', difficulty: 'Easy', bestSeason: 'Sep – Mar', startingFrom: '₹24,000', tags: ['Wellness', 'Scenic', 'Luxury'], highlights: ['Private houseboat cruise through backwaters', 'Spice plantation trail in Munnar', 'Scenic Kathakali performance tour', 'Sunset view at Kovalam Beach'], includes: ['Boutique wellness resorts', 'All transfers via private sedan', 'Houseboat crew & meals', 'Sightseeing permits'], imagePath: '/images/kerala.png' },
-  { id: 'rajasthan', name: 'Rajasthan Heritage', region: 'West India', tagline: 'Golden sandstone forts, royal palaces & desert heritage', duration: '8–12 nights', groupSize: '2–10', difficulty: 'Easy', bestSeason: 'Oct – Mar', startingFrom: '₹28,000', tags: ['Heritage', 'History', 'Luxury'], highlights: ['Private dinner at Jaisalmer desert camp', 'Exclusive tour of Mehrangarh Fort', 'Stay in Palace hotels of Udaipur', 'Sunrise hot air balloon ride over Jaipur'], includes: ['Heritage hotel properties', 'Vintage car tour', 'Folk dance performances', 'Private local guides'], imagePath: '/images/rajasthan.png' },
+  { id: 'kedarnath', name: 'Kedarnath Yatra', region: 'Uttarakhand', tagline: 'Spiritual temple yatra with divine scenic mountain views', duration: '4–6 nights', groupSize: '2–12', difficulty: 'Challenging', bestSeason: 'May – Jun, Sep – Nov', startingFrom: '₹15,000', tags: ['Spiritual', 'Adventure', 'Scenic'], highlights: ['VIP Darshan at Kedarnath Temple shrine', 'Beautiful trek from Gaurikund to Kedarnath basecamp', 'Comfortable stays near the holy temple base', 'Scenic helicopter ride booking options'], includes: ['Premium stays & hygienic food', 'Airport/station pickup & drop', 'Experienced local yatra coordinator', 'Helicopter booking assistance'], imagePath: '/images/kedarnath.webp' },
+  { id: 'chardham', name: 'Chardham Yatra', region: 'Uttarakhand', tagline: 'Holy pilgrimage to Yamunotri, Gangotri, Kedarnath, and Badrinath', duration: '9–12 nights', groupSize: '2–20', difficulty: 'Challenging', bestSeason: 'May – Jun, Sep – Oct', startingFrom: '₹45,000', tags: ['Spiritual', 'Heritage', 'Scenic'], highlights: ['Complete darshan of all four holy shrines', 'Special puja arrangement at Badrinath temple', 'Scenic drive through majestic Himalayan valleys', 'Holy Ganga aarti at Har Ki Pauri, Haridwar'], includes: ['Comfortable hotel bookings', 'All transfers via private luxury coach', 'Sanskrit-speaking local guide', 'All yatra registration permits'], imagePath: '/images/chardham.webp' },
+  { id: 'varanasi', name: 'Varanasi Kashi', region: 'Uttar Pradesh', tagline: 'Spiritual river ghats, ancient chants & silk-weaving heritage', duration: '3–5 nights', groupSize: '2–8', difficulty: 'Easy', bestSeason: 'Oct – Mar', startingFrom: '₹12,000', tags: ['Spiritual', 'Heritage', 'Wellness'], highlights: ['Private boat for Ganga Aarti ceremony at Dashashwamedh', 'Sunrise boat ride with live shehnai music', 'Guided walk through ancient alleyways & Kashi Vishwanath temple', 'Exclusive Banarasi silk weaving demonstration'], includes: ['Boutique riverfront stays', 'Private spiritual guide', 'VIP temple darshan assistance', 'Private boat charters'], imagePath: '/images/varanasi.webp' },
+  { id: 'kashmir', name: 'Kashmir Valley', region: 'North India', tagline: 'Misty pine valleys, wooden houseboats & peaceful shikaras', duration: '6–9 nights', groupSize: '2–12', difficulty: 'Easy', bestSeason: 'Mar – Oct', startingFrom: '₹22,000', tags: ['Luxury', 'Scenic', 'Wellness'], highlights: ['Stay in a hand-carved luxury houseboat', 'Dawn shikara ride on Dal Lake', 'Private saffron farm walk in Pampore', 'Gulmarg snow activities & gondola ride'], includes: ['Premium resort properties', 'Private local chauffeur', 'All gourmet local meals', 'Airport pickup assistance'], imagePath: '/images/kashmir.webp' },
+  { id: 'goa', name: 'Goa Beaches', region: 'West Coast', tagline: 'Secluded beaches, historic churches & vibrant coastal holiday', duration: '5–8 nights', groupSize: '2–8', difficulty: 'Easy', bestSeason: 'Nov – Apr', startingFrom: '₹18,000', tags: ['Luxury', 'Wellness', 'Adventure'], highlights: ['Private yacht sunset cruise', 'Curated heritage walk through Old Goa churches', 'Water sports and parasailing at Calangute', 'Beachside candlelight dinner'], includes: ['Luxury beachside hotel stays', 'Airport transfers & pickup', 'Personal travel coordinator', 'Sightseeing passes'], imagePath: '/images/goa.webp' },
+  { id: 'ladakh', name: 'Leh Ladakh', region: 'Himalayas', tagline: 'Snow-capped monasteries, deep valleys & high mountain passes', duration: '7–10 nights', groupSize: '2–8', difficulty: 'Challenging', bestSeason: 'Jun – Sep', startingFrom: '₹35,000', tags: ['Adventure', 'Scenic', 'Heritage'], highlights: ['Private sunrise at Pangong Tso Lake', 'Guided trek through Hemis National Park', 'VIP access to Thiksey Monastery prayer', 'Double-humped camel ride in Nubra Valley'], includes: ['Boutique camps & cottages', 'Private 4x4 vehicle & driver', 'Oxygen systems & medical backing', 'Expert local coordinator guide'], imagePath: '/images/ladakh.webp' },
+  { id: 'kerala', name: 'Kerala Backwaters', region: 'South India', tagline: 'Palm-fringed lagoons, spice hills & classical ayurveda', duration: '7–12 nights', groupSize: '2–6', difficulty: 'Easy', bestSeason: 'Sep – Mar', startingFrom: '₹24,000', tags: ['Wellness', 'Scenic', 'Luxury'], highlights: ['Private houseboat cruise through backwaters', 'Spice plantation trail in Munnar', 'Scenic Kathakali performance tour', 'Sunset view at Kovalam Beach'], includes: ['Boutique wellness resorts', 'All transfers via private sedan', 'Houseboat crew & meals', 'Sightseeing permits'], imagePath: '/images/kerala.webp' },
+  { id: 'rajasthan', name: 'Rajasthan Heritage', region: 'West India', tagline: 'Golden sandstone forts, royal palaces & desert heritage', duration: '8–12 nights', groupSize: '2–10', difficulty: 'Easy', bestSeason: 'Oct – Mar', startingFrom: '₹28,000', tags: ['Heritage', 'History', 'Luxury'], highlights: ['Private dinner at Jaisalmer desert camp', 'Exclusive tour of Mehrangarh Fort', 'Stay in Palace hotels of Udaipur', 'Sunrise hot air balloon ride over Jaipur'], includes: ['Heritage hotel properties', 'Vintage car tour', 'Folk dance performances', 'Private local guides'], imagePath: '/images/rajasthan.webp' },
 ];
 
 const GUIDES = (window.DB_GUIDES && window.DB_GUIDES.length > 0) ? window.DB_GUIDES : [
-  { category: 'Packing Guide', title: 'The ultimate cold desert packing checklist for Ladakh — what to carry in June vs September', readTime: '7 min read', badge: 'Popular', image: '/images/ladakh.png', icon: '🏔️' },
-  { category: 'Destination Intel', title: 'Kashmir in winters — Gulmarg ski resorts, wooden chalets, & winter wonderland guide', readTime: '9 min read', badge: 'Insider', image: '/images/kashmir.png', icon: '❄️' },
-  { category: 'Health & Safety', title: 'High altitude acclimatisation 101 — how to prevent Acute Mountain Sickness (AMS) in Leh', readTime: '6 min read', badge: null, image: '/images/ladakh.png', icon: '⛑️' },
-  { category: 'Culture', title: 'Monastery decorum in Ladakh & Spiti — rules, prayer wheel direction, & photography guidelines', readTime: '8 min read', badge: 'New', image: '/images/ladakh.png', icon: '🙏' },
-  { category: 'Destination Intel', title: 'Inner Line Permits decoded — how to secure travel clearance to Pangong Tso, Nubra & Turtuk', readTime: '5 min read', badge: null, image: '/images/meghalaya.png', icon: '📋' },
-  { category: 'Packing Guide', title: 'Monsoon packing list for Meghalaya — trekking boots, waterproof cases, & jungle essentials', readTime: '6 min read', badge: 'Popular', image: '/images/meghalaya.png', icon: '🌿' },
+  { category: 'Packing Guide', title: 'The ultimate cold desert packing checklist for Ladakh — what to carry in June vs September', readTime: '7 min read', badge: 'Popular', image: '/images/ladakh.webp', icon: '🏔️' },
+  { category: 'Destination Intel', title: 'Kashmir in winters — Gulmarg ski resorts, wooden chalets, & winter wonderland guide', readTime: '9 min read', badge: 'Insider', image: '/images/kashmir.webp', icon: '❄️' },
+  { category: 'Health & Safety', title: 'High altitude acclimatisation 101 — how to prevent Acute Mountain Sickness (AMS) in Leh', readTime: '6 min read', badge: null, image: '/images/ladakh.webp', icon: '⛑️' },
+  { category: 'Culture', title: 'Monastery decorum in Ladakh & Spiti — rules, prayer wheel direction, & photography guidelines', readTime: '8 min read', badge: 'New', image: '/images/ladakh.webp', icon: '🙏' },
+  { category: 'Destination Intel', title: 'Inner Line Permits decoded — how to secure travel clearance to Pangong Tso, Nubra & Turtuk', readTime: '5 min read', badge: null, image: '/images/meghalaya.webp', icon: '📋' },
+  { category: 'Packing Guide', title: 'Monsoon packing list for Meghalaya — trekking boots, waterproof cases, & jungle essentials', readTime: '6 min read', badge: 'Popular', image: '/images/meghalaya.webp', icon: '🌿' },
 ];
 
 const TESTIMONIALS = [
-  { quote: 'Our Kashmir honeymoon was beyond imagination. Every detail — the scenic houseboat, the private saffron farm walk — felt tailored to our exact pace.', name: 'Priya & Arjun Mehta', location: 'Mumbai', destination: 'Kashmir', trip: 'Honeymoon · 8 nights', rating: 5, avatar: 'PA', image: '/images/kashmir.png', clientImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80' },
-  { quote: 'The Kedarnath yatra was incredibly smooth. They managed all registrations and helicopter tickets without any hassle. A truly divine experience.', name: 'Ramesh & Savita Joshi', location: 'Indore', destination: 'Kedarnath', trip: 'Pilgrim · 5 nights', rating: 5, avatar: 'RS', image: '/images/kedarnath.png', clientImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80' },
-  { quote: 'Taking our elderly parents to Chardham was a big concern, but Shivalay Travels made it absolutely stress-free. The premium Tempo Traveller was very comfortable.', name: 'The Verma Family', location: 'Bhopal', destination: 'Chardham Yatra', trip: 'Family Yatra · 11 nights', rating: 5, avatar: 'VF', image: '/images/chardham.png', clientImage: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=100&h=100&q=80' },
-  { quote: 'From our first call to our private houseboat cruise in Alleppey, we felt like honored guests. Already booking Jaisalmer for winter.', name: 'Dr. Ananya Nair', location: 'Kochi', destination: 'Kerala', trip: 'Solo · 9 nights', rating: 5, avatar: 'AN', image: '/images/kerala.png', clientImage: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&h=100&q=80' },
-  { quote: 'Shivalay Travels designed our corporate leadership retreat in a private Goa beach resort. The yacht sunset cruise and dinners were spectacular.', name: 'Rahul Sharma', location: 'Bangalore', destination: 'Goa', trip: 'Corporate · 5 nights', rating: 5, avatar: 'RS', image: '/images/goa.png', clientImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80' },
-  { quote: 'Shivalay Travels showed me what Leh Ladakh actually feels like when seasoned road specialists design it. The logistics and permits were top notch.', name: 'Vikram Sethi', location: 'New Delhi', destination: 'Ladakh', trip: 'Adventure · 9 nights', rating: 5, avatar: 'VS', image: '/images/ladakh.png', clientImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80' },
+  { quote: 'Our Kashmir honeymoon was beyond imagination. Every detail — the scenic houseboat, the private saffron farm walk — felt tailored to our exact pace.', name: 'Priya & Arjun Mehta', location: 'Mumbai', destination: 'Kashmir', trip: 'Honeymoon · 8 nights', rating: 5, avatar: 'PA', image: '/images/kashmir.webp', clientImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80' },
+  { quote: 'The Kedarnath yatra was incredibly smooth. They managed all registrations and helicopter tickets without any hassle. A truly divine experience.', name: 'Ramesh & Savita Joshi', location: 'Indore', destination: 'Kedarnath', trip: 'Pilgrim · 5 nights', rating: 5, avatar: 'RS', image: '/images/kedarnath.webp', clientImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80' },
+  { quote: 'Taking our elderly parents to Chardham was a big concern, but Shivalay Travels made it absolutely stress-free. The premium Tempo Traveller was very comfortable.', name: 'The Verma Family', location: 'Bhopal', destination: 'Chardham Yatra', trip: 'Family Yatra · 11 nights', rating: 5, avatar: 'VF', image: '/images/chardham.webp', clientImage: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=100&h=100&q=80' },
+  { quote: 'From our first call to our private houseboat cruise in Alleppey, we felt like honored guests. Already booking Jaisalmer for winter.', name: 'Dr. Ananya Nair', location: 'Kochi', destination: 'Kerala', trip: 'Solo · 9 nights', rating: 5, avatar: 'AN', image: '/images/kerala.webp', clientImage: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&h=100&q=80' },
+  { quote: 'Shivalay Travels designed our corporate leadership retreat in a private Goa beach resort. The yacht sunset cruise and dinners were spectacular.', name: 'Rahul Sharma', location: 'Bangalore', destination: 'Goa', trip: 'Corporate · 5 nights', rating: 5, avatar: 'RS', image: '/images/goa.webp', clientImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80' },
+  { quote: 'Shivalay Travels showed me what Leh Ladakh actually feels like when seasoned road specialists design it. The logistics and permits were top notch.', name: 'Vikram Sethi', location: 'New Delhi', destination: 'Ladakh', trip: 'Adventure · 9 nights', rating: 5, avatar: 'VS', image: '/images/ladakh.webp', clientImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80' },
 ];
 
 const TICKETS_CLASS_OPTIONS = {
@@ -40,15 +40,15 @@ const TICKETS_CLASS_OPTIONS = {
 };
 
 const PLANNER_STEPS = [
-  { id: 'destination', label: '01 — Where', question: 'Where in India does your soul want to go?', subtext: 'Choose from our curated regions or describe your dream destination.', options: ['Kedarnath', 'Chardham Yatra', 'Varanasi', 'Kashmir', 'Goa', 'Kerala', 'Rajasthan', 'Leh Ladakh', 'Surprise me'], inputType: 'text', inputPlaceholder: 'e.g. Kedarnath, Spiti Valley, Coorg, or a multi-city circuit…', icon: '🗺️' },
-  { id: 'dates', label: '02 — When', question: 'When are you planning to travel?', subtext: 'Select a timeframe or enter specific dates.', options: ['Next month', 'In 2–3 months', 'In 6 months', 'Next year', 'Flexible / Open'], inputType: 'text', inputPlaceholder: 'e.g. Dec 20 – Jan 5, or around Diwali 2026…', icon: '📅' },
-  { id: 'duration', label: '03 — Duration', question: 'How many nights are you envisioning?', subtext: 'We can design anything from a 3-night escape to a 21-night odyssey.', options: ['3–5 nights', '6–8 nights', '9–12 nights', '13–18 nights', '3+ weeks'], inputType: 'text', inputPlaceholder: 'e.g. 10 nights, or flexible based on budget…', icon: '🌙' },
-  { id: 'travelers', label: '04 — Who', question: "Who's joining you on this journey?", subtext: 'Tell us about your group composition — we tailor every detail.', options: ['Solo traveller', 'Couple / Honeymoon', 'Small group (3–6)', 'Family with children', 'Family with seniors', 'Corporate team'], inputType: 'text', inputPlaceholder: 'e.g. 2 adults + 1 child (8 yrs), or 4 couples…', icon: '👥' },
-  { id: 'budget', label: '05 — Budget', question: "What's your investment range per traveller?", subtext: 'All prices are per person. This helps us recommend the right properties.', options: ['Under ₹50,000', '₹50k – ₹1.5 Lakhs', '₹1.5L – ₹3 Lakhs', '₹3L – ₹5 Lakhs', '₹5 Lakhs+', 'Flexible'], inputType: 'text', inputPlaceholder: 'e.g. ₹8 Lakhs total for 2 people, or best value…', icon: '💰' },
-  { id: 'style', label: '06 — Style', question: 'What kind of experience do you seek?', subtext: 'Mix and match — your journey can blend multiple styles.', options: ['Luxury Stays & Wellness', 'Himalayan Trek & Adventure', 'Heritage Trails & History', 'Wildlife & Nature', 'Honeymoon Retreat', 'Spiritual & Wellness', 'Family Magic', 'Culinary Journey'], inputType: 'text', inputPlaceholder: 'e.g. Active days, luxury nights, with some local food exploration…', icon: '✨' },
-  { id: 'accommodation', label: '07 — Stay', question: 'Any accommodation preferences?', subtext: 'We partner with premium hotels, guest houses, camps, and heritage resorts.', options: ['Premium 3/4 Star Hotels', 'Comfortable Guest Houses', 'Boutique Resorts', 'Luxury Tented Camps', 'Houseboats', 'Mix of Stays'], inputType: 'text', inputPlaceholder: 'e.g. Near the temple shrine, pool required, family suite…', icon: '🏡' },
-  { id: 'notes', label: '08 — Notes', question: 'Anything else we should know?', subtext: 'Dietary needs, medical considerations, must-do experiences, or special occasions.', options: [], inputType: 'textarea', inputPlaceholder: 'e.g. Celebrating our anniversary, vegetarian only, one guest uses a wheelchair, must see a sunrise…', icon: '📝' },
-  { id: 'contact', label: '09 — Contact', question: 'Last step — how do we reach you?', subtext: 'We respond within 2 hours with a personalised itinerary draft.', options: [], icon: '📞' },
+  { id: 'destination', label: '01 — Where', question: 'Where in India does your soul want to go?', subtext: 'Choose from our curated regions or describe your dream destination.', options: ['Kedarnath', 'Chardham Yatra', 'Varanasi', 'Kashmir', 'Goa', 'Kerala', 'Rajasthan', 'Leh Ladakh', 'Surprise me'], inputType: 'text', inputPlaceholder: 'e.g. Kedarnath, Spiti Valley, Coorg, or a multi-city circuit…', icon: 'map' },
+  { id: 'dates', label: '02 — When', question: 'When are you planning to travel?', subtext: 'Select a timeframe or enter specific dates.', options: ['Next month', 'In 2–3 months', 'In 6 months', 'Next year', 'Flexible / Open'], inputType: 'text', inputPlaceholder: 'e.g. Dec 20 – Jan 5, or around Diwali 2026…', icon: 'calendar' },
+  { id: 'duration', label: '03 — Duration', question: 'How many nights are you envisioning?', subtext: 'We can design anything from a 3-night escape to a 21-night odyssey.', options: ['3–5 nights', '6–8 nights', '9–12 nights', '13–18 nights', '3+ weeks'], inputType: 'text', inputPlaceholder: 'e.g. 10 nights, or flexible based on budget…', icon: 'moon' },
+  { id: 'travelers', label: '04 — Who', question: "Who's joining you on this journey?", subtext: 'Tell us about your group composition — we tailor every detail.', options: ['Solo traveller', 'Couple / Honeymoon', 'Small group (3–6)', 'Family with children', 'Family with seniors', 'Corporate team'], inputType: 'text', inputPlaceholder: 'e.g. 2 adults + 1 child (8 yrs), or 4 couples…', icon: 'users' },
+  { id: 'budget', label: '05 — Budget', question: "What's your investment range per traveller?", subtext: 'All prices are per person. This helps us recommend the right properties.', options: ['Under ₹50,000', '₹50k – ₹1.5 Lakhs', '₹1.5L – ₹3 Lakhs', '₹3L – ₹5 Lakhs', '₹5 Lakhs+', 'Flexible'], inputType: 'text', inputPlaceholder: 'e.g. ₹8 Lakhs total for 2 people, or best value…', icon: 'indian-rupee' },
+  { id: 'style', label: '06 — Style', question: 'What kind of experience do you seek?', subtext: 'Mix and match — your journey can blend multiple styles.', options: ['Luxury Stays & Wellness', 'Himalayan Trek & Adventure', 'Heritage Trails & History', 'Wildlife & Nature', 'Honeymoon Retreat', 'Spiritual & Wellness', 'Family Magic', 'Culinary Journey'], inputType: 'text', inputPlaceholder: 'e.g. Active days, luxury nights, with some local food exploration…', icon: 'sparkles' },
+  { id: 'accommodation', label: '07 — Stay', question: 'Any accommodation preferences?', subtext: 'We partner with premium hotels, guest houses, camps, and heritage resorts.', options: ['Premium 3/4 Star Hotels', 'Comfortable Guest Houses', 'Boutique Resorts', 'Luxury Tented Camps', 'Houseboats', 'Mix of Stays'], inputType: 'text', inputPlaceholder: 'e.g. Near the temple shrine, pool required, family suite…', icon: 'home' },
+  { id: 'notes', label: '08 — Notes', question: 'Anything else we should know?', subtext: 'Dietary needs, medical considerations, must-do experiences, or special occasions.', options: [], inputType: 'textarea', inputPlaceholder: 'e.g. Celebrating our anniversary, vegetarian only, one guest uses a wheelchair, must see a sunrise…', icon: 'file-text' },
+  { id: 'contact', label: '09 — Contact', question: 'Last step — how do we reach you?', subtext: 'We respond within 2 hours with a personalised itinerary draft.', options: [], icon: 'phone' },
 ];
 
 // Comprehensive Indian cities database for ticket autocomplete
@@ -1328,7 +1328,7 @@ function renderTestimonial() {
       const testImg = document.getElementById('testimonial-img');
       if (testImg) {
         // Only set .src if it changed — browser re-fetches on every .src assignment otherwise
-        const newSrc = t.image || '/images/kashmir.png';
+        const newSrc = t.image || '/images/kashmir.webp';
         if (testImg.getAttribute('data-current-src') !== newSrc) {
           testImg.src = newSrc;
           testImg.setAttribute('data-current-src', newSrc);
@@ -1339,8 +1339,11 @@ function renderTestimonial() {
       const ratingContainer = document.getElementById('testimonial-rating');
       if (ratingContainer) {
         ratingContainer.innerHTML = Array.from({ length: t.rating }).map(() => `
-          <span style="color:var(--color-highlighter-lime); font-size:12px">★</span>
+          <i data-lucide="star" style="width:12px; height:12px; fill:currentColor"></i>
         `).join('');
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
       }
 
       testCard.style.opacity = 1;
@@ -1476,6 +1479,23 @@ const guidesCategories = document.getElementById('guides-categories');
 const guidesList = document.getElementById('guides-list');
 let currentGuideCategory = 'All';
 
+function getGuideIconSvg(icon, category) {
+  icon = (icon || '').trim();
+  if (icon.includes('🏔') || category === 'Packing Guide') {
+    return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-highlighter-lime); vertical-align: middle;"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>`;
+  }
+  if (icon.includes('❄') || category === 'Destination Intel') {
+    return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-highlighter-lime); vertical-align: middle;"><path d="M12 2v20M17 5 7 19M19 17 5 7M22 12H2M16 2l-4 4-4-4M8 22l4-4 4 4"/></svg>`;
+  }
+  if (icon.includes('⚕') || icon.includes('🚨') || category === 'Health & Safety') {
+    return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-highlighter-lime); vertical-align: middle;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
+  }
+  if (icon.includes('🙏') || category === 'Culture') {
+    return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-highlighter-lime); vertical-align: middle;"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>`;
+  }
+  return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-highlighter-lime); vertical-align: middle;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`;
+}
+
 function renderGuides() {
   if (!guidesList) return;
 
@@ -1489,7 +1509,7 @@ function renderGuides() {
         <img src="${g.image}" alt="${g.category}" style="width:100%; height:100%; object-fit:cover">
         <div style="position:absolute; inset:0; background:var(--gradient-visual-overlay)"></div>
         <div style="position:absolute; bottom:8px; left:12px; display:flex; gap:6px; align-items:center">
-          <span style="font-size:13px">${g.icon}</span>
+          <span style="font-size:13px; display:inline-flex; align-items:center;">${getGuideIconSvg(g.icon, g.category)}</span>
           <span class="font-primary fs-9 fw-medium uppercase ls-1" style="color:var(--color-white-80)">${g.category}</span>
         </div>
         ${g.badge ? `<span class="font-primary fs-9 fw-medium" style="position:absolute; top:8px; right:10px; color:var(--color-onyx-black); background:var(--color-highlighter-lime); padding:2px 6px; border-radius:var(--radius-full)">${g.badge}</span>` : ''}
@@ -1506,6 +1526,9 @@ function renderGuides() {
       </div>
     </div>
   `).join('');
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 }
 
 const CATEGORIES = ['All', 'Packing Guide', 'Destination Intel', 'Health & Safety', 'Culture'];
@@ -1637,7 +1660,7 @@ window.renderPlanner = function () {
         <!-- Step content -->
         <div style="flex:1; display:flex; flex-direction:column">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px">
-            <span style="font-size:20px">${current.icon}</span>
+            <span style="display:inline-flex; align-items:center; justify-content:center; color:var(--color-highlighter-lime); width:24px; height:24px; flex-shrink:0"><i data-lucide="${current.icon}" style="width:20px; height:20px"></i></span>
             <h3 class="fs-planner-q" style="color:var(--color-pure-white); font-size:18px">${current.question}</h3>
           </div>
           ${current.subtext ? `<p class="font-primary text-sm lh-15 text-muted" style="margin-bottom:20px; margin-left:30px">${current.subtext}</p>` : ''}
@@ -1781,6 +1804,9 @@ window.renderPlanner = function () {
       `}
     </div>
   `;
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
 }
 
 window.setPlannerStep = function (stepIdx) {
@@ -2243,5 +2269,11 @@ document.addEventListener('keydown', function(e) {
     window.navigateLightbox(-1);
   } else if (e.key === 'ArrowRight' || e.key === 'Right') {
     window.navigateLightbox(1);
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.lucide) {
+    window.lucide.createIcons();
   }
 });

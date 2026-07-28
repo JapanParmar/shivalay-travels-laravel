@@ -14,7 +14,7 @@
     .st-sections { display: flex; flex-direction: column; gap: 16px; }
     .st-section { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 24px; }
     .st-section-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
-    .st-section-icon { font-size: 24px; }
+    .st-section-icon { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.2); color: #ff0000; flex-shrink: 0; }
     .st-section-title { font-size: 16px; font-weight: 700; color: #fff; margin: 0; }
     .st-section-sub { font-size: 12px; color: #555; margin-top: 2px; }
     .st-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -37,14 +37,14 @@
     .st-toggle-btn.off .st-toggle-thumb { left: 2px; }
     .st-api-info { display: flex; flex-direction: column; gap: 14px; }
     .st-api-status { display: flex; align-items: center; gap: 8px; }
-    .st-api-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite; }
+    .st-api-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite; flex-shrink: 0; display: inline-block; }
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
     .st-api-active { font-size: 13px; font-weight: 600; color: #22c55e; }
     .st-api-desc { font-size: 13px; color: #666; line-height: 1.6; }
     .st-api-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .st-api-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 14px; transition: all 0.2s; }
     .st-api-card.active { border-color: rgba(34,197,94,0.25); background: rgba(34,197,94,0.04); }
-    .st-api-card-name { font-size: 13px; font-weight: 600; color: #ddd; margin-bottom: 4px; }
+    .st-api-card-name { font-size: 13px; font-weight: 600; color: #ddd; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
     .st-api-card-desc { font-size: 11px; color: #555; }
     @media (max-width: 900px) { .st-grid { grid-template-columns: 1fr 1fr; } .st-api-cards { grid-template-columns: 1fr; } }
     @media (max-width: 600px) { .st-grid { grid-template-columns: 1fr; } }
@@ -81,7 +81,9 @@
             <!-- Business Info -->
             <div class="st-section">
                 <div class="st-section-head">
-                    <div class="st-section-icon">🏢</div>
+                    <div class="st-section-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M8 6h2M8 10h2M14 6h2M14 10h2"/></svg>
+                    </div>
                     <div>
                         <h2 class="st-section-title">Business Information</h2>
                         <p class="st-section-sub">Your travel agency details</p>
@@ -118,7 +120,9 @@
             <!-- Localization -->
             <div class="st-section">
                 <div class="st-section-head">
-                    <div class="st-section-icon">🌍</div>
+                    <div class="st-section-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    </div>
                     <div>
                         <h2 class="st-section-title">Localization</h2>
                         <p class="st-section-sub">Regional preferences</p>
@@ -163,7 +167,9 @@
             <!-- Integrations -->
             <div class="st-section">
                 <div class="st-section-head">
-                    <div class="st-section-icon">⚡</div>
+                    <div class="st-section-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
                     <div>
                         <h2 class="st-section-title">Features & Integrations</h2>
                         <p class="st-section-sub">Toggle platform capabilities</p>
@@ -190,7 +196,7 @@
                                 class="st-toggle-btn {{ $val ? 'on' : 'off' }}"
                                 onclick="toggleField('{{ $t['key'] }}')"
                             >
-                                <span class="st-toggle-thumb" />
+                                <div class="st-toggle-thumb"></div>
                             </button>
                         </div>
                     @endforeach
@@ -200,7 +206,9 @@
             <!-- City API -->
             <div class="st-section">
                 <div class="st-section-head">
-                    <div class="st-section-icon">🗺️</div>
+                    <div class="st-section-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+                    </div>
                     <div>
                         <h2 class="st-section-title">City Autocomplete API</h2>
                         <p class="st-section-sub">Configuration for city search</p>
@@ -208,7 +216,7 @@
                 </div>
                 <div class="st-api-info">
                     <div class="st-api-status">
-                        <span class="st-api-dot" />
+                        <span class="st-api-dot"></span>
                         <span class="st-api-active" id="apiActiveStatus">
                             @if(($settings['cityApi'] ?? 'open_meteo') === 'open_meteo')
                                 Active — Open-Meteo Geocoding API
@@ -239,7 +247,7 @@
                             style="cursor: pointer;"
                         >
                             <div class="st-api-card-name">
-                                {!! $activeApi === 'open_meteo' ? '✓ ' : '' !!}Open-Meteo Geocoding
+                                <span class="st-api-check">{{ $activeApi === 'open_meteo' ? '✓ ' : '' }}</span><span>Open-Meteo Geocoding</span>
                             </div>
                             <div class="st-api-card-desc">Free, no key needed. geocoding-api.open-meteo.com</div>
                         </div>
@@ -250,7 +258,7 @@
                             style="cursor: pointer;"
                         >
                             <div class="st-api-card-name">
-                                {!! $activeApi === 'geodb' ? '✓ ' : '' !!}GeoDB Cities
+                                <span class="st-api-check">{{ $activeApi === 'geodb' ? '✓ ' : '' }}</span><span>GeoDB Cities</span>
                             </div>
                             <div class="st-api-card-desc">RapidAPI — requires API key</div>
                         </div>
@@ -261,7 +269,7 @@
                             style="cursor: pointer;"
                         >
                             <div class="st-api-card-name">
-                                {!! $activeApi === 'local' ? '✓ ' : '' !!}Local Database
+                                <span class="st-api-check">{{ $activeApi === 'local' ? '✓ ' : '' }}</span><span>Local Database</span>
                             </div>
                             <div class="st-api-card-desc">30 curated Indian cities — always available</div>
                         </div>
@@ -297,14 +305,16 @@
         
         document.querySelectorAll('.st-api-card').forEach(card => {
             card.classList.remove('active');
-            const titleEl = card.querySelector('.st-api-card-name');
-            titleEl.innerHTML = titleEl.innerHTML.replace('✓ ', '');
+            const checkEl = card.querySelector('.st-api-check');
+            if (checkEl) checkEl.textContent = '';
         });
 
         const activeCard = document.getElementById('card-' + apiName);
-        activeCard.classList.add('active');
-        const activeTitle = activeCard.querySelector('.st-api-card-name');
-        activeTitle.innerHTML = '✓ ' + activeTitle.innerHTML;
+        if (activeCard) {
+            activeCard.classList.add('active');
+            const activeCheck = activeCard.querySelector('.st-api-check');
+            if (activeCheck) activeCheck.textContent = '✓ ';
+        }
 
         let apiText = '';
         let apiDesc = '';

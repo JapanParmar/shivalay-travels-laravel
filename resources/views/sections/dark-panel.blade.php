@@ -63,7 +63,7 @@
 
       <!-- Col 3: Image -->
       <div class="img-zoom-wrap" style="height:320px;border-radius:var(--radius-xl);overflow:hidden;position:relative">
-        <img src="/images/meghalaya.png" alt="Meghalaya" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+        <img src="/images/meghalaya.webp" alt="Meghalaya" style="width:100%;height:100%;object-fit:cover" loading="lazy">
         <div style="position:absolute;inset:0;background:var(--gradient-visual-overlay)"></div>
         <div style="position:absolute;bottom:14px;left:14px;right:14px">
           <p class="font-primary fs-9 fw-medium uppercase ls-1 text-muted" style="margin-bottom:4px">Raw Ecotourism</p>

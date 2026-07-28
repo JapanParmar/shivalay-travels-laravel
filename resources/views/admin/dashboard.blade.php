@@ -1,96 +1,106 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard')
+@section('title', 'Owner Dashboard')
 
-@section('page_title', 'Dashboard')
+@section('page_title', 'Owner Dashboard')
 @section('page_subtitle')
-    Here's what's happening at Shivalay Travels today.
+    Real-time monitoring of ticket transits, property bookings, and sacred temple yatras.
 @endsection
 
 @section('content')
+    @php
+        // Pending action counts
+        $pendingBookings = count(array_filter($bookings, function($b) { return ($b['status'] ?? '') === 'pending'; }));
+        $pendingInquiries = count(array_filter($inquiries, function($i) { return ($i['status'] ?? '') === 'pending'; }));
+        $totalPending = $pendingBookings + $pendingInquiries;
+
+        // Revenue intake (Confirmed/completed transits)
+        $revenue = collect($bookings)->where('status', '!=', 'cancelled')->sum('amount');
+        $fmtRevenue = $revenue >= 100000 
+            ? '₹' . number_format($revenue / 100000, 2) . ' Lakh'
+            : ($revenue >= 1000 ? '₹' . number_format($revenue / 1000, 0) . 'K' : '₹' . $revenue);
+
+        // Lodging & Yatra inquiries pipeline
+        $totalInq = count($inquiries);
+        $confirmedInq = count(array_filter($inquiries, function($i) { return in_array($i['status'] ?? '', ['confirmed', 'completed']); }));
+        $confirmedBkg = count(array_filter($bookings, function($b) { return in_array($b['status'] ?? '', ['confirmed', 'completed']); }));
+
+        // Conversion success rates
+        $totalRequests = count($bookings) + $totalInq;
+        $totalSuccess = $confirmedBkg + $confirmedInq;
+        $successRate = $totalRequests ? round(($totalSuccess / $totalRequests) * 100) : 0;
+    @endphp
+
     <!-- Statistics Grid -->
     <div class="stats-grid-4">
-        <div class="stat-card" style="border-color: rgba(255,0,0,0.2);">
-            <div class="stat-card-top">
-                <div class="stat-icon" style="background: rgba(255,0,0,0.12); color: #ff0000;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg>
-                </div>
-                <div class="stat-trend positive">
-                    ↑ 12%
-                </div>
-            </div>
-            <div class="stat-value">{{ count($bookings) }}</div>
-            <div class="stat-label">Total Bookings</div>
-            @php
-                $pendingCount = count(array_filter($bookings, function($b) { return ($b['status'] ?? '') === 'pending'; }));
-            @endphp
-            <div class="stat-sub">{{ $pendingCount }} pending</div>
-        </div>
-
+        <!-- Revenue Card -->
         <div class="stat-card" style="border-color: rgba(34,197,94,0.2);">
             <div class="stat-card-top">
                 <div class="stat-icon" style="background: rgba(34,197,94,0.12); color: #22c55e;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
                 </div>
                 <div class="stat-trend positive">
-                    ↑ 8.3%
+                    Live
                 </div>
             </div>
-            @php
-                $revenue = collect($bookings)->where('status', '!=', 'cancelled')->sum('amount');
-                $fmtRevenue = $revenue >= 100000 
-                    ? '₹' . number_format($revenue / 100000, 1) . 'L'
-                    : ($revenue >= 1000 ? '₹' . number_format($revenue / 1000, 0) . 'K' : '₹' . $revenue);
-            @endphp
-            <div class="stat-value">{{ $fmtRevenue }}</div>
-            <div class="stat-label">Monthly Revenue</div>
-            <div class="stat-sub">July 2026</div>
+            <div class="stat-value" style="color: #22c55e;">{{ $fmtRevenue }}</div>
+            <div class="stat-label">Gross Transit Revenue</div>
+            <div class="stat-sub">Excluding property quotes</div>
         </div>
 
-        <div class="stat-card" style="border-color: rgba(59,130,246,0.2);">
+        <!-- Follow-ups Card -->
+        <div class="stat-card" style="border-color: rgba(255,0,0,0.2);">
             <div class="stat-card-top">
-                <div class="stat-icon" style="background: rgba(59,130,246,0.12); color: #3b82f6;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
+                <div class="stat-icon" style="background: rgba(255,0,0,0.12); color: #ff0000;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg>
                 </div>
-                <div class="stat-trend positive">
-                    ↑ 15%
+                <div class="stat-trend {{ $totalPending > 0 ? 'negative' : 'positive' }}">
+                    {{ $totalPending > 0 ? 'Urgent' : 'Clear' }}
                 </div>
             </div>
-            @php
-                $totalCustomers = count(array_unique(array_column($bookings, 'customerPhone')));
-                $newCustomers = max(1, round($totalCustomers * 0.2));
-            @endphp
-            <div class="stat-value">{{ $totalCustomers }}</div>
-            <div class="stat-label">Total Customers</div>
-            <div class="stat-sub">+{{ $newCustomers }} new this month</div>
+            <div class="stat-value" style="color: #ff3333;">{{ $totalPending }}</div>
+            <div class="stat-label">Pending Follow-ups</div>
+            <div class="stat-sub">{{ $pendingBookings }} transits · {{ $pendingInquiries }} properties</div>
         </div>
 
+        <!-- Property Inquiries Card -->
         <div class="stat-card" style="border-color: rgba(245,158,11,0.2);">
             <div class="stat-card-top">
                 <div class="stat-icon" style="background: rgba(245,158,11,0.12); color: #f59e0b;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 </div>
-                <div class="stat-trend positive">
-                    ↑ 2.6%
+                <div class="stat-trend positive" style="background: rgba(245,158,11,0.1); color: #f59e0b;">
+                    Inquiries
                 </div>
             </div>
-            @php
-                $cancelledCount = count(array_filter($bookings, function($b) { return ($b['status'] ?? '') === 'cancelled'; }));
-                $cancelledRate = count($bookings) ? round(($cancelledCount / count($bookings)) * 100) : 0;
-            @endphp
-            <div class="stat-value">{{ $cancelledRate }}%</div>
-            <div class="stat-label">Cancellation Rate</div>
-            <div class="stat-sub">vs 6.8% last month</div>
+            <div class="stat-value" style="color: #f59e0b;">{{ $totalInq }}</div>
+            <div class="stat-label">Yatras &amp; Stays Pipeline</div>
+            <div class="stat-sub">{{ $confirmedInq }} bookings converted</div>
+        </div>
+
+        <!-- Success Conversion Card -->
+        <div class="stat-card" style="border-color: rgba(59,130,246,0.2);">
+            <div class="stat-card-top">
+                <div class="stat-icon" style="background: rgba(59,130,246,0.12); color: #3b82f6;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M22 4L12 14.01l-3-3" /></svg>
+                </div>
+                <div class="stat-trend positive">
+                    ↑ 4.2%
+                </div>
+            </div>
+            <div class="stat-value" style="color: #3b82f6;">{{ $successRate }}%</div>
+            <div class="stat-label">Combined Conversion</div>
+            <div class="stat-sub">Target conversion: 80%</div>
         </div>
     </div>
 
     <!-- Charts and Breakdown -->
-    <div class="dashboard-row-2" style="margin-bottom: 32px;">
+    <div class="dashboard-row-2" style="margin-bottom: 24px;">
         <div class="dash-card">
             <div class="dash-card-header">
                 <div>
-                    <h3 class="dash-card-title">Daily Estimated Bookings Value</h3>
-                    <p class="dash-card-sub">Daily bookings revenue overview</p>
+                    <h3 class="dash-card-title">Estimated Transit Intake Trend (₹)</h3>
+                    <p class="dash-card-sub">Daily ticketing volumes</p>
                 </div>
             </div>
             <div style="height: 240px; position: relative;">
@@ -99,10 +109,11 @@
         </div>
         <div class="dash-card" style="display: flex; flex-direction: column;">
             <div class="dash-card-header">
-                <h3 class="dash-card-title">Travel Types Breakdown</h3>
+                <h3 class="dash-card-title">Core Business Split</h3>
+                <p class="dash-card-sub">Ticketing vs Lodging vs Yatras</p>
             </div>
             <div style="height: 180px; position: relative; margin-bottom: 12px;">
-                <canvas id="typeChart"></canvas>
+                <canvas id="bizSplitChart"></canvas>
             </div>
             @php
                 $role = session('admin_role', 'viewer');
@@ -124,62 +135,147 @@
         </div>
     </div>
 
-    <!-- Recent Bookings Table -->
-    <div class="table-container">
-        <div class="table-header">
-            <h3 class="table-title">Recent Travel Bookings</h3>
-            <a href="/admin/bookings" class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;">View All Bookings</a>
-        </div>
-        <table class="admin-table">
-            <thead>
-                <tr>
-                    <th>Booking ID</th>
-                    <th>Customer Details</th>
-                    <th>Departure / Destination</th>
-                    <th>Type</th>
-                    <th>Travel Date</th>
-                    <th>Estimated Amount</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse(array_slice($bookings, 0, 5) as $b)
+    <!-- Dual Action Tables Grid -->
+    <div class="dashboard-tables-grid" style="margin-bottom: 32px;">
+        <!-- Left Column: Recent Lodging & Tour Inquiries -->
+        <div class="table-container">
+            <div class="table-header">
+                <div>
+                    <h3 class="table-title" style="display: flex; align-items: center; gap: 6px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: #ff0000; flex-shrink: 0;"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M8 6h2M8 10h2M14 6h2M14 10h2"/></svg>
+                        Lodging &amp; Yatra Inquiries
+                    </h3>
+                    <p style="font-size: 11px; color: #555; margin-top: 2px;">Property and custom pilgrimage requests</p>
+                </div>
+                <a href="/admin/inquiries" class="btn-link">View All</a>
+            </div>
+            <table class="admin-table">
+                <thead>
                     <tr>
-                        <td><span class="booking-id">{{ $b['id'] }}</span></td>
-                        <td>
-                            <div class="customer-cell">
-                                <div class="customer-avatar">{{ substr($b['customerName'] ?? 'A', 0, 1) }}</div>
-                                <div>
-                                    <div class="customer-name">{{ $b['customerName'] }}</div>
-                                    <div class="customer-phone">{{ $b['customerPhone'] }}</div>
+                        <th>Customer</th>
+                        <th>Destinations / Lodging</th>
+                        <th>Status</th>
+                        <th style="text-align: right;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse(array_slice($inquiries, 0, 5) as $i)
+                        @php
+                            // Clean phone number for WhatsApp
+                            $cleanPhone = preg_replace('/[^0-9]/', '', $i['customerPhone'] ?? '');
+                            if (strlen($cleanPhone) === 10) {
+                                $cleanPhone = '91' . $cleanPhone;
+                            }
+                            $waMessage = rawurlencode("Hello " . ($i['customerName'] ?? 'Guest') . ", this is Shivalay Travels. We received your inquiry for " . ($i['destinations'] ?? 'your trip') . ". How can we assist you today?");
+                            $waUrl = "https://wa.me/{$cleanPhone}?text={$waMessage}";
+                        @endphp
+                        <tr>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar">{{ substr($i['customerName'] ?? 'G', 0, 1) }}</div>
+                                    <div>
+                                        <div class="customer-name">{{ $i['customerName'] }}</div>
+                                        <div class="customer-phone">{{ $i['customerPhone'] }}</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td class="route-cell">{{ $b['fromCity'] }} → {{ $b['toCity'] }}</td>
-                        <td>
-                            <span class="type-pill">
-                                @if($b['travelType'] == 'flight') ✈️ Flight
-                                @elseif($b['travelType'] == 'train') 🚆 Train
-                                @elseif($b['travelType'] == 'bus') 🚌 Bus
-                                @else 🚢 Cruise
-                                @endif
-                            </span>
-                        </td>
-                        <td class="date-cell">{{ date('d M Y', strtotime($b['date'])) }}</td>
-                        <td class="amount-cell">₹{{ number_format($b['amount']) }}</td>
-                        <td>
-                            <span class="status-pill status-{{ $b['status'] }}">
-                                {{ $b['status'] }}
-                            </span>
-                        </td>
-                    </tr>
-                @empty
+                            </td>
+                            <td>
+                                <div style="font-size: 12px; color: #ccc; font-weight: 500;">
+                                    {{ Str::limit($i['destinations'] ?? 'Custom Package', 25) }}
+                                </div>
+                                <div style="font-size: 10px; color: #555; margin-top: 2px;">
+                                    {{ $i['accommodation'] ?? 'Standard' }} · {{ $i['travelers'] ?? 1 }} Pax
+                                </div>
+                            </td>
+                            <td>
+                                <span class="status-pill status-{{ $i['status'] ?? 'pending' }}" style="font-size: 10px; padding: 2px 6px;">
+                                    {{ $i['status'] ?? 'pending' }}
+                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <a href="{{ $waUrl }}" target="_blank" class="wa-btn">
+                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="margin-right:2px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                    Chat
+                                </a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" style="text-align: center; color: var(--color-muted); padding: 40px; font-size: 13px;">No inquiries found.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Right Column: Recent Transit Bookings -->
+        <div class="table-container">
+            <div class="table-header">
+                <div>
+                    <h3 class="table-title" style="display: flex; align-items: center; gap: 6px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: #ff0000; flex-shrink: 0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg>
+                        Transit Bookings
+                    </h3>
+                    <p style="font-size: 11px; color: #555; margin-top: 2px;">Flight, train, bus &amp; cruise transits</p>
+                </div>
+                <a href="/admin/bookings" class="btn-link">View All</a>
+            </div>
+            <table class="admin-table">
+                <thead>
                     <tr>
-                        <td colspan="7" style="text-align: center; color: var(--color-muted); padding: 40px;">No bookings found.</td>
+                        <th>Customer</th>
+                        <th>Route &amp; Transit</th>
+                        <th>Amount</th>
+                        <th>Status</th>
                     </tr>
-                @endforelse
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @forelse(array_slice($bookings, 0, 5) as $b)
+                        <tr>
+                            <td>
+                                <div class="customer-cell">
+                                    <div class="customer-avatar">{{ substr($b['customerName'] ?? 'B', 0, 1) }}</div>
+                                    <div>
+                                        <div class="customer-name">{{ $b['customerName'] }}</div>
+                                        <div class="customer-phone">{{ $b['customerPhone'] }}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="font-size: 12px; color: #ccc; font-weight: 500;">
+                                    {{ $b['fromCity'] }} → {{ $b['toCity'] }}
+                                </div>
+                                <div style="font-size: 10px; color: #555; margin-top: 2px;">
+                                    @if($b['travelType'] == 'flight')
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align: middle; margin-right: 2px; color: #3b82f6;"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4Z"/></svg> Flight
+                                    @elseif($b['travelType'] == 'train')
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align: middle; margin-right: 2px; color: #a855f7;"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16M12 3v8M8 19l-2 3M16 19l2 3"/></svg> Train
+                                    @elseif($b['travelType'] == 'bus')
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align: middle; margin-right: 2px; color: #f59e0b;"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M4 10h16M8 16h8M6 20h2M16 20h2"/></svg> Bus
+                                    @else
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align: middle; margin-right: 2px; color: #06b6d4;"><path d="M2 21h20M19.3 14.8C21.1 13.5 22 12.1 22 10.8c0-2-2.5-3.3-6.5-3.3-3 0-5.5.8-8 1.8L3 6v9.8c0 1 1 1.7 2.2 1.7L12 17.5l7.3-2.7z"/></svg> Cruise
+                                    @endif
+                                </div>
+                            </td>
+                            <td>
+                                <span style="font-weight: 600; color: #22c55e; font-size: 12px;">
+                                    ₹{{ number_format($b['amount']) }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="status-pill status-{{ $b['status'] }}" style="font-size: 10px; padding: 2px 6px;">
+                                    {{ $b['status'] }}
+                                </span>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" style="text-align: center; color: var(--color-muted); padding: 40px; font-size: 13px;">No bookings found.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection
 
@@ -187,6 +283,7 @@
     <script>
         // Prepare Revenue Chart Data
         const bookings = @json($bookings);
+        const inquiries = @json($inquiries);
         const revenueMap = {};
         
         // Sum up amounts per date
@@ -233,22 +330,30 @@
             }
         });
 
-        // Prepare Type distribution
-        const typeMap = { flight: 0, train: 0, bus: 0, cruise: 0 };
+        // Core business split calculation (Ticketing vs Lodging vs Yatras/Tours)
+        const bizSplitMap = { Ticketing: 0, Lodging: 0, Tours: 0 };
         bookings.forEach(b => {
-            if (typeMap[b.travelType] !== undefined) {
-                typeMap[b.travelType]++;
+            bizSplitMap.Ticketing++;
+        });
+
+        inquiries.forEach(inq => {
+            const acc = (inq.accommodation || '').toLowerCase();
+            const dest = (inq.destinations || '').toLowerCase();
+            if (acc.includes('hotel') || dest.includes('hotel') || acc.includes('villa') || dest.includes('villa')) {
+                bizSplitMap.Lodging++;
+            } else {
+                bizSplitMap.Tours++;
             }
         });
 
-        const ctxType = document.getElementById('typeChart').getContext('2d');
-        new Chart(ctxType, {
+        const ctxBizSplit = document.getElementById('bizSplitChart').getContext('2d');
+        new Chart(ctxBizSplit, {
             type: 'doughnut',
             data: {
-                labels: ['Flight', 'Train', 'Bus', 'Cruise'],
+                labels: ['Ticketing transits', 'Hotels & Villas', 'Pilgrimage Tours'],
                 datasets: [{
-                    data: [typeMap.flight, typeMap.train, typeMap.bus, typeMap.cruise],
-                    backgroundColor: ['#3b82f6', '#f59e0b', '#22c55e', '#8b5cf6'],
+                    data: [bizSplitMap.Ticketing, bizSplitMap.Lodging, bizSplitMap.Tours],
+                    backgroundColor: ['#3b82f6', '#a3e635', '#b8882a'],
                     borderColor: '#0c0c0c',
                     borderWidth: 2
                 }]
@@ -261,7 +366,7 @@
                         position: 'right',
                         labels: {
                             color: '#aaa',
-                            font: { size: 11 }
+                            font: { size: 10 }
                         }
                     }
                 },
@@ -295,7 +400,7 @@
     .stat-trend { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; }
     .stat-trend.positive { background: rgba(34,197,94,0.1); color: #22c55e; }
     .stat-trend.negative { background: rgba(239,68,68,0.1); color: #ef4444; }
-    .stat-value { font-size: 28px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 6px; }
+    .stat-value { font-size: 26px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 6px; }
     .stat-label { font-size: 13px; color: #666; font-weight: 500; }
     .stat-sub { font-size: 11px; color: #444; margin-top: 4px; }
 
@@ -311,27 +416,6 @@
     }
     .dash-card-title { font-size: 15px; font-weight: 700; color: #fff; }
     .dash-card-sub { font-size: 12px; color: #555; margin-top: 2px; }
-    .dash-total-badge {
-      background: rgba(255,0,0,0.08);
-      border: 1px solid rgba(255,0,0,0.2);
-      color: #ff6060;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 20px;
-    }
-    .dash-see-all { font-size: 12px; color: #ff0000; text-decoration: none; }
-    .dash-see-all:hover { color: #ff4040; }
-
-    .travel-type-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
-    .travel-type-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .travel-type-info { display: flex; align-items: center; gap: 8px; min-width: 70px; }
-    .travel-type-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .travel-type-name { font-size: 13px; color: #aaa; }
-    .travel-type-right { flex: 1; display: flex; align-items: center; gap: 10px; }
-    .travel-type-count { font-size: 13px; font-weight: 600; color: #ddd; min-width: 28px; text-align: right; }
-    .travel-type-bar-wrap { flex: 1; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; }
-    .travel-type-bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease; }
 
     .role-access-panel {
       display: flex; align-items: flex-start; gap: 10px;
@@ -345,23 +429,56 @@
     .role-access-role { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
     .role-access-desc { display: block; font-size: 11px; color: #555; margin-top: 2px; line-height: 1.5; }
 
-    .recent-bookings-table { overflow-x: auto; }
-    .booking-id { font-family: monospace; font-size: 12px; color: #ff0000; background: rgba(255,0,0,0.08); padding: 2px 8px; border-radius: 4px; }
-    .customer-cell { display: flex; align-items: center; gap: 10px; }
-    .customer-avatar { width: 30px; height: 30px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #aaa; flex-shrink: 0; }
-    .customer-name { font-size: 13px; font-weight: 600; color: #ddd; }
-    .customer-phone { font-size: 11px; color: #555; }
-    .route-cell { font-size: 12px; color: #888; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
-    .date-cell { color: #888; }
-    .amount-cell { font-weight: 600; color: #22c55e; }
-    .type-pill { font-size: 12px; color: #888; }
+    .dashboard-tables-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .table-container {
+      background: rgba(255,255,255,0.01);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .table-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .table-title { font-size: 14px; font-weight: 700; color: #fff; }
+    .btn-link { font-size: 11px; color: #ff0000; text-decoration: none; font-weight: 600; }
+    .btn-link:hover { color: #ff4040; }
+
+    .admin-table { width: 100%; border-collapse: collapse; text-align: left; }
+    .admin-table th { padding: 10px; font-size: 10px; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .admin-table td { padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 13px; color: #bbb; vertical-align: middle; }
+    .admin-table tr:hover td { background: rgba(255,255,255,0.01); }
+
+    .customer-cell { display: flex; align-items: center; gap: 8px; }
+    .customer-avatar { width: 28px; height: 28px; border-radius: 6px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #aaa; flex-shrink: 0; }
+    .customer-name { font-size: 12px; font-weight: 600; color: #ddd; }
+    .customer-phone { font-size: 10px; color: #555; margin-top: 1px; }
+
+    .wa-btn {
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.18);
+      color: #22c55e;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 11px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .wa-btn:hover {
+      background: rgba(34,197,94,0.15);
+      border-color: rgba(34,197,94,0.3);
+      color: #38a169;
+    }
 
     @media (max-width: 1100px) {
       .stats-grid-4 { grid-template-columns: repeat(2, 1fr); }
       .dashboard-row-2 { grid-template-columns: 1fr; }
+      .dashboard-tables-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
-      .stats-grid-4 { grid-template-columns: 1fr 1fr; }
+      .stats-grid-4 { grid-template-columns: 1fr; }
     }
 </style>
 @endsection

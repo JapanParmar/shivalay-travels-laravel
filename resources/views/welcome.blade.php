@@ -14,6 +14,7 @@
       window.DB_CITIES = @json($cities);
       window.DB_TESTIMONIALS = @json($testimonials);
     </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @else
@@ -189,7 +190,7 @@
       <div class="hero-right-visual reveal-scale" style="display:flex;flex-direction:column;gap:12px">
         <!-- Hero image card -->
         <div class="portfolio-tile" style="height:320px;position:relative">
-          <img src="/images/kedarnath.png" alt="Kedarnath Yatra" class="tile-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          <img src="/images/kedarnath.webp" alt="Kedarnath Yatra" class="tile-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
           <div style="position:absolute;inset:0;background:var(--gradient-visual-overlay)"></div>
           <!-- Badge -->
           <div style="position:absolute;top:14px;left:14px">
