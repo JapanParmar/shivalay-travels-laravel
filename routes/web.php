@@ -94,3 +94,22 @@ Route::middleware(AdminAuth::class)->group(function () {
     // File upload
     Route::post('/api/upload', [AdminController::class, 'uploadImage']);
 });
+
+// Temporary utility route for Render Free Tier migrations
+Route::get('/run-migrations', function() {
+    try {
+        $output = "";
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        $output .= "Migrations Run:\n" . \Illuminate\Support\Facades\Artisan::output() . "\n";
+        
+        if (request()->has('seed')) {
+            \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+            $output .= "Seeding Run:\n" . \Illuminate\Support\Facades\Artisan::output() . "\n";
+        }
+        
+        return '<pre style="background:#111;color:#eee;padding:20px;border-radius:6px;font-family:monospace;">' . $output . '</pre>';
+    } catch (\Exception $e) {
+        return '<pre style="background:#400;color:#fdd;padding:20px;border-radius:6px;font-family:monospace;">Error: ' . $e->getMessage() . "\n\nTrace:\n" . $e->getTraceAsString() . '</pre>';
+    }
+});
+
