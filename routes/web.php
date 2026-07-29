@@ -122,3 +122,24 @@ Route::get('/run-migrations', function() {
     }
 });
 
+// Diagnostic route to see what configuration is actually active
+Route::get('/debug-db', function() {
+    // Clear config cache first to get fresh environment values
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    
+    return [
+        'default_connection' => config('database.default'),
+        'pgsql_config' => [
+            'host' => config('database.connections.pgsql.host'),
+            'port' => config('database.connections.pgsql.port'),
+            'database' => config('database.connections.pgsql.database'),
+            'username' => config('database.connections.pgsql.username'),
+            'url_has_value' => !empty(config('database.connections.pgsql.url')),
+            'url_preview' => substr(config('database.connections.pgsql.url'), 0, 30) . '...',
+        ],
+        'env_DB_CONNECTION' => env('DB_CONNECTION'),
+        'env_DB_URL_exists' => !empty(env('DB_URL')),
+        'env_DATABASE_URL_exists' => !empty(env('DATABASE_URL')),
+    ];
+});
+
