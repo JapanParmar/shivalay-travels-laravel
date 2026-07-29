@@ -99,6 +99,15 @@ Route::middleware(AdminAuth::class)->group(function () {
 Route::get('/run-migrations', function() {
     try {
         $output = "";
+        
+        // Clear configuration cache so Laravel reads the fresh Render Environment variables at runtime
+        \Illuminate\Support\Facades\Artisan::call('config:clear');
+        $output .= "Config Cache Cleared: " . trim(\Illuminate\Support\Facades\Artisan::output()) . "\n";
+        
+        \Illuminate\Support\Facades\Artisan::call('cache:clear');
+        $output .= "Application Cache Cleared: " . trim(\Illuminate\Support\Facades\Artisan::output()) . "\n\n";
+        
+        // Let's run migrations
         \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
         $output .= "Migrations Run:\n" . \Illuminate\Support\Facades\Artisan::output() . "\n";
         
