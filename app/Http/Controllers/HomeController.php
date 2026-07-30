@@ -51,9 +51,12 @@ class HomeController extends Controller
 
     public function submitInquiry(Request $request)
     {
-        $captchaInput = $request->input('captchaInput');
-        if (session('captcha') !== $captchaInput) {
-            return response()->json(['error' => 'Invalid CAPTCHA code.'], 422);
+        // Bypass CAPTCHA only if it is the quick quote popup request
+        if (!$request->input('isPopup')) {
+            $captchaInput = $request->input('captchaInput');
+            if (session('captcha') !== $captchaInput) {
+                return response()->json(['error' => 'Invalid CAPTCHA code.'], 422);
+            }
         }
 
         $count = Inquiry::count();

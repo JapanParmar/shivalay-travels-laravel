@@ -209,7 +209,9 @@ class AdminController extends Controller
         $keys = [
             'businessName', 'gstNumber', 'phone', 'whatsapp', 'email', 'address',
             'defaultPassengers', 'defaultClass', 'currency', 'timezone',
-            'bookingNotifications', 'whatsappIntegration', 'autoConfirm', 'requirePhone', 'cityApi'
+            'bookingNotifications', 'whatsappIntegration', 'autoConfirm', 'requirePhone', 'cityApi',
+            'staff1_name', 'staff1_phone', 'staff1_email',
+            'staff2_name', 'staff2_phone', 'staff2_email'
         ];
 
         foreach ($keys as $key) {

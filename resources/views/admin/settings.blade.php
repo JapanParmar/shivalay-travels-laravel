@@ -114,6 +114,47 @@
                         <label class="st-lbl">GST Number</label>
                         <input name="gstNumber" class="st-input" value="{{ $settings['gstNumber'] ?? '' }}">
                     </div>
+            </div>
+
+            <!-- Footer Staff Contacts Info -->
+            <div class="st-section">
+                <div class="st-section-head">
+                    <div class="st-section-icon" style="background:rgba(255,0,0,0.08);border:1px solid rgba(255,0,0,0.2);color:#ff0000">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="st-section-title">Footer Staff Contacts</h2>
+                        <p class="st-section-sub">Manage staff contact details shown in the website footer</p>
+                    </div>
+                </div>
+                <div class="st-grid">
+                    <!-- Staff 1 -->
+                    <div class="st-field">
+                        <label class="st-lbl">Staff 1 Name</label>
+                        <input name="staff1_name" class="st-input" value="{{ $settings['staff1_name'] ?? 'Nisha Chouhan' }}">
+                    </div>
+                    <div class="st-field">
+                        <label class="st-lbl">Staff 1 Phone</label>
+                        <input name="staff1_phone" class="st-input" value="{{ $settings['staff1_phone'] ?? '+91 93409 94628' }}">
+                    </div>
+                    <div class="st-field">
+                        <label class="st-lbl">Staff 1 Email</label>
+                        <input name="staff1_email" type="email" class="st-input" value="{{ $settings['staff1_email'] ?? 'shivalaytravels@gmail.com' }}">
+                    </div>
+                    
+                    <!-- Staff 2 -->
+                    <div class="st-field">
+                        <label class="st-lbl">Staff 2 Name</label>
+                        <input name="staff2_name" class="st-input" value="{{ $settings['staff2_name'] ?? 'Manisha' }}">
+                    </div>
+                    <div class="st-field">
+                        <label class="st-lbl">Staff 2 Phone</label>
+                        <input name="staff2_phone" class="st-input" value="{{ $settings['staff2_phone'] ?? '+91 62618 53598' }}">
+                    </div>
+                    <div class="st-field">
+                        <label class="st-lbl">Staff 2 Email</label>
+                        <input name="staff2_email" type="email" class="st-input" value="{{ $settings['staff2_email'] ?? 'shivalaytravels385@gmail.com' }}">
+                    </div>
                 </div>
             </div>
 

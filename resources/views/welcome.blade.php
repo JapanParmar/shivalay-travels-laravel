@@ -43,9 +43,86 @@
         0%, 100% { transform: scale(1); opacity: 1; }
         50% { transform: scale(1.2); opacity: 0.5; }
       }
+      
+      /* Page Loader Style */
+      #page-loader {
+        position: fixed;
+        inset: 0;
+        background: #09090b; /* Zinc 950 */
+        z-index: 100000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .loader-brand-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      .loader-logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: var(--color-highlighter-lime);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 30px rgba(163, 230, 53, 0.35);
+        animation: loader-pulse 1.8s infinite ease-in-out;
+      }
+      .loader-text {
+        font-family: var(--font-tomorrow), sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--color-pure-white);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .loader-bar-bg {
+        width: 120px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 1px;
+        overflow: hidden;
+        margin-top: 8px;
+      }
+      .loader-bar-fill {
+        height: 100%;
+        width: 0%;
+        background: var(--color-highlighter-lime);
+        animation: loader-fill 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 0 8px var(--color-highlighter-lime);
+      }
+      @keyframes loader-pulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(163, 230, 53, 0.35); }
+        50% { transform: scale(1.08); box-shadow: 0 0 45px rgba(163, 230, 53, 0.55); }
+      }
+      @keyframes loader-fill {
+        0% { width: 0%; }
+        50% { width: 80%; }
+        100% { width: 100%; }
+      }
     </style>
 </head>
 <body>
+
+<!-- ═══════════════ PAGE LOADER ═══════════════ -->
+<div id="page-loader">
+  <div class="loader-brand-wrapper">
+    <div class="loader-logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-onyx-black)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+      </svg>
+    </div>
+    <span class="loader-text">Shivalay Travels</span>
+    <div class="loader-bar-bg">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════ NAVIGATION ═══════════════ -->
 <nav id="main-nav" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--color-onyx-black-80);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--color-zinc-hairline);transition:background 0.3s ease, transform 0.3s ease">
@@ -706,7 +783,167 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') window.pdgNav(-1);
   if (e.key === 'ArrowRight') window.pdgNav(1);
 });
+
+// ── Loader & Quote Popup Trigger ──
+document.addEventListener('DOMContentLoaded', function() {
+    // Hide Page Loader on window load
+    window.addEventListener('load', function() {
+        const loader = document.getElementById('page-loader');
+        if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.visibility = 'hidden';
+                
+                // Show Quote Popup after a small delay (2.5s) on first visit
+                if (!localStorage.getItem('shivalay_visited')) {
+                    setTimeout(function() {
+                        const popup = document.getElementById('quote-popup-modal');
+                        if (popup) {
+                            popup.style.display = 'flex';
+                        }
+                    }, 2500);
+                }
+            }, 500);
+        }
+    });
+});
+
+window.closeQuotePopup = function() {
+    const popup = document.getElementById('quote-popup-modal');
+    if (popup) {
+        popup.style.display = 'none';
+    }
+    // Set visited flag in localStorage so they don't get bothered again
+    localStorage.setItem('shivalay_visited', 'true');
+};
+
+window.submitQuotePopup = function(event) {
+    event.preventDefault();
+    const btn = document.getElementById('quote-popup-btn');
+    if (!btn) return;
+    
+    btn.disabled = true;
+    btn.innerText = 'Submitting...';
+    btn.style.opacity = '0.7';
+
+    const form = event.target;
+    const formData = {
+        customerName: form.name.value,
+        customerPhone: form.phone.value,
+        customerEmail: form.email.value,
+        destinations: form.destination.value,
+        notes: 'Departure City: ' + form.departure_city.value,
+        isPopup: true
+    };
+
+    fetch('/api/admin/inquiries', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Submission failed');
+        }
+        return response.json();
+    })
+    .then(data => {
+        btn.innerText = 'Submitted Successfully!';
+        btn.style.background = '#22c55e'; // Success green
+        localStorage.setItem('shivalay_visited', 'true');
+        setTimeout(() => {
+            window.closeQuotePopup();
+        }, 1500);
+    })
+    .catch(error => {
+        console.error('Error submitting quote:', error);
+        btn.disabled = false;
+        btn.innerText = 'Submit';
+        btn.style.opacity = '1';
+        alert('Something went wrong. Please try again.');
+    });
+};
 </script>
+
+<!-- ═══════════════ FIRST VISIT QUOTE POPUP MODAL ═══════════════ -->
+<div id="quote-popup-modal" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:99999;display:none;align-items:center;justify-content:center">
+    <div style="background:rgba(20,20,22,0.96);border:1px solid rgba(255,255,255,0.08);color:#ffffff;width:92%;max-width:480px;border-radius:24px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);position:relative;animation:quoteSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)">
+        <!-- Close Button -->
+        <button onclick="window.closeQuotePopup()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#ffffff;cursor:pointer;z-index:10;font-size:18px;font-weight:bold;line-height:1;transition:all 0.2s" onmouseenter="this.style.background='rgba(255,0,0,0.2)';this.style.borderColor='rgba(255,0,0,0.4)'" onmouseleave="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.1)'">
+          ×
+        </button>
+        
+        <!-- Header -->
+        <div style="background:linear-gradient(135deg, #18181b, #09090b);padding:32px 24px 20px;position:relative;border-bottom:2px solid #ff0000;border-top-left-radius:24px;border-top-right-radius:24px">
+            <!-- Icon -->
+            <div style="position:absolute;top:1px;left:24px;width:40px;height:40px;background:#ff0000;border:3px solid #09090b;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 15px rgba(255,0,0,0.45)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+                </svg>
+            </div>
+            
+            <h3 style="font-family:'DM Sans', sans-serif;font-size:22px;font-weight:700;color:#ffffff;margin:10px 0 6px">Get a quote</h3>
+            <p style="font-family:'DM Sans', sans-serif;font-size:12px;color:rgba(255,255,255,0.6);margin:0;line-height:1.4">Please share your details below and our holiday expert will get in touch with you.</p>
+        </div>
+        
+        <!-- Form -->
+        <form id="quote-popup-form" onsubmit="window.submitQuotePopup(event)" style="padding:24px;display:flex;flex-direction:column;gap:16px">
+            <!-- Destination & Departure -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div>
+                    <label style="display:block;font-size:10px;font-weight:700;color:#888888;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Destination <span style="color:#ff0000">*</span></label>
+                    <input type="text" name="destination" placeholder="India" required style="width:100%;padding:10px 14px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;font-size:13px;outline:none;background:rgba(255,255,255,0.03);color:#ffffff;transition:all 0.2s" onfocus="this.style.borderColor='#ff0000';this.style.background='rgba(255,255,255,0.06)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)'">
+                </div>
+                <div>
+                    <label style="display:block;font-size:10px;font-weight:700;color:#888888;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Departure City <span style="color:#ff0000">*</span></label>
+                    <input type="text" name="departure_city" placeholder="New Delhi" required style="width:100%;padding:10px 14px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;font-size:13px;outline:none;background:rgba(255,255,255,0.03);color:#ffffff;transition:all 0.2s" onfocus="this.style.borderColor='#ff0000';this.style.background='rgba(255,255,255,0.06)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)'">
+                </div>
+            </div>
+            
+            <!-- Name & Phone -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div>
+                    <label style="display:block;font-size:10px;font-weight:700;color:#888888;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Name <span style="color:#ff0000">*</span></label>
+                    <input type="text" name="name" placeholder="Name" required style="width:100%;padding:10px 14px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;font-size:13px;outline:none;background:rgba(255,255,255,0.03);color:#ffffff;transition:all 0.2s" onfocus="this.style.borderColor='#ff0000';this.style.background='rgba(255,255,255,0.06)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)'">
+                </div>
+                <div>
+                    <label style="display:block;font-size:10px;font-weight:700;color:#888888;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Phone <span style="color:#ff0000">*</span></label>
+                    <input type="tel" name="phone" placeholder="Phone Number" required style="width:100%;padding:10px 14px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;font-size:13px;outline:none;background:rgba(255,255,255,0.03);color:#ffffff;transition:all 0.2s" onfocus="this.style.borderColor='#ff0000';this.style.background='rgba(255,255,255,0.06)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)'">
+                </div>
+            </div>
+            
+            <!-- Email -->
+            <div>
+                <label style="display:block;font-size:10px;font-weight:700;color:#888888;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Email ID <span style="color:#ff0000">*</span></label>
+                <input type="email" name="email" placeholder="Email" required style="width:100%;padding:10px 14px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;font-size:13px;outline:none;background:rgba(255,255,255,0.03);color:#ffffff;transition:all 0.2s" onfocus="this.style.borderColor='#ff0000';this.style.background='rgba(255,255,255,0.06)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)'">
+            </div>
+            
+            <!-- Submit -->
+            <div style="margin-top:4px">
+                <button type="submit" id="quote-popup-btn" style="background:#ff0000;color:#000000;border:none;padding:12px 32px;border-radius:30px;font-family:'DM Sans', sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 0 15px rgba(255,0,0,0.3)" onmouseenter="this.style.boxShadow='0 0 25px rgba(255,0,0,0.5)';this.style.transform='scale(1.02)'" onmouseleave="this.style.boxShadow='0 0 15px rgba(255,0,0,0.3)';this.style.transform='scale(1)'">
+                    Submit
+                </button>
+            </div>
+            
+            <!-- Footer Highlights -->
+            <div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:16px;margin-top:6px;display:flex;justify-content:space-between;font-size:9px;color:#666666;font-weight:700;text-transform:uppercase;letter-spacing:0.8px">
+                <span>1200+ Travel Experts</span>
+                <span>40 Lac+ Travellers</span>
+                <span>65+ Destinations</span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+@keyframes quoteSlideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+</style>
 
 </body>
 </html>

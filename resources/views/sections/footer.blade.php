@@ -42,20 +42,40 @@
         <div>
           <p class="font-primary text-xs fw-medium uppercase ls-08 text-muted" style="margin-bottom:16px">Services</p>
           <div style="display:flex;flex-direction:column;gap:10px">
-            <a href="#tickets" onclick="smoothScroll('tickets'); return false;" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Flight Booking</a>
             <a href="#tickets" onclick="smoothScroll('tickets'); return false;" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Bus Booking</a>
-            <a href="#tickets" onclick="smoothScroll('tickets'); return false;" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Train Booking</a>
-            <a href="#planner" onclick="smoothScroll('planner'); return false;" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Hotel Stays</a>
+            <a href="#tickets" onclick="smoothScroll('tickets'); return false;" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Taxi Booking</a>
+            <a href="#hotels" onclick="smoothScroll('hotels'); return false;" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Hotel Stays</a>
+            <a href="#villas" onclick="smoothScroll('villas'); return false;" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Villa Stays</a>
             <a href="#planner" onclick="smoothScroll('planner'); return false;" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Customised Tour Packages</a>
           </div>
         </div>
 
         <div>
           <p class="font-primary text-xs fw-medium uppercase ls-08 text-muted" style="margin-bottom:16px">Contact Office</p>
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <a href="https://maps.google.com/?q=Indore%2C%20Madhya%20Pradesh%2C%20India" target="_blank" rel="noopener noreferrer" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Indore, Madhya Pradesh, India</a>
-            <a href="tel:+919340994628" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Phone: +91 93409 94628</a>
-            <a href="https://wa.me/919340994628" target="_blank" rel="noopener noreferrer" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">WhatsApp: +919340994628</a>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div>
+              <p class="font-primary text-xs fw-semibold" style="color:var(--color-pure-white);margin:0 0 4px">{{ $settings['staff1_name'] ?? 'Nisha Chouhan' }}</p>
+              @php
+                $staff1Phone = $settings['staff1_phone'] ?? '+91 93409 94628';
+                $staff1CleanPhone = preg_replace('/[^0-9+]/', '', $staff1Phone);
+                $staff1Email = $settings['staff1_email'] ?? 'shivalaytravels385@gmail.com';
+              @endphp
+              <a href="tel:{{ $staff1CleanPhone }}" class="text-link-sm" style="display:block;margin-bottom:2px" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Phone: {{ $staff1Phone }}</a>
+              <a href="mailto:{{ $staff1Email }}" class="text-link-sm" style="font-size:11px" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">{{ $staff1Email }}</a>
+            </div>
+            <div>
+              <p class="font-primary text-xs fw-semibold" style="color:var(--color-pure-white);margin:0 0 4px">{{ $settings['staff2_name'] ?? 'Manisha' }}</p>
+              @php
+                $staff2Phone = $settings['staff2_phone'] ?? '+91 62618 53598';
+                $staff2CleanPhone = preg_replace('/[^0-9+]/', '', $staff2Phone);
+                $staff2Email = $settings['staff2_email'] ?? 'shivalaytravels385@gmail.com';
+              @endphp
+              <a href="tel:{{ $staff2CleanPhone }}" class="text-link-sm" style="display:block;margin-bottom:2px" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Phone: {{ $staff2Phone }}</a>
+              <a href="mailto:{{ $staff2Email }}" class="text-link-sm" style="font-size:11px" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">{{ $staff2Email }}</a>
+            </div>
+            <div style="margin-top:4px">
+              <a href="https://maps.google.com/?q=Indore%2C%20Madhya%20Pradesh%2C%20India" target="_blank" rel="noopener noreferrer" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Indore, Madhya Pradesh, India</a>
+            </div>
           </div>
         </div>
       </div>
