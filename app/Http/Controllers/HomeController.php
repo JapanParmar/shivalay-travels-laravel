@@ -80,6 +80,60 @@ class HomeController extends Controller
             'notes' => $request->input('notes'),
         ]);
 
+        try {
+            // Send Admin Notification
+            $adminEmail = 'info@shivalaytravels.com'; 
+            $settings = $this->travelService->getSettings();
+            if (!empty($settings['email'])) {
+                $adminEmail = $settings['email'];
+            }
+
+            \Illuminate\Support\Facades\Mail::send([], [], function ($message) use ($inquiry, $adminEmail) {
+                $htmlContent = "
+                    <h2>New Inquiry Received (Ref: {$inquiry->id})</h2>
+                    <p><strong>Customer Name:</strong> {$inquiry->customerName}</p>
+                    <p><strong>Phone:</strong> {$inquiry->customerPhone}</p>
+                    <p><strong>Email:</strong> {$inquiry->customerEmail}</p>
+                    <p><strong>Destination:</strong> {$inquiry->destinations}</p>
+                    <p><strong>Duration:</strong> " . ($inquiry->duration ?? 'N/A') . "</p>
+                    <p><strong>Travelers:</strong> {$inquiry->travelers}</p>
+                    <p><strong>Budget:</strong> " . ($inquiry->budget ?? 'N/A') . "</p>
+                    <p><strong>Accommodation:</strong> " . ($inquiry->accommodation ?? 'N/A') . "</p>
+                    <p><strong>Notes:</strong> " . ($inquiry->notes ?? 'None') . "</p>
+                    <p>Please check the admin panel for details.</p>
+                ";
+                $message->to($adminEmail)
+                    ->subject("New Trip Inquiry from {$inquiry->customerName} [{$inquiry->id}]")
+                    ->html($htmlContent);
+            });
+
+            // Send Customer Confirmation
+            if (!empty($inquiry->customerEmail) && filter_var($inquiry->customerEmail, FILTER_VALIDATE_EMAIL)) {
+                \Illuminate\Support\Facades\Mail::send([], [], function ($message) use ($inquiry) {
+                    $htmlContent = "
+                        <div style=\"font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;\">
+                            <h2 style=\"color: #ff0000;\">Thank you for choosing Shivalay Travels!</h2>
+                            <p>Dear {$inquiry->customerName},</p>
+                            <p>We have successfully received your inquiry for <strong>{$inquiry->destinations}</strong>. Our holiday expert will get in touch with you shortly on your phone number ({$inquiry->customerPhone}) to plan your perfect trip.</p>
+                            <hr style=\"border: none; border-top: 1px solid #eee;\">
+                            <h3>Inquiry Summary [Ref: {$inquiry->id}]</h3>
+                            <p><strong>Destination:</strong> {$inquiry->destinations}</p>
+                            <p><strong>Travelers:</strong> {$inquiry->travelers}</p>
+                            <p><strong>Notes:</strong> " . ($inquiry->notes ?? 'None') . "</p>
+                            <hr style=\"border: none; border-top: 1px solid #eee;\">
+                            <p style=\"font-size: 12px; color: #777;\">This is an automated confirmation of your request. Please do not reply directly to this email.</p>
+                            <p style=\"font-size: 14px; font-weight: bold; color: #ff0000;\">Shivalay Travels</p>
+                        </div>
+                    ";
+                    $message->to($inquiry->customerEmail)
+                        ->subject("Inquiry Confirmed - Shivalay Travels [{$inquiry->id}]")
+                        ->html($htmlContent);
+                });
+            }
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error("Failed to send inquiry email: " . $e->getMessage());
+        }
+
         $this->travelService->syncToFallback();
 
         return response()->json($inquiry);
