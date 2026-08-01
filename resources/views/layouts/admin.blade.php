@@ -817,6 +817,14 @@ try {
                     </span>
                     <span class="sidebar-nav-text">Villas</span>
                 </a>
+                <a href="/admin/testimonials" class="sidebar-nav-item {{ Request::is('admin/testimonials*') ? 'active' : '' }}">
+                    <span class="sidebar-nav-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-text">Testimonials</span>
+                </a>
                 @endif
 
                 @if($currentPerms['canManageUsers'])

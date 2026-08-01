@@ -92,6 +92,10 @@ Route::middleware(AdminAuth::class)->group(function () {
     Route::post('/admin/villas', [AdminController::class, 'storeVilla']);
     Route::get('/admin/villas/delete/{id}', [AdminController::class, 'deleteVilla']);
 
+    Route::get('/admin/testimonials', [AdminController::class, 'testimonials']);
+    Route::post('/admin/testimonials', [AdminController::class, 'storeTestimonial']);
+    Route::get('/admin/testimonials/delete/{id}', [AdminController::class, 'deleteTestimonial']);
+
     // JSON API endpoints for admin UI
     Route::get('/api/admin/bookings', [AdminController::class, 'apiGetBookings']);
     Route::get('/api/admin/inquiries', [AdminController::class, 'apiGetInquiries']);

@@ -13,6 +13,7 @@ use App\Models\Package;
 use App\Models\Guide;
 use App\Models\Hotel;
 use App\Models\Villa;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -685,6 +686,75 @@ class AdminController extends Controller
         $this->travelService->syncToFallback();
 
         return redirect('/admin/villas')->with('success', 'Villa deleted successfully!');
+    }
+
+    public function testimonials()
+    {
+        $role = session('admin_role', 'viewer');
+        if ($role !== 'super_admin' && $role !== 'manager') { return abort(403, 'Access Restricted'); }
+
+        return view('admin.testimonials', [
+            'testimonials' => Testimonial::all()->toArray(),
+        ]);
+    }
+
+    public function storeTestimonial(Request $request)
+    {
+        $role = session('admin_role', 'viewer');
+        if ($role !== 'super_admin' && $role !== 'manager') { return abort(403, 'Access Restricted'); }
+
+        $request->validate([
+            'name' => 'required|string|min:2|max:150',
+            'location' => 'nullable|string|max:150',
+            'trip' => 'nullable|string|max:150',
+            'rating' => 'required|integer|min:1|max:5',
+            'avatar' => 'nullable|string|max:10',
+            'quote' => 'required|string|min:10',
+            'image' => 'nullable|string',
+            'clientImage' => 'nullable|string',
+        ]);
+
+        $editingId = $request->input('editing_id');
+
+        $testimonialData = [
+            'name' => $request->input('name'),
+            'location' => $request->input('location'),
+            'trip' => $request->input('trip'),
+            'rating' => (int)$request->input('rating', 5),
+            'avatar' => $request->input('avatar'),
+            'quote' => $request->input('quote'),
+            'image' => $request->input('image', '/images/chardham.webp'),
+            'clientImage' => $request->input('clientImage'),
+        ];
+
+        if (empty($testimonialData['avatar'])) {
+            $parts = explode(' ', $testimonialData['name']);
+            $testimonialData['avatar'] = strtoupper(substr($parts[0] ?? 'A', 0, 1) . substr($parts[1] ?? ($parts[0] ?? 'A'), 0, 1));
+        }
+
+        if ($editingId) {
+            $testimonial = Testimonial::findOrFail($editingId);
+            $testimonial->update($testimonialData);
+        } else {
+            Testimonial::create($testimonialData);
+        }
+
+        $this->travelService->syncToFallback();
+
+        return redirect('/admin/testimonials')->with('success', 'Testimonial saved successfully!');
+    }
+
+    public function deleteTestimonial($id)
+    {
+        $role = session('admin_role', 'viewer');
+        if ($role !== 'super_admin' && $role !== 'manager') { return abort(403, 'Access Restricted'); }
+
+        $testimonial = Testimonial::findOrFail($id);
+        $testimonial->delete();
+
+        $this->travelService->syncToFallback();
+
+        return redirect('/admin/testimonials')->with('success', 'Testimonial deleted successfully!');
     }
 
     public function uploadImage(Request $request)
