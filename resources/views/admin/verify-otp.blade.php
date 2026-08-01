@@ -249,7 +249,17 @@
             <button type="submit" class="login-submit">Verify & Login</button>
         </form>
 
-        <a href="/admin/login" class="login-back-link">← Cancel and Back</a>
+        <div style="margin-top: 24px; text-align: center; font-size: 13px; color: #555;">
+            Didn't receive the email? 
+            <form method="POST" action="/admin/resend-verify-otp" style="display: inline;">
+                @csrf
+                <button type="submit" style="background: none; border: none; color: #ff0000; font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0; font-family: inherit; font-size: inherit; outline: none;">
+                    Resend Code
+                </button>
+            </form>
+        </div>
+
+        <a href="/admin/login" class="login-back-link" style="margin-top: 16px;">← Cancel and Back</a>
     </div>
 
 </body>

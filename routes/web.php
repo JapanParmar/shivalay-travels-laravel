@@ -32,6 +32,7 @@ Route::get('/admin/logout', [AdminAuthController::class, 'logout']);
 
 Route::get('/admin/verify-otp', [AdminAuthController::class, 'showVerifyOtp']);
 Route::post('/admin/verify-otp', [AdminAuthController::class, 'verifyOtp']);
+Route::post('/admin/resend-verify-otp', [AdminAuthController::class, 'resendVerifyOtp']);
 Route::get('/admin/forgot-password', [AdminAuthController::class, 'showForgotPassword']);
 Route::post('/admin/forgot-password', [AdminAuthController::class, 'forgotPassword']);
 Route::get('/admin/reset-password', [AdminAuthController::class, 'showResetPassword']);

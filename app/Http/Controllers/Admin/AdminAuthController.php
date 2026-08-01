@@ -203,6 +203,7 @@ class AdminAuthController extends Controller
         // Reset password
         $user->update([
             'password' => $password,
+            'status' => 'active', // Automatically activate the user since they verified via email OTP
             'otp_code' => null,
             'otp_expires_at' => null,
             'otp_purpose' => null,
@@ -213,6 +214,61 @@ class AdminAuthController extends Controller
         session()->forget('otp_reset_email');
 
         return redirect('/admin/login')->with('success', 'Password reset successfully. You can now log in.');
+    }
+
+    public function resendVerifyOtp(Request $request)
+    {
+        if (!session()->has('otp_verify_email')) {
+            return redirect('/admin/login');
+        }
+
+        $email = session('otp_verify_email');
+        $user = AdminUser::where('email', $email)->where('status', 'pending')->first();
+
+        if (!$user) {
+            return redirect('/admin/login');
+        }
+
+        // Generate a new verification OTP
+        $otp = strval(rand(100000, 999999));
+        $expiresAt = now()->addHours(24);
+
+        $user->update([
+            'otp_code' => $otp,
+            'otp_expires_at' => $expiresAt,
+            'otp_purpose' => 'verify_email',
+        ]);
+
+        $this->travelService->syncToFallback();
+
+        $settings = $this->travelService->getSettings();
+        $businessName = $settings['businessName'] ?? 'Shivalay Travels';
+
+        try {
+            \Illuminate\Support\Facades\Mail::send([], [], function ($message) use ($email, $user, $otp, $businessName) {
+                $htmlContent = "
+                    <div style=\"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;\">
+                        <h2 style=\"color: #ff0000; border-bottom: 2px solid #ff0000; padding-bottom: 10px;\">Email Verification - {$businessName}</h2>
+                        <p>Hello <strong>{$user->name}</strong>,</p>
+                        <p>A request was made to resend the verification code for your account on the <strong>{$businessName}</strong> Admin Portal.</p>
+                        <p>Please use the following OTP (One-Time Password) code to verify and activate your account:</p>
+                        <div style=\"background: #f4f4f4; padding: 15px; text-align: center; font-size: 24px; font-weight: bold; letter-spacing: 4px; color: #ff0000; border-radius: 6px; margin: 20px 0;\">
+                            {$otp}
+                        </div>
+                        <p style=\"font-size: 13px; color: #666;\">This OTP is valid for 24 hours. If you did not create an account, please ignore this email.</p>
+                        <hr style=\"border: none; border-top: 1px solid #eee; margin-top: 30px;\" />
+                        <p style=\"font-size: 14px; font-weight: bold; color: #ff0000;\">{$businessName}</p>
+                    </div>
+                ";
+                $message->to($email)
+                    ->subject("Resent Verification OTP - {$businessName}")
+                    ->html($htmlContent);
+            });
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error("Failed to resend verification OTP: " . $e->getMessage());
+        }
+
+        return redirect('/admin/verify-otp')->with('success', 'A new verification OTP has been sent to your email.');
     }
 
     public function logout()
