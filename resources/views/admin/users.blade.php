@@ -177,7 +177,7 @@ $ROLE_PERMISSIONS = [
                             @if(!$isSelf)
                                 <form action="/admin/users/status/{{ $u['id'] }}" method="POST" style="display: inline;">
                                     @csrf
-                                    <button type="submit" class="usr-status-btn {{ ($u['status'] ?? 'active') === 'active' ? 'active' : 'inactive' }}">
+                                    <button type="submit" class="usr-status-btn {{ ($u['status'] ?? 'active') === 'active' ? 'active' : (($u['status'] ?? 'active') === 'pending' ? 'pending' : 'inactive') }}">
                                         <span class="usr-status-dot"></span>
                                         {{ $u['status'] ?? 'active' }}
                                     </button>
@@ -237,6 +237,7 @@ $ROLE_PERMISSIONS = [
     .usr-role-select { background: #111; border: 1px solid rgba(255,0,0,0.3); border-radius: 6px; padding: 4px 8px; color: #fff; font-size: 12px; outline: none; cursor: pointer; font-family: 'DM Sans',sans-serif; }
     .usr-status-btn { display: flex; align-items: center; gap: 6px; background: transparent; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 4px 10px; font-size: 11px; font-weight: 600; cursor: pointer; font-family: 'DM Sans',sans-serif; text-transform: capitalize; transition: all 0.2s; }
     .usr-status-btn.active { color: #22c55e; border-color: rgba(34,197,94,0.3); background: rgba(34,197,94,0.08); }
+    .usr-status-btn.pending { color: #f59e0b; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.08); }
     .usr-status-btn.inactive { color: #ef4444; border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.08); }
     .usr-status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
     .usr-del-btn { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.15); color: #ef4444; border-radius: 6px; padding: 5px 12px; font-size: 12px; cursor: pointer; font-family: 'DM Sans',sans-serif; }

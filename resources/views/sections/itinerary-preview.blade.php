@@ -202,7 +202,7 @@
               <button class="btn-primary fs-13" style="width: 100%; justify-content: center" onclick="smoothScroll('planner')">
                 Design My Plan — Free
               </button>
-              <a href="https://wa.me/919340994628?text=Hello%20Shivalay%20Travels%2C%20I%20would%20like%20to%20consult%20about%20a%20customized%20itinerary." target="_blank" rel="noopener noreferrer" class="btn-ghost fs-13" style="text-align: center; justify-content: center">
+              <a href="https://wa.me/{{ $settings['whatsapp'] ?? '919340994628' }}?text={{ urlencode('Hello ' . ($settings['businessName'] ?? 'Shivalay Travels') . ', I would like to consult about a customized itinerary.') }}" target="_blank" rel="noopener noreferrer" class="btn-ghost fs-13" style="text-align: center; justify-content: center">
                 WhatsApp with Specialist
               </a>
             </div>

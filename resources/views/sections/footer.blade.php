@@ -16,11 +16,11 @@
           Complete travel solutions for all your pilgrimage and holiday needs.
         </p>
         <div style="display:flex;flex-direction:column;gap:8px;margin-top:20px">
-          <a href="mailto:info@shivalaytravels.com" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">
-            info@shivalaytravels.com
+          <a href="mailto:{{ $settings['email'] ?? 'info@shivalaytravels.com' }}" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">
+            {{ $settings['email'] ?? 'info@shivalaytravels.com' }}
           </a>
-          <a href="https://wa.me/919340994628" target="_blank" rel="noopener noreferrer" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">
-            WhatsApp: +919340994628
+          <a href="https://wa.me/{{ $settings['whatsapp'] ?? '919340994628' }}" target="_blank" rel="noopener noreferrer" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">
+            WhatsApp: +{{ $settings['whatsapp'] ?? '919340994628' }}
           </a>
         </div>
       </div>
@@ -74,7 +74,7 @@
               <a href="mailto:{{ $staff2Email }}" class="text-link-sm" style="font-size:11px" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">{{ $staff2Email }}</a>
             </div>
             <div style="margin-top:4px">
-              <a href="https://maps.google.com/?q=Indore%2C%20Madhya%20Pradesh%2C%20India" target="_blank" rel="noopener noreferrer" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">Indore, Madhya Pradesh, India</a>
+              <a href="https://maps.google.com/?q={{ urlencode($settings['address'] ?? 'Indore, Madhya Pradesh, India') }}" target="_blank" rel="noopener noreferrer" class="text-link-sm" onmouseenter="this.style.color='var(--color-pure-white)'" onmouseleave="this.style.color='var(--color-ash-gray)'">{{ $settings['address'] ?? 'Indore, Madhya Pradesh, India' }}</a>
             </div>
           </div>
         </div>

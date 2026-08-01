@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login — Shivalay Travels</title>
+    <title>Forgot Password — Shivalay Travels</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -122,57 +122,9 @@
 
         .login-sub {
             font-size: 14px;
-            color: #666;
+            color: #888;
             margin-bottom: 24px;
-        }
-
-        .demo-creds {
-            background: rgba(255,255,255,0.02);
-            border: 1px dashed rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 14px 16px;
-            margin-bottom: 28px;
-        }
-
-        .demo-creds-label {
-            font-size: 11px;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .demo-creds-btns {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .demo-role-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 10px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 20px;
-            color: #aaa;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .demo-role-btn:hover {
-            color: #fff;
-            background: rgba(255,255,255,0.06);
-            border-color: #ff0000;
-        }
-
-        .demo-role-dot {
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            flex-shrink: 0;
+            line-height: 1.5;
         }
 
         .login-form {
@@ -269,26 +221,10 @@
             </div>
         </div>
 
-        <h1 class="login-heading">Welcome back</h1>
-        <p class="login-sub">Sign in to access the dashboard</p>
+        <h1 class="login-heading">Forgot Password</h1>
+        <p class="login-sub">Enter your registered email address and we'll send you a 6-digit OTP code to reset your password.</p>
 
-        <!-- Demo credentials -->
-        <div class="demo-creds">
-            <span class="demo-creds-label">Quick Demo Login:</span>
-            <div class="demo-creds-btns">
-                <button type="button" class="demo-role-btn" onclick="fillDemo('admin@shivalay.in', 'admin123')">
-                    <span class="demo-role-dot" style="background: #ff0000;"></span> Super Admin
-                </button>
-                <button type="button" class="demo-role-btn" onclick="fillDemo('manager@shivalay.in', 'manager123')">
-                    <span class="demo-role-dot" style="background: #f59e0b;"></span> Manager
-                </button>
-                <button type="button" class="demo-role-btn" onclick="fillDemo('agent@shivalay.in', 'agent123')">
-                    <span class="demo-role-dot" style="background: #3b82f6;"></span> Agent
-                </button>
-            </div>
-        </div>
-
-        <form method="POST" action="/admin/login" class="login-form">
+        <form method="POST" action="/admin/forgot-password" class="login-form">
             @csrf
             @if ($errors->any())
                 <div class="login-error">
@@ -296,36 +232,16 @@
                 </div>
             @endif
 
-            @if (session('success'))
-                <div style="background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #4ade80;">
-                    {{ session('success') }}
-                </div>
-            @endif
-
             <div class="login-field">
                 <label class="login-label">Email Address</label>
-                <input id="email-field" type="email" name="email" class="login-input" placeholder="admin@shivalay.in" required>
+                <input type="email" name="email" class="login-input" placeholder="yourname@domain.com" required>
             </div>
 
-            <div class="login-field">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
-                    <label class="login-label">Password</label>
-                    <a href="/admin/forgot-password" style="font-size: 12px; color: #ff0000; text-decoration: none; font-weight: 500;" onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">Forgot Password?</a>
-                </div>
-                <input id="password-field" type="password" name="password" class="login-input" placeholder="••••••••" required>
-            </div>
-
-            <button type="submit" class="login-submit">Sign In</button>
+            <button type="submit" class="login-submit">Send OTP</button>
         </form>
 
-        <a href="/" class="login-back-link">← Back to website</a>
+        <a href="/admin/login" class="login-back-link">← Back to Login</a>
     </div>
 
-    <script>
-        function fillDemo(email, pass) {
-            document.getElementById('email-field').value = email;
-            document.getElementById('password-field').value = pass;
-        }
-    </script>
 </body>
 </html>

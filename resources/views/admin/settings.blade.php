@@ -317,6 +317,50 @@
                     </div>
                 </div>
             </div>
+
+            <!-- SEO & Analytics Configuration -->
+            <div class="st-section">
+                <div class="st-section-head">
+                    <div class="st-section-icon" style="background:rgba(255,0,0,0.08);border:1px solid rgba(255,0,0,0.2);color:#ff0000">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="st-section-title">SEO & Search Engine Optimization</h2>
+                        <p class="st-section-sub">Configure how your site appears on search engines</p>
+                    </div>
+                </div>
+                <div class="st-grid">
+                    <div class="st-field" style="grid-column: span 2;">
+                        <label class="st-lbl">SEO Meta Title</label>
+                        <input name="seo_title" class="st-input" value="{{ $settings['seo_title'] ?? '' }}" placeholder="Shivalay Travels — Instant Ticket Bookings & Sacred Temple Yatras">
+                    </div>
+                    <div class="st-field" style="grid-column: span 2;">
+                        <label class="st-lbl">SEO Meta Description</label>
+                        <textarea name="seo_description" class="st-input" style="height: 80px; resize: vertical;" placeholder="Shivalay Travels is Indore's trusted agency for instant ticket bookings. Get lowest prices on Flights, Trains, Buses & Cruises.">{{ $settings['seo_description'] ?? '' }}</textarea>
+                    </div>
+                    <div class="st-field">
+                        <label class="st-lbl">SEO Meta Keywords (comma separated)</label>
+                        <input name="seo_keywords" class="st-input" value="{{ $settings['seo_keywords'] ?? '' }}" placeholder="travel agency, indore, ticket booking, bus booking, taxi booking">
+                    </div>
+                    <div class="st-field">
+                        <label class="st-lbl">Robots Meta Tag</label>
+                        <select name="seo_robots" class="st-input">
+                            @foreach([
+                                'index, follow' => 'Index, Follow (Recommended)',
+                                'noindex, follow' => 'No Index, Follow',
+                                'index, nofollow' => 'Index, No Follow',
+                                'noindex, nofollow' => 'No Index, No Follow (Block All)'
+                            ] as $value => $label)
+                                <option value="{{ $value }}" {{ ($settings['seo_robots'] ?? 'index, follow') === $value ? 'selected' : '' }}>{{ $label }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="st-field" style="grid-column: span 2;">
+                        <label class="st-lbl">Google Analytics Measurement ID / Custom Script (Header)</label>
+                        <textarea name="google_analytics" class="st-input" style="height: 80px; font-family: monospace; font-size: 12px; resize: vertical;" placeholder="e.g. G-XXXXXX or custom tracker scripts">{{ $settings['google_analytics'] ?? '' }}</textarea>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 </div>

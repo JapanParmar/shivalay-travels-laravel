@@ -7,7 +7,9 @@
             "password": "admin123",
             "role": "super_admin",
             "avatar": "RP",
-            "status": "active"
+            "status": "active",
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
             "id": "2",
@@ -16,7 +18,9 @@
             "password": "manager123",
             "role": "manager",
             "avatar": "PS",
-            "status": "active"
+            "status": "active",
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
             "id": "3",
@@ -25,7 +29,9 @@
             "password": "agent123",
             "role": "agent",
             "avatar": "AV",
-            "status": "active"
+            "status": "active",
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
             "id": "4",
@@ -34,7 +40,9 @@
             "password": "viewer123",
             "role": "viewer",
             "avatar": "SP",
-            "status": "active"
+            "status": "active",
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
             "id": "dev-09",
@@ -43,7 +51,9 @@
             "password": "devpassshivalay",
             "role": "super_admin",
             "avatar": "DEV",
-            "status": "active"
+            "status": "active",
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         }
     ],
     "inquiries": [
@@ -59,7 +69,9 @@
             "accommodation": "2 Star Hotel",
             "status": "pending",
             "notes": "Planning family pilgrimage journey.",
-            "createdAt": "2026-07-10T18:14:18.882Z"
+            "created_at": "2026-07-10T18:14:18.000000Z",
+            "updated_at": "2026-07-10T18:14:18.000000Z",
+            "createdAt": "2026-07-10T18:14:18+00:00"
         },
         {
             "id": "INQ-002",
@@ -73,6 +85,8 @@
             "accommodation": "Boutique Resorts",
             "status": "pending",
             "notes": "Journey Planner Brief:\nWhere: Chardham Yatra\nWhen: In 2\u20133 months\nDuration: 9\u201312 nights\nWho: Small group (3\u20136)\nBudget: \u20b91.5L \u2013 \u20b93 Lakhs\nStyle: Heritage Trails & History\nStay: Boutique Resorts\nNotes: test",
+            "created_at": "2026-07-19T07:00:17.000000Z",
+            "updated_at": "2026-07-19T07:00:17.000000Z",
             "createdAt": "2026-07-19T07:00:17+00:00"
         }
     ],
@@ -86,18 +100,22 @@
             "toCity": "Mumbai (BOM)",
             "travelType": "flight",
             "date": "2026-07-15",
+            "returnDate": null,
             "passengers": 2,
             "classType": "Economy",
             "status": "confirmed",
-            "amount": 8400,
+            "amount": "8400.00",
             "agentId": "3",
-            "createdAt": "2026-07-09T08:30:00Z",
-            "notes": "Honeymoon couple, needs special meal"
+            "notes": "Honeymoon couple, needs special meal",
+            "created_at": "2026-07-09T08:30:00.000000Z",
+            "updated_at": "2026-07-09T08:30:00.000000Z",
+            "createdAt": "2026-07-09T08:30:00+00:00"
         },
         {
             "id": "SHV-002",
             "customerName": "Meera Joshi",
             "customerPhone": "+91 87654 32109",
+            "customerEmail": null,
             "fromCity": "Indore (INDB)",
             "toCity": "Delhi (NDLS)",
             "travelType": "train",
@@ -106,9 +124,12 @@
             "passengers": 1,
             "classType": "AC 2 Tier",
             "status": "pending",
-            "amount": 2800,
+            "amount": "2800.00",
             "agentId": "3",
-            "createdAt": "2026-07-09T10:00:00Z"
+            "notes": null,
+            "created_at": "2026-07-09T10:00:00.000000Z",
+            "updated_at": "2026-07-09T10:00:00.000000Z",
+            "createdAt": "2026-07-09T10:00:00+00:00"
         },
         {
             "id": "SHV-003",
@@ -123,118 +144,111 @@
             "passengers": 4,
             "classType": "Balcony Suite",
             "status": "confirmed",
-            "amount": 85000,
+            "amount": "85000.00",
             "agentId": "2",
-            "createdAt": "2026-07-08T14:00:00Z"
+            "notes": null,
+            "created_at": "2026-07-08T14:00:00.000000Z",
+            "updated_at": "2026-07-08T14:00:00.000000Z",
+            "createdAt": "2026-07-08T14:00:00+00:00"
         }
     ],
     "cities": [
         {
-            "id": "1",
+            "id": 1,
             "name": "Indore",
             "code": "IDR",
             "state": "Madhya Pradesh",
             "country": "India",
             "type": "airport",
-            "isPopular": true
+            "isPopular": true,
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
-            "id": "2",
+            "id": 2,
             "name": "Mumbai",
             "code": "BOM",
             "state": "Maharashtra",
             "country": "India",
             "type": "airport",
-            "isPopular": true
+            "isPopular": true,
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
-            "id": "3",
+            "id": 3,
             "name": "Delhi",
             "code": "DEL",
             "state": "Delhi",
             "country": "India",
             "type": "airport",
-            "isPopular": true
+            "isPopular": true,
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
-            "id": "4",
+            "id": 4,
             "name": "Bangalore",
             "code": "BLR",
             "state": "Karnataka",
             "country": "India",
             "type": "airport",
-            "isPopular": true
+            "isPopular": true,
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
-            "id": "5",
+            "id": 5,
             "name": "Varanasi",
             "code": "VNS",
             "state": "Uttar Pradesh",
             "country": "India",
             "type": "airport",
-            "isPopular": true
+            "isPopular": true,
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
-            "id": "6",
+            "id": 6,
             "name": "Goa",
             "code": "GOI",
             "state": "Goa",
             "country": "India",
             "type": "airport",
-            "isPopular": true
+            "isPopular": true,
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         }
     ],
     "settings": {
+        "address": "Indore, Madhya Pradesh, India",
+        "autoConfirm": false,
+        "bookingNotifications": true,
         "businessName": "Shivalay Travels",
+        "cityApi": "open_meteo",
+        "currency": "INR",
+        "defaultClass": "Economy",
+        "defaultPassengers": 1,
+        "email": "shivalaytravels385@gmail.com",
+        "google_analytics": null,
         "gstNumber": "GSTIN23AABCS1234F1Z5",
         "phone": "+91 93409 94628",
-        "whatsapp": "919340994628",
-        "email": "info@shivalay.in",
-        "address": "Indore, Madhya Pradesh, India",
-        "defaultPassengers": "1",
-        "defaultClass": "Economy",
-        "currency": "INR",
-        "timezone": "Asia/Kolkata",
-        "bookingNotifications": true,
-        "whatsappIntegration": false,
-        "autoConfirm": false,
         "requirePhone": true,
-        "cityApi": "open_meteo"
+        "seo_description": "Shivalay Travels is Indore's trusted agency for instant ticket bookings. Get lowest prices on Flights, Trains, Buses & Cruises.",
+        "seo_keywords": "travel agency indore, bus booking, taxi booking, hotel stays, villa stays, custom tour packages, shivalay travels",
+        "seo_robots": "index, follow",
+        "seo_title": "Shivalay Travels \u2014 Instant Ticket Bookings & Sacred Temple Yatras",
+        "staff1_email": "shivalaytravels385@gmail.com",
+        "staff1_name": "Nisha Chouhan",
+        "staff1_phone": "+91 93409 94628",
+        "staff2_email": "shivalaytravels385@gmail.com",
+        "staff2_name": "Manisha",
+        "staff2_phone": "+91 62618 53598",
+        "timezone": "Asia\/Kolkata",
+        "whatsapp": 919340994628,
+        "whatsappIntegration": true
     },
     "packages": [
-        {
-            "id": "kedarnath",
-            "name": "Kedarnath Yatra",
-            "region": "Uttarakhand",
-            "tagline": "Spiritual temple yatra with divine scenic mountain views",
-            "duration": "4\u20136 nights",
-            "groupSize": "2\u201312",
-            "difficulty": "Challenging",
-            "bestSeason": "May \u2013 Jun, Sep \u2013 Nov",
-            "startingFrom": "\u20b915,000",
-            "tags": [
-                "Spiritual",
-                "Adventure",
-                "Scenic"
-            ],
-            "highlights": [
-                "VIP Darshan at Kedarnath Temple shrine",
-                "Beautiful trek from Gaurikund to Kedarnath basecamp",
-                "Comfortable stays near the holy temple base",
-                "Scenic helicopter ride booking options"
-            ],
-            "includes": [
-                "Premium stays & hygienic food",
-                "Airport/station pickup & drop",
-                "Experienced local yatra coordinator",
-                "Helicopter booking assistance"
-            ],
-            "imagePath": "/images/kedarnath.webp",
-            "gallery": [
-                "/images/varanasi.webp",
-                "/images/chardham.webp"
-            ]
-        },
         {
             "id": "chardham",
             "name": "Chardham Yatra",
@@ -262,77 +276,13 @@
                 "Sanskrit-speaking local guide",
                 "All yatra registration permits"
             ],
-            "imagePath": "/images/chardham.webp",
+            "imagePath": "\/images\/chardham.webp",
             "gallery": [
-                "/images/kedarnath.webp",
-                "/images/varanasi.webp"
-            ]
-        },
-        {
-            "id": "varanasi",
-            "name": "Varanasi Kashi",
-            "region": "Uttar Pradesh",
-            "tagline": "Spiritual river ghats, ancient chants & silk-weaving heritage",
-            "duration": "3\u20135 nights",
-            "groupSize": "2\u20138",
-            "difficulty": "Easy",
-            "bestSeason": "Oct \u2013 Mar",
-            "startingFrom": "\u20b912,000",
-            "tags": [
-                "Spiritual",
-                "Heritage",
-                "Wellness"
+                "\/images\/kedarnath.webp",
+                "\/images\/varanasi.webp"
             ],
-            "highlights": [
-                "Private boat for Ganga Aarti ceremony at Dashashwamedh",
-                "Sunrise boat ride with live shehnai music",
-                "Guided walk through ancient alleyways & Kashi Vishwanath temple",
-                "Exclusive Banarasi silk weaving demonstration"
-            ],
-            "includes": [
-                "Boutique riverfront stays",
-                "Private spiritual guide",
-                "VIP temple darshan assistance",
-                "Private boat charters"
-            ],
-            "imagePath": "/images/varanasi.webp",
-            "gallery": [
-                "/images/hampi.webp",
-                "/images/rajasthan.webp"
-            ]
-        },
-        {
-            "id": "kashmir",
-            "name": "Kashmir Valley",
-            "region": "North India",
-            "tagline": "Misty pine valleys, wooden houseboats & peaceful shikaras",
-            "duration": "6\u20139 nights",
-            "groupSize": "2\u201312",
-            "difficulty": "Easy",
-            "bestSeason": "Mar \u2013 Oct",
-            "startingFrom": "\u20b922,000",
-            "tags": [
-                "Luxury",
-                "Scenic",
-                "Wellness"
-            ],
-            "highlights": [
-                "Stay in a hand-carved luxury houseboat",
-                "Dawn shikara ride on Dal Lake",
-                "Private saffron farm walk in Pampore",
-                "Gulmarg snow activities & gondola ride"
-            ],
-            "includes": [
-                "Premium resort properties",
-                "Private local chauffeur",
-                "All gourmet local meals",
-                "Airport pickup assistance"
-            ],
-            "imagePath": "/images/kashmir.webp",
-            "gallery": [
-                "/images/ladakh.webp",
-                "/images/meghalaya.webp"
-            ]
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
             "id": "goa",
@@ -361,44 +311,83 @@
                 "Personal travel coordinator",
                 "Sightseeing passes"
             ],
-            "imagePath": "/images/goa.webp",
+            "imagePath": "\/images\/goa.webp",
             "gallery": [
-                "/images/kerala.webp",
-                "/images/hampi.webp"
-            ]
+                "\/images\/kerala.webp",
+                "\/images\/hampi.webp"
+            ],
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
-            "id": "ladakh",
-            "name": "Leh Ladakh",
-            "region": "Himalayas",
-            "tagline": "Snow-capped monasteries, deep valleys & high mountain passes",
-            "duration": "7\u201310 nights",
-            "groupSize": "2\u20138",
-            "difficulty": "Challenging",
-            "bestSeason": "Jun \u2013 Sep",
-            "startingFrom": "\u20b935,000",
+            "id": "kashmir",
+            "name": "Kashmir Valley",
+            "region": "North India",
+            "tagline": "Misty pine valleys, wooden houseboats & peaceful shikaras",
+            "duration": "6\u20139 nights",
+            "groupSize": "2\u201312",
+            "difficulty": "Easy",
+            "bestSeason": "Mar \u2013 Oct",
+            "startingFrom": "\u20b922,000",
             "tags": [
-                "Adventure",
+                "Luxury",
                 "Scenic",
-                "Heritage"
+                "Wellness"
             ],
             "highlights": [
-                "Private sunrise at Pangong Tso Lake",
-                "Guided trek through Hemis National Park",
-                "VIP access to Thiksey Monastery prayer",
-                "Double-humped camel ride in Nubra Valley"
+                "Stay in a hand-carved luxury houseboat",
+                "Dawn shikara ride on Dal Lake",
+                "Private saffron farm walk in Pampore",
+                "Gulmarg snow activities & gondola ride"
             ],
             "includes": [
-                "Boutique camps & cottages",
-                "Private 4x4 vehicle & driver",
-                "Oxygen systems & medical backing",
-                "Expert local coordinator guide"
+                "Premium resort properties",
+                "Private local chauffeur",
+                "All gourmet local meals",
+                "Airport pickup assistance"
             ],
-            "imagePath": "/images/ladakh.webp",
+            "imagePath": "\/images\/kashmir.webp",
             "gallery": [
-                "/images/kashmir.webp",
-                "/images/meghalaya.webp"
-            ]
+                "\/images\/ladakh.webp",
+                "\/images\/meghalaya.webp"
+            ],
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
+        },
+        {
+            "id": "kedarnath",
+            "name": "Kedarnath Yatra",
+            "region": "Uttarakhand",
+            "tagline": "Spiritual temple yatra with divine scenic mountain views",
+            "duration": "4\u20136 nights",
+            "groupSize": "2\u201312",
+            "difficulty": "Challenging",
+            "bestSeason": "May \u2013 Jun, Sep \u2013 Nov",
+            "startingFrom": "\u20b915,000",
+            "tags": [
+                "Spiritual",
+                "Adventure",
+                "Scenic"
+            ],
+            "highlights": [
+                "VIP Darshan at Kedarnath Temple shrine",
+                "Beautiful trek from Gaurikund to Kedarnath basecamp",
+                "Comfortable stays near the holy temple base",
+                "Scenic helicopter ride booking options"
+            ],
+            "includes": [
+                "Premium stays & hygienic food",
+                "Airport\/station pickup & drop",
+                "Experienced local yatra coordinator",
+                "Helicopter booking assistance"
+            ],
+            "imagePath": "\/images\/kedarnath.webp",
+            "gallery": [
+                "\/images\/varanasi.webp",
+                "\/images\/chardham.webp"
+            ],
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
         },
         {
             "id": "kerala",
@@ -427,11 +416,48 @@
                 "Houseboat crew & meals",
                 "Sightseeing permits"
             ],
-            "imagePath": "/images/kerala.webp",
+            "imagePath": "\/images\/kerala.webp",
             "gallery": [
-                "/images/goa.webp",
-                "/images/hampi.webp"
-            ]
+                "\/images\/goa.webp",
+                "\/images\/hampi.webp"
+            ],
+            "created_at": "2026-08-01T06:45:08.000000Z",
+            "updated_at": "2026-08-01T06:45:08.000000Z"
+        },
+        {
+            "id": "ladakh",
+            "name": "Leh Ladakh",
+            "region": "Himalayas",
+            "tagline": "Snow-capped monasteries, deep valleys & high mountain passes",
+            "duration": "7\u201310 nights",
+            "groupSize": "2\u20138",
+            "difficulty": "Challenging",
+            "bestSeason": "Jun \u2013 Sep",
+            "startingFrom": "\u20b935,000",
+            "tags": [
+                "Adventure",
+                "Scenic",
+                "Heritage"
+            ],
+            "highlights": [
+                "Private sunrise at Pangong Tso Lake",
+                "Guided trek through Hemis National Park",
+                "VIP access to Thiksey Monastery prayer",
+                "Double-humped camel ride in Nubra Valley"
+            ],
+            "includes": [
+                "Boutique camps & cottages",
+                "Private 4x4 vehicle & driver",
+                "Oxygen systems & medical backing",
+                "Expert local coordinator guide"
+            ],
+            "imagePath": "\/images\/ladakh.webp",
+            "gallery": [
+                "\/images\/kashmir.webp",
+                "\/images\/meghalaya.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
             "id": "rajasthan",
@@ -460,67 +486,116 @@
                 "Folk dance performances",
                 "Private local guides"
             ],
-            "imagePath": "/images/rajasthan.webp",
+            "imagePath": "\/images\/rajasthan.webp",
             "gallery": [
-                "/images/varanasi.webp",
-                "/images/hampi.webp"
-            ]
+                "\/images\/varanasi.webp",
+                "\/images\/hampi.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
+        },
+        {
+            "id": "varanasi",
+            "name": "Varanasi Kashi",
+            "region": "Uttar Pradesh",
+            "tagline": "Spiritual river ghats, ancient chants & silk-weaving heritage",
+            "duration": "3\u20135 nights",
+            "groupSize": "2\u20138",
+            "difficulty": "Easy",
+            "bestSeason": "Oct \u2013 Mar",
+            "startingFrom": "\u20b912,000",
+            "tags": [
+                "Spiritual",
+                "Heritage",
+                "Wellness"
+            ],
+            "highlights": [
+                "Private boat for Ganga Aarti ceremony at Dashashwamedh",
+                "Sunrise boat ride with live shehnai music",
+                "Guided walk through ancient alleyways & Kashi Vishwanath temple",
+                "Exclusive Banarasi silk weaving demonstration"
+            ],
+            "includes": [
+                "Boutique riverfront stays",
+                "Private spiritual guide",
+                "VIP temple darshan assistance",
+                "Private boat charters"
+            ],
+            "imagePath": "\/images\/varanasi.webp",
+            "gallery": [
+                "\/images\/hampi.webp",
+                "\/images\/rajasthan.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         }
     ],
     "guides": [
         {
-            "id": "1",
+            "id": 1,
             "category": "Packing Guide",
             "title": "The ultimate cold desert packing checklist for Ladakh \u2014 what to carry in June vs September",
             "readTime": "7 min read",
             "badge": "Popular",
-            "image": "/images/ladakh.webp",
-            "icon": "\ud83c\udfd4\ufe0f"
+            "image": "\/images\/ladakh.webp",
+            "icon": "\ud83c\udfd4\ufe0f",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
-            "id": "2",
+            "id": 2,
             "category": "Destination Intel",
             "title": "Kashmir in winters \u2014 Gulmarg ski resorts, wooden chalets, & winter wonderland guide",
             "readTime": "9 min read",
             "badge": "Insider",
-            "image": "/images/kashmir.webp",
-            "icon": "\u2744\ufe0f"
+            "image": "\/images\/kashmir.webp",
+            "icon": "\u2744\ufe0f",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
-            "id": "3",
+            "id": 3,
             "category": "Health & Safety",
             "title": "High altitude acclimatisation 101 \u2014 how to prevent Acute Mountain Sickness (AMS) in Leh",
             "readTime": "6 min read",
             "badge": null,
-            "image": "/images/ladakh.webp",
-            "icon": "\u26d1\ufe0f"
+            "image": "\/images\/ladakh.webp",
+            "icon": "\u26d1\ufe0f",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
-            "id": "4",
+            "id": 4,
             "category": "Culture",
             "title": "Monastery decorum in Ladakh & Spiti \u2014 rules, prayer wheel direction, & photography guidelines",
             "readTime": "8 min read",
             "badge": "New",
-            "image": "/images/ladakh.webp",
-            "icon": "\ud83d\ude4f"
+            "image": "\/images\/ladakh.webp",
+            "icon": "\ud83d\ude4f",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
-            "id": "5",
+            "id": 5,
             "category": "Destination Intel",
             "title": "Inner Line Permits decoded \u2014 how to secure travel clearance to Pangong Tso, Nubra & Turtuk",
             "readTime": "5 min read",
             "badge": null,
-            "image": "/images/meghalaya.webp",
-            "icon": "\ud83d\udccb"
+            "image": "\/images\/meghalaya.webp",
+            "icon": "\ud83d\udccb",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
-            "id": "6",
+            "id": 6,
             "category": "Packing Guide",
             "title": "Monsoon packing list for Meghalaya \u2014 trekking boots, waterproof cases, & jungle essentials",
             "readTime": "6 min read",
             "badge": "Popular",
-            "image": "/images/meghalaya.webp",
-            "icon": "\ud83c\udf3f"
+            "image": "\/images\/meghalaya.webp",
+            "icon": "\ud83c\udf3f",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         }
     ],
     "hotels": [
@@ -529,29 +604,31 @@
             "name": "The Grand Shivalay Heritage",
             "location": "Kedarnath Valley, Uttarakhand",
             "description": "A luxury spiritual retreat nestled at the foothills of Kedarnath, offering VIP darshan services and absolute peace.",
-            "price": "\u20b94,500 / night",
-            "imagePath": "/uploads/1785165965_6a67788d75254.png",
+            "price": "\u20b94,500 \/ night",
+            "imagePath": "\/uploads\/1785165965_6a67788d75254.png",
             "rating": "5.0",
             "amenities": [
                 "Spiritual Library",
                 "Hygienic Vegetarian Restaurant",
-                "Hot Water 24/7",
+                "Hot Water 24\/7",
                 "VIP Darshan Assist"
             ],
             "gallery": [
-                "/uploads/1785165969_6a6778919e967.png",
-                "/uploads/1785165974_6a677896abab7.png",
-                "/uploads/1785165980_6a67789c31e78.png",
-                "/uploads/1785165986_6a6778a2e07ef.png"
-            ]
+                "\/uploads\/1785165969_6a6778919e967.png",
+                "\/uploads\/1785165974_6a677896abab7.png",
+                "\/uploads\/1785165980_6a67789c31e78.png",
+                "\/uploads\/1785165986_6a6778a2e07ef.png"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
             "id": "hotel-2",
             "name": "Royal Palace Retreat",
             "location": "Udaipur, Rajasthan",
             "description": "Experience royal hospitality with scenic lake-view suites and curated local heritage tours.",
-            "price": "\u20b96,800 / night",
-            "imagePath": "/images/rajasthan.webp",
+            "price": "\u20b96,800 \/ night",
+            "imagePath": "\/images\/rajasthan.webp",
             "rating": "4.8",
             "amenities": [
                 "Lake View Suites",
@@ -560,17 +637,19 @@
                 "Multi-cuisine Dining"
             ],
             "gallery": [
-                "/images/varanasi.webp",
-                "/images/hampi.webp"
-            ]
+                "\/images\/varanasi.webp",
+                "\/images\/hampi.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
             "id": "hotel-3",
             "name": "Spice Garden Resort & Spa",
             "location": "Munnar, Kerala",
             "description": "A tranquil boutique wellness hotel nestled inside a lush organic spice plantation, featuring traditional Ayurvedic therapies.",
-            "price": "\u20b95,200 / night",
-            "imagePath": "/images/kerala.webp",
+            "price": "\u20b95,200 \/ night",
+            "imagePath": "\/images\/kerala.webp",
             "rating": "4.9",
             "amenities": [
                 "Ayurvedic Spa",
@@ -579,17 +658,19 @@
                 "Organic Dining"
             ],
             "gallery": [
-                "/images/goa.webp",
-                "/images/hampi.webp"
-            ]
+                "\/images\/goa.webp",
+                "\/images\/hampi.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
             "id": "hotel-4",
             "name": "Hampi Boulders Heritage Hotel",
             "location": "Hampi, Karnataka",
             "description": "A heritage retreat built into the unique boulder landscape of Hampi, offering guided tours of the ancient ruins.",
-            "price": "\u20b94,900 / night",
-            "imagePath": "/images/hampi.webp",
+            "price": "\u20b94,900 \/ night",
+            "imagePath": "\/images\/hampi.webp",
             "rating": "4.7",
             "amenities": [
                 "Ruins Guided Tours",
@@ -598,17 +679,19 @@
                 "Rock Climbing"
             ],
             "gallery": [
-                "/images/varanasi.webp",
-                "/images/rajasthan.webp"
-            ]
+                "\/images\/varanasi.webp",
+                "\/images\/rajasthan.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
             "id": "hotel-5",
             "name": "Himalayan Sanctuary Retreat",
             "location": "Manali, Himachal Pradesh",
             "description": "A charming luxury sanctuary surrounded by apple orchards, offering panoramic views of the Solang Valley.",
-            "price": "\u20b95,800 / night",
-            "imagePath": "/images/kashmir.webp",
+            "price": "\u20b95,800 \/ night",
+            "imagePath": "\/images\/kashmir.webp",
             "rating": "4.9",
             "amenities": [
                 "Heated Pool",
@@ -617,9 +700,11 @@
                 "Skiing Assist"
             ],
             "gallery": [
-                "/images/ladakh.webp",
-                "/images/meghalaya.webp"
-            ]
+                "\/images\/ladakh.webp",
+                "\/images\/meghalaya.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         }
     ],
     "villas": [
@@ -628,8 +713,8 @@
             "name": "Whispering Pines Luxury Villa",
             "location": "Gulmarg, Kashmir",
             "description": "A hand-carved wooden chalet villa overlooking snow-covered pine forests, perfect for family getaways.",
-            "price": "\u20b912,500 / night",
-            "imagePath": "/images/kashmir.webp",
+            "price": "\u20b912,500 \/ night",
+            "imagePath": "\/images\/kashmir.webp",
             "rating": "4.9",
             "amenities": [
                 "Heated Bedrooms",
@@ -638,17 +723,19 @@
                 "Skiing Equipment Assist"
             ],
             "gallery": [
-                "/images/ladakh.webp",
-                "/images/meghalaya.webp"
-            ]
+                "\/images\/ladakh.webp",
+                "\/images\/meghalaya.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
             "id": "villa-2",
             "name": "Casa de Sol Beachfront Villa",
             "location": "Candolim, Goa",
             "description": "A gorgeous Mediterranean-style beachfront villa with private beach access and a personal infinity pool.",
-            "price": "\u20b918,500 / night",
-            "imagePath": "/images/goa.webp",
+            "price": "\u20b918,500 \/ night",
+            "imagePath": "\/images\/goa.webp",
             "rating": "5.0",
             "amenities": [
                 "Private Beach Access",
@@ -657,17 +744,19 @@
                 "Personal Butler"
             ],
             "gallery": [
-                "/images/kerala.webp",
-                "/images/hampi.webp"
-            ]
+                "\/images\/kerala.webp",
+                "\/images\/hampi.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
             "id": "villa-3",
             "name": "Elysian Forest Tree Villa",
             "location": "Wayanad, Kerala",
             "description": "An ultra-luxury elevated treehouse villa offering premium modern comforts amidst the rain forest canopy.",
-            "price": "\u20b914,000 / night",
-            "imagePath": "/images/kerala.webp",
+            "price": "\u20b914,000 \/ night",
+            "imagePath": "\/images\/kerala.webp",
             "rating": "4.8",
             "amenities": [
                 "Elevated Jacuzzi",
@@ -676,17 +765,19 @@
                 "Tree Canopy Balcony"
             ],
             "gallery": [
-                "/images/goa.webp",
-                "/images/hampi.webp"
-            ]
+                "\/images\/goa.webp",
+                "\/images\/hampi.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
             "id": "villa-4",
             "name": "The Oasis Desert Villa",
             "location": "Jaisalmer, Rajasthan",
             "description": "A gorgeous luxury sandstone villa in the Thar desert with a private plunge pool, private dunes access, and camel safaris.",
-            "price": "\u20b916,500 / night",
-            "imagePath": "/images/rajasthan.webp",
+            "price": "\u20b916,500 \/ night",
+            "imagePath": "\/images\/rajasthan.webp",
             "rating": "5.0",
             "amenities": [
                 "Private Plunge Pool",
@@ -695,17 +786,19 @@
                 "Traditional Musicians"
             ],
             "gallery": [
-                "/images/varanasi.webp",
-                "/images/hampi.webp"
-            ]
+                "\/images\/varanasi.webp",
+                "\/images\/hampi.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
             "id": "villa-5",
             "name": "Pine Crest Luxury Estate",
             "location": "Shimla, Himachal Pradesh",
             "description": "A grand British-era colonial villa restored to ultra-modern luxury standards, with gorgeous panoramic mountain views.",
-            "price": "\u20b922,000 / night",
-            "imagePath": "/images/kashmir.webp",
+            "price": "\u20b922,000 \/ night",
+            "imagePath": "\/images\/kashmir.webp",
             "rating": "4.9",
             "amenities": [
                 "Colonial Fireplace",
@@ -714,13 +807,16 @@
                 "Panoramic Sun Deck"
             ],
             "gallery": [
-                "/images/ladakh.webp",
-                "/images/meghalaya.webp"
-            ]
+                "\/images\/ladakh.webp",
+                "\/images\/meghalaya.webp"
+            ],
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         }
     ],
     "testimonials": [
         {
+            "id": 1,
             "quote": "Our Kashmir honeymoon was beyond imagination. Every detail \u2014 the scenic houseboat, the private saffron farm walk \u2014 felt tailored to our exact pace.",
             "name": "Priya & Arjun Mehta",
             "location": "Mumbai",
@@ -728,10 +824,13 @@
             "trip": "Honeymoon \u00b7 8 nights",
             "rating": 5,
             "avatar": "PA",
-            "image": "/images/kashmir.webp",
-            "clientImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80"
+            "image": "\/images\/kashmir.webp",
+            "clientImage": "https:\/\/images.unsplash.com\/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
+            "id": 2,
             "quote": "The Kedarnath yatra was incredibly smooth. They managed all registrations and helicopter tickets without any hassle. A truly divine experience.",
             "name": "Ramesh & Savita Joshi",
             "location": "Indore",
@@ -739,10 +838,13 @@
             "trip": "Pilgrim \u00b7 5 nights",
             "rating": 5,
             "avatar": "RS",
-            "image": "/images/kedarnath.webp",
-            "clientImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80"
+            "image": "\/images\/kedarnath.webp",
+            "clientImage": "https:\/\/images.unsplash.com\/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
+            "id": 3,
             "quote": "Taking our elderly parents to Chardham was a big concern, but Shivalay Travels made it absolutely stress-free. The premium Tempo Traveller was very comfortable.",
             "name": "The Verma Family",
             "location": "Bhopal",
@@ -750,10 +852,13 @@
             "trip": "Family Yatra \u00b7 11 nights",
             "rating": 5,
             "avatar": "VF",
-            "image": "/images/chardham.webp",
-            "clientImage": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=100&h=100&q=80"
+            "image": "\/images\/chardham.webp",
+            "clientImage": "https:\/\/images.unsplash.com\/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=100&h=100&q=80",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
+            "id": 4,
             "quote": "From our first call to our private houseboat cruise in Alleppey, we felt like honored guests. Already booking Jaisalmer for winter.",
             "name": "Dr. Ananya Nair",
             "location": "Kochi",
@@ -761,10 +866,13 @@
             "trip": "Solo \u00b7 9 nights",
             "rating": 5,
             "avatar": "AN",
-            "image": "/images/kerala.webp",
-            "clientImage": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&h=100&q=80"
+            "image": "\/images\/kerala.webp",
+            "clientImage": "https:\/\/images.unsplash.com\/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&h=100&q=80",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         },
         {
+            "id": 5,
             "quote": "Shivalay Travels showed me what Leh Ladakh actually feels like when seasoned road specialists design it. The logistics and permits were top notch.",
             "name": "Vikram Sethi",
             "location": "New Delhi",
@@ -772,8 +880,10 @@
             "trip": "Adventure \u00b7 9 nights",
             "rating": 5,
             "avatar": "VS",
-            "image": "/images/ladakh.webp",
-            "clientImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80"
+            "image": "\/images\/ladakh.webp",
+            "clientImage": "https:\/\/images.unsplash.com\/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80",
+            "created_at": "2026-08-01T06:45:09.000000Z",
+            "updated_at": "2026-08-01T06:45:09.000000Z"
         }
     ]
 }

@@ -174,4 +174,48 @@ class HomeController extends Controller
 
         return response()->json($booking);
     }
+
+    public function sitemap()
+    {
+        // Get the latest modification timestamp from public data models
+        $latestPackage = \App\Models\Package::latest('updated_at')->first();
+        $latestHotel = \App\Models\Hotel::latest('updated_at')->first();
+        $latestVilla = \App\Models\Villa::latest('updated_at')->first();
+        $latestGuide = \App\Models\Guide::latest('updated_at')->first();
+
+        $dates = [
+            $latestPackage?->updated_at,
+            $latestHotel?->updated_at,
+            $latestVilla?->updated_at,
+            $latestGuide?->updated_at,
+        ];
+        $lastMod = collect($dates)->filter()->max();
+        $lastModStr = $lastMod ? $lastMod->toAtomString() : now()->toAtomString();
+
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+        $xml .= '  <url>';
+        $xml .= '    <loc>' . url('/') . '</loc>';
+        $xml .= '    <lastmod>' . $lastModStr . '</lastmod>';
+        $xml .= '    <changefreq>daily</changefreq>';
+        $xml .= '    <priority>1.0</priority>';
+        $xml .= '  </url>';
+        $xml .= '</urlset>';
+
+        return response($xml, 200, ['Content-Type' => 'application/xml']);
+    }
+
+    public function robots()
+    {
+        $robots = "User-agent: *\n";
+        $robots .= "Disallow: /admin\n";
+        $robots .= "Disallow: /admin/\n";
+        $robots .= "Disallow: /login\n";
+        $robots .= "Disallow: /run-migrations\n";
+        $robots .= "Disallow: /debug-db\n";
+        $robots .= "Disallow: /api/\n\n";
+        $robots .= "Sitemap: " . url('sitemap.xml') . "\n";
+
+        return response($robots, 200, ['Content-Type' => 'text/plain']);
+    }
 }

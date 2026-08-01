@@ -10,6 +10,8 @@ use App\Http\Middleware\AdminAuth;
 // PUBLIC FRONT-END ROUTES
 // ─────────────────────────────────────────────────────────────────
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/sitemap.xml', [HomeController::class, 'sitemap']);
+Route::get('/robots.txt', [HomeController::class, 'robots']);
 Route::get('/api/captcha', [HomeController::class, 'getCaptcha']);
 Route::post('/api/admin/inquiries', [HomeController::class, 'submitInquiry']);
 Route::post('/api/admin/bookings', [HomeController::class, 'submitBooking']);
@@ -27,6 +29,13 @@ Route::get('/admin', function () {
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin']);
 Route::post('/admin/login', [AdminAuthController::class, 'login']);
 Route::get('/admin/logout', [AdminAuthController::class, 'logout']);
+
+Route::get('/admin/verify-otp', [AdminAuthController::class, 'showVerifyOtp']);
+Route::post('/admin/verify-otp', [AdminAuthController::class, 'verifyOtp']);
+Route::get('/admin/forgot-password', [AdminAuthController::class, 'showForgotPassword']);
+Route::post('/admin/forgot-password', [AdminAuthController::class, 'forgotPassword']);
+Route::get('/admin/reset-password', [AdminAuthController::class, 'showResetPassword']);
+Route::post('/admin/reset-password', [AdminAuthController::class, 'resetPassword']);
 
 // ─────────────────────────────────────────────────────────────────
 // SECURE ADMIN ROUTES  (protected by AdminAuth middleware)

@@ -104,9 +104,9 @@
         {{-- Background images (first shown, rest lazy) --}}
         @foreach($hg as $gi => $gsrc)
           @if($gi===0)
-            <img class="hs-card-img prop-gallery-img prop-img-{{ $gi }}" src="{{ $gsrc }}" style="opacity:0;" onload="this.style.opacity=1;" />
+            <img class="hs-card-img prop-gallery-img prop-img-{{ $gi }}" src="{{ $gsrc }}" alt="{{ $h['name'] }}" loading="lazy" style="opacity:0;" onload="this.style.opacity=1;" />
           @else
-            <img class="hs-card-img prop-gallery-img prop-img-{{ $gi }}" data-src="{{ $gsrc }}" style="opacity:0;display:none;" />
+            <img class="hs-card-img prop-gallery-img prop-img-{{ $gi }}" data-src="{{ $gsrc }}" alt="{{ $h['name'] }}" style="opacity:0;display:none;" />
           @endif
         @endforeach
 

@@ -10,5 +10,5 @@ class AdminUser extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $fillable = ['id', 'name', 'email', 'password', 'role', 'avatar', 'status'];
+    protected $fillable = ['id', 'name', 'email', 'password', 'role', 'avatar', 'status', 'otp_code', 'otp_expires_at', 'otp_purpose'];
 }

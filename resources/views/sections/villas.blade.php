@@ -109,6 +109,8 @@
       <img class="vs-main-img prop-gallery-img prop-img-{{ $gi }}"
            src="{{ $gi===0?$gsrc:'' }}"
            data-src="{{ $gi>0?$gsrc:'' }}"
+           alt="{{ $v['name'] }}"
+           loading="lazy"
            style="opacity:{{ $gi===0?0:0 }};{{ $gi>0?'display:none;':'' }}"
            onload="this.style.opacity=1;" />
     @endforeach
@@ -123,7 +125,7 @@
     @if($vgc>1)
       <div class="vs-thumb-strip" id="{{ $spreadId }}-thumbs">
         @foreach($vg as $ti => $tsrc)
-          <img class="vs-thumb{{ $ti===0?' vson':'' }}" src="{{ $tsrc }}" data-idx="{{ $ti }}"
+          <img class="vs-thumb{{ $ti===0?' vson':'' }}" src="{{ $tsrc }}" alt="{{ $v['name'] }} thumbnail" loading="lazy" data-idx="{{ $ti }}"
                onclick="event.stopPropagation();vsJump('{{ $spreadId }}',{{ $ti }})" />
         @endforeach
       </div>
@@ -201,14 +203,16 @@
       @foreach($vg as $gi => $gsrc)
         <img class="vs-main-img prop-gallery-img prop-img-{{ $gi }}"
              src="{{ $gi===0?$gsrc:'' }}" data-src="{{ $gi>0?$gsrc:'' }}"
-             style="opacity:0;{{ $gi>0?'display:none;':'' }}" onload="this.style.opacity=1;" />
+             alt="{{ $v['name'] }}"
+             loading="lazy"
+             style="opacity:0;{{ $gi===0?'':'display:none;' }}" onload="this.style.opacity=1;" />
       @endforeach
       @if($vgc>1)
         <button type="button" class="vs-gnav" style="left:12px;" onclick="event.stopPropagation();vsNav('{{ $spreadId }}',-1)">‹</button>
         <button type="button" class="vs-gnav" style="right:12px;" onclick="event.stopPropagation();vsNav('{{ $spreadId }}',1)">›</button>
         <div class="vs-thumb-strip" id="{{ $spreadId }}-thumbs">
           @foreach($vg as $ti => $tsrc)
-            <img class="vs-thumb{{ $ti===0?' vson':'' }}" src="{{ $tsrc }}" data-idx="{{ $ti }}"
+            <img class="vs-thumb{{ $ti===0?' vson':'' }}" src="{{ $tsrc }}" alt="{{ $v['name'] }} thumbnail" loading="lazy" data-idx="{{ $ti }}"
                  onclick="event.stopPropagation();vsJump('{{ $spreadId }}',{{ $ti }})" />
           @endforeach
         </div>

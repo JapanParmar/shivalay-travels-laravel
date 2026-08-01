@@ -211,7 +211,8 @@ class AdminController extends Controller
             'defaultPassengers', 'defaultClass', 'currency', 'timezone',
             'bookingNotifications', 'whatsappIntegration', 'autoConfirm', 'requirePhone', 'cityApi',
             'staff1_name', 'staff1_phone', 'staff1_email',
-            'staff2_name', 'staff2_phone', 'staff2_email'
+            'staff2_name', 'staff2_phone', 'staff2_email',
+            'seo_title', 'seo_description', 'seo_keywords', 'seo_robots', 'google_analytics'
         ];
 
         foreach ($keys as $key) {
@@ -327,6 +328,9 @@ class AdminController extends Controller
             $newId = 'usr-' . str_pad(strval($count + 1), 2, '0', STR_PAD_LEFT);
         }
 
+        $otp = strval(rand(100000, 999999));
+        $expiresAt = now()->addHours(24);
+
         AdminUser::create([
             'id' => $newId,
             'name' => $name,
@@ -334,12 +338,43 @@ class AdminController extends Controller
             'password' => $request->input('password'),
             'role' => $request->input('role', 'agent'),
             'avatar' => $avatar,
-            'status' => 'active',
+            'status' => 'pending',
+            'otp_code' => $otp,
+            'otp_expires_at' => $expiresAt,
+            'otp_purpose' => 'verify_email',
         ]);
 
         $this->travelService->syncToFallback();
 
-        return redirect('/admin/users')->with('success', 'User account created successfully!');
+        $settings = $this->travelService->getSettings();
+        $businessName = $settings['businessName'] ?? 'Shivalay Travels';
+        $emailAddress = $request->input('email');
+
+        try {
+            \Illuminate\Support\Facades\Mail::send([], [], function ($message) use ($emailAddress, $name, $otp, $businessName) {
+                $htmlContent = "
+                    <div style=\"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;\">
+                        <h2 style=\"color: #ff0000; border-bottom: 2px solid #ff0000; padding-bottom: 10px;\">Welcome to {$businessName}</h2>
+                        <p>Hello <strong>{$name}</strong>,</p>
+                        <p>An employee/agent account has been created for you on the <strong>{$businessName}</strong> Admin Portal.</p>
+                        <p>To verify your email address and activate your account, please use the following OTP (One-Time Password) code on your first login:</p>
+                        <div style=\"background: #f4f4f4; padding: 15px; text-align: center; font-size: 24px; font-weight: bold; letter-spacing: 4px; color: #ff0000; border-radius: 6px; margin: 20px 0;\">
+                            {$otp}
+                        </div>
+                        <p style=\"font-size: 13px; color: #666;\">This OTP is valid for 24 hours. If you did not request this account, please ignore this email.</p>
+                        <hr style=\"border: none; border-top: 1px solid #eee; margin-top: 30px;\" />
+                        <p style=\"font-size: 14px; font-weight: bold; color: #ff0000;\">{$businessName}</p>
+                    </div>
+                ";
+                $message->to($emailAddress)
+                    ->subject("Verify Your Account - {$businessName}")
+                    ->html($htmlContent);
+            });
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error("Failed to send activation OTP email: " . $e->getMessage());
+        }
+
+        return redirect('/admin/users')->with('success', 'User account created successfully! Verification OTP sent to employee\'s email.');
     }
 
     public function updateUserRole(Request $request, $id)
